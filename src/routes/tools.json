@@ -83,7 +83,7 @@
     "camera-recorder": {
         "name": "Camera Recorder",
         "link": "/camera-recorder",
-        "description": "The Camera Recorder is an essential utility for capturing real-time video streams directly from your device's camera. This tool allows developers and users to easily access and display live camera feeds, making it perfect for testing camera functionalities, conducting video calls, or integrating camera features into applications. With a simple click, you can start viewing and using your camera feed, streamlining the process of capturing visual data and enhancing your development experience.",
+        "description": "This is recorder",
         "contributors": [
             {
                 "name": "Amit Yadav",

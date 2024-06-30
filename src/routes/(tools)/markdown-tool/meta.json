@@ -1,9 +1,9 @@
 {
     "name": "Markdown Tool",
-    "description":"",
+    "description":"The Markdown tool allows users to create formatted text using plain text syntax, making it easy to add elements like headers, lists, and links. It's widely used for documentation, writing, and note-taking due to its simplicity and readability.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Anand Kumar",
+        "githubId": "Anand98013"
     }, {
         "name": "",
         "githubId": ""

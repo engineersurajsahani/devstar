@@ -1,4 +1,5 @@
 <script>
+
   import { onMount } from "svelte";
   let video;
   let canvas;
@@ -60,6 +61,7 @@
     >
   </div>
 
+  {#if photos.length>0}
   <div class="photos-section rounded-md">
     <div class="heading"><strong>Captured Images</strong></div>
     <div class="flex flex-wrap justify-center gap-4 rounded-md">
@@ -110,6 +112,7 @@
       {/each}
     </div>
   </div>
+  {/if}
 </div>
 
 <style>

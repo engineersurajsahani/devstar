@@ -96,7 +96,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 	.marked-preview {
 		border-left: 2px solid black;
 		position: relative;
-  		overflow-y: auto; 
+  		overflow-y: auto;
+		overflow-x: auto;  
   		max-height: 100vh; 
 	}
 
@@ -110,7 +111,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 	#myTextarea {
 		width: 100%;
-		height: 65vh;
 		margin-bottom: 1rem;
 	}
 </style>

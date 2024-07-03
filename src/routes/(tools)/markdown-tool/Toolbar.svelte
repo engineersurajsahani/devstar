@@ -43,12 +43,12 @@
 	};
 </script>
 
-<div class="toolbar flex justtify-center bg-gray-200 dark:bg-white">
-	<button on:click={() => (sidebarHidden = false)} class="dark:bg-gray-900 text-white">{@html Folder}</button>
-	<button on:click={undo} class="dark:bg-gray-900 text-white">{@html Back}</button>
-	<button on:click={redo} class="dark:bg-gray-900 text-white">{@html Forward}</button>
+<div class="toolbar row-span-full fixed top-0 left-0 right-0 flex justify-center bg-gray-200 dark:bg-gray-900 z-50">
+	<button on:click={() => (sidebarHidden = false)} class="toolbar-button dark:bg-gray-900 text-white">{@html Folder}</button>
+	<button on:click={undo} class="toolbar-button dark:bg-gray-900 text-white">{@html Back}</button>
+	<button on:click={redo} class="toolbar-button dark:bg-gray-900 text-white">{@html Forward}</button>
 	{#each tools as tool}
-		<button on:click={() => addToTextArea(tool.code)} class="dark:bg-gray-900 text-white">{@html tool.icon}</button>
+		<button on:click={() => addToTextArea(tool.code)} class="toolbar-button dark:bg-gray-900 text-white">{@html tool.icon}</button>
 	{/each}
 </div>
 
@@ -59,21 +59,32 @@
 	id="sidebar"
 	class="dark:bg-gray-900"
 >
-	<div class="flex items-center bg-gray-200 dark:bg-gray-700 p-1">
+	<div class="flex items-center bg-gray-200  p-1">
 		<button class="ml-2 text-white">{@html FileAdd}</button>
-		<CloseButton on:click={() => (sidebarHidden = true)} class="mt-1mb-4 dark:text-white" />
+		<CloseButton on:click={() => (sidebarHidden = true)} class="mt-1 mb-4 dark:text-white" />
 	</div>
 </Drawer>
 
 <style>
 	.toolbar {
+		background-color: #3b3b3b; /* Dark background color */
 		margin: 1rem 0;
-		padding: 0.1rem;
+		padding: 0.5rem; /* Increased padding */
+		position: sticky;
+  		top: 0;
+  		z-index: 10; /* Ensure it is above other elements */
+		border-radius: 0.5rem; /* Optional: Add rounded corners */
 	}
 
-	.toolbar button {
+	.toolbar-button {
 		padding: 0.5rem 1rem;
+		background-color: #ab7373;
 		margin: 0 0.1rem;
 		border-radius: 0.2rem;
+		transition: background-color 0.3s; /* Smooth transition for hover effect */
+	}
+
+	.toolbar-button:hover {
+		background-color: #4a4a4a; /* Hover background color */
 	}
 </style>

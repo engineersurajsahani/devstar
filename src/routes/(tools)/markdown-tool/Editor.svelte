@@ -69,10 +69,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 		}
 	}
 </script>
-
 <Toolbar {undo} {redo} />
-<div class="card gap-4 lg:grid lg:grid-cols-2 overflow-hidden rounded-lg editor-wrapper">
-	<div class="p-2 bg-white">
+<div class="card gap-1 pd-1 lg:grid lg:grid-cols-2 overflow-hidden rounded-lg editor-wrapper">
+	<div >
 		<textarea
 			name="markdown"
 			bind:value={markdownCode}
@@ -80,12 +79,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 			on:scroll={syncScroll}
 			on:keydown={saveMarkdown}
 			bind:this={markdownTop}
-			class="rounded-lg w-full h-full resize-none border-none p-1"
+			class="rounded-lg w-full h-full pd-1 ml-1 resize-none border-none p-1 dark:bg-gray-800 dark:text-white"
 			id="myTextarea"
 		/>
 	</div>
 	<div
-		class="pl-4 p-2 pb-4 h-full marked-preview bg-white overflow-scroll"
+		class=" z-10  pl-4 pd-1 mr-1 pb-4 h-full marked-preview  overflow-scroll dark:bg-gray-800 dark:text-white"
 		bind:this={previewTop}
 		on:scroll={syncScroll}
 	>
@@ -96,7 +95,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 <style>
 	.marked-preview {
 		border-left: 2px solid black;
-		padding-left: 1rem; /* Added padding for better readability */
+		position: relative;
+  		overflow-y: auto;
+		overflow-x: auto;  
+  		max-height: 100vh; 
 	}
 
 	.editor-wrapper {
@@ -105,73 +107,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 	.card {
 		box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 2px;
-		padding: 1rem; /* Added padding for better aesthetics */
-		border-radius: 0.5rem; /* Added rounded corners */
 	}
 
 	#myTextarea {
 		width: 100%;
-		height: 65vh;
 		margin-bottom: 1rem;
-		padding: 0.5rem; /* Added padding for better usability */
-		border: 1px solid #ccc; /* Added border for better visibility */
-		border-radius: 0.25rem; /* Added rounded corners */
-	}
-
-	.toolbar {
-		margin: 1rem 0;
-		padding: 0.5rem; /* Increased padding for better usability */
-		background-color: #f8f9fa; /* Light background for better contrast */
-		border-radius: 0.25rem; /* Added rounded corners */
-		box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px; /* Added shadow for depth */
-		display: flex;
-		justify-content: space-around; /* Spacing between buttons */
-	}
-
-	.toolbar button {
-		padding: 0.5rem 1rem;
-		margin: 0 0.2rem;
-		border-radius: 0.2rem;
-		background-color: #007bff; /* Bootstrap primary color */
-		color: white;
-		border: none;
-		cursor: pointer;
-		transition: background-color 0.3s;
-	}
-
-	.toolbar button:hover {
-		background-color: #0056b3; /* Darker blue on hover */
-	}
-
-	/* Additional styles for markdown content */
-	.editor h1,
-	.editor h2,
-	.editor h3,
-	.editor h4,
-	.editor h5,
-	.editor h6 {
-		margin-left: 0;
-		margin-right: 0;
-		font-weight: bold;
-	}
-
-	.editor p {
-		margin-left: 0;
-		margin-right: 0;
-	}
-
-	.editor code {
-		background: rgba(0, 0, 0, 0.1);
-		padding: 0.2rem 0.4rem;
-		border-radius: 0.25rem;
-	}
-
-	.editor ul {
-		margin-left: 2rem;
-		list-style: disc;
-	}
-
-	.editor #myTextarea:focus {
-		outline: none;
 	}
 </style>

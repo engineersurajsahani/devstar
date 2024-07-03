@@ -11,7 +11,10 @@ export const Heading = `<svg class="w-[20px] h-[20px] text-gray-800 dark:text-wh
 </svg>`;
 
 export const OrderedList = `<svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 5h10M7 10h10M7 15h10M2 16h.01M2 11h.01M2 6h.01"/>
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 5h10M7 10h10M7 15h10"/>
+<text x="0" y="6" fill="currentColor" font-size="6" font-weight="bold">1</text>
+<text x="0" y="12" fill="currentColor" font-size="6" font-weight="bold">2</text>
+<text x="0" y="18" fill="currentColor" font-size="6" font-weight="bold">3</text>
 </svg>`;
 
 export const Strike = `<svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
@@ -19,7 +22,7 @@ export const Strike = `<svg class="w-[20px] h-[20px] text-gray-800 dark:text-whi
 </svg>`;
 
 export const UnorderedList = `<svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 5h10M7 10h10M7 15h10M3 16h.01M3 11h.01M3 6h.01"/>
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 5h10M7 10h10M7 15h10M3 6h.01M3 11h.01M3 16h.01"/>
 </svg>`;
 
 export const Back = `<svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">

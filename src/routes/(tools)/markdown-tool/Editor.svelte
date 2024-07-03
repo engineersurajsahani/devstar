@@ -30,7 +30,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 `;
 
 	let preview = marked(markdownCode);
-
+	export let markedCode;
 	// Synchronous scroll functionality
 	let markdownTop;
 	let previewTop;
@@ -68,9 +68,29 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 			markdownCode = history[histIndex];
 		}
 	}
+
+	// Save As Functionality
+	export const saveAs = async () => {
+		const options = {
+			suggestedName: 'markdown-file.md',
+			types: [
+				{
+					description: 'Markdown Files',
+					accept: { 'text/markdown': ['.md'] },
+				},
+			],
+		};
+		const handle = await window.showSaveFilePicker(options);
+		const writable = await handle.createWritable();
+		await writable.write(markdownCode);
+		await writable.close();
+		const file = await handle.getFile();
+		const fileHandle = handle;
+	};
 </script>
-<Toolbar {undo} {redo} />
-<div class="card gap-1 pd-1 lg:grid lg:grid-cols-2 overflow-hidden rounded-lg editor-wrapper">
+
+<Toolbar {undo} {redo} saveAs={saveAs}/>
+<div class="card gap-1 pd-1 lg:grid lg:grid-cols-2 sm:grid-cols-4 overflow-hidden rounded-lg editor-wrapper">
 	<div >
 		<textarea
 			name="markdown"
@@ -78,14 +98,14 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 			on:input={(e) => (preview = marked(e.target.value))}
 			on:scroll={syncScroll}
 			on:keydown={saveMarkdown}
-			bind:this={markdownTop}
-			class="rounded-lg w-full h-full pd-1 ml-1 resize-none border-none p-1 dark:bg-gray-800 dark:text-white"
+			bind:this={ markdownTop}
+			class="rounded-lg w-full h-full pd-1 ml-1 border-none p-1 dark:bg-gray-800 dark:text-white"
 			id="myTextarea"
 		/>
 	</div>
 	<div
-		class=" z-10  pl-4 pd-1 mr-1 pb-4 h-full marked-preview  overflow-scroll dark:bg-gray-800 dark:text-white"
-		bind:this={previewTop}
+		class="pl-4 pd-1 mr-1 pb-4 h-full marked-preview overflow-scroll dark:bg-gray-800 dark:text-white"
+		bind:this={ previewTop}
 		on:scroll={syncScroll}
 	>
 		{@html preview}
@@ -97,8 +117,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 		border-left: 2px solid black;
 		position: relative;
   		overflow-y: auto;
-		overflow-x: auto;  
-  		max-height: 100vh; 
+		overflow-x: auto; 
 	}
 
 	.editor-wrapper {
@@ -112,5 +131,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 	#myTextarea {
 		width: 100%;
 		margin-bottom: 1rem;
+		height: 100%;;
 	}
 </style>

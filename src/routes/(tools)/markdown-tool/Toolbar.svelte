@@ -3,23 +3,30 @@
 		Bold,
 		Italic,
 		Heading,
-		OrderedList,
+		List,
 		Strike,
-		UnorderedList,
+		Quote,
 		Back,
 		Forward,
 		Folder,
-		FileAdd
+		FileAdd,
+		Save,
+		Image,
+		Anchor,
+		table
 	} from './icons';
 	import { Drawer, CloseButton } from 'flowbite-svelte';
 
 	const tools = [
-		{ icon: Bold, code: '**Strong Text**' },
-		{ icon: Italic, code: '*emphasized text*' },
-		{ icon: Heading, code: '## Heading' },
-		{ icon: Strike, code: '~~strikethrough text~~' },
-		{ icon: OrderedList, code: ' 1. List item' },
-		{ icon: UnorderedList, code: ' - List item' }
+		{ icon: Bold, code: '**Strong Text**', title: 'Bold'},
+		{ icon: Italic, code: '*emphasized text*', title: 'Italic'},
+		{ icon: Heading, code: '## Heading', title: 'Heading'},
+		{ icon: Strike, code: '~~strikethrough text~~', title: 'Strike'},
+		{ icon: Image, code: '"![alt](src)"', title: 'Image'},
+		{ icon: Anchor, code: '[text](href)', title: 'Anchor'},
+		{ icon: table, code: '| th  | th  |\n| --- | --- |\n| td  | td  |\n| td  | td  |', title: 'Table'},
+		{ icon: List, code: '- ', title: 'List'},
+		{ icon: Quote, code: "> ", title: 'Quote'}
 	];
 
 	const addToTextArea = function (textToAdd) {
@@ -35,7 +42,8 @@
 
 	export let undo;
 	export let redo;
-
+	export let saveAs;
+	
 	let sidebarHidden = true;
 	let transitionParams = {
 		x: -320,
@@ -44,11 +52,12 @@
 </script>
 
 <div class="toolbar row-span-full fixed top-0 left-0 right-0 flex justify-center bg-gray-200 dark:bg-gray-900 s-Wh2ffweQoTFj z-50">
-	<button on:click={() => (sidebarHidden = false)} class="dark:bg-gray-900 text-white">{@html Folder}</button>
-	<button on:click={undo} class="dark:bg-gray-900 text-white">{@html Back}</button>
-	<button on:click={redo} class="dark:bg-gray-900 text-white">{@html Forward}</button>
+	<button on:click={() => (sidebarHidden = false) } title="Open" class="dark:bg-gray-900 text-white">{@html Folder}</button>
+	<button on:click={undo} title='Undo'class="dark:bg-gray-900 text-white">{@html Back}</button>
+	<button on:click={redo} title='Redo'class="dark:bg-gray-900 text-white">{@html Forward}</button>
+	<button on:click={() => saveAs()} title='Save As'class="dark:bg-gray-900 dark:text-white">{@html Save}</button>
 	{#each tools as tool}
-		<button on:click={() => addToTextArea(tool.code)} class="dark:bg-gray-900 text-white">{@html tool.icon}</button>
+		<button on:click={() => addToTextArea(tool.code)} title={tool.title} class="dark:bg-gray-900 dark:text-white">{@html tool.icon}</button>
 	{/each}
 </div>
 

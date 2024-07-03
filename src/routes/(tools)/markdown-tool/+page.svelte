@@ -9,7 +9,7 @@
 
 <!-- <Intro heading={data.meta.title} description={data.meta.description} /> -->
 
-<div class="card gap-5 items-center sm:grid-row-3 mx-auto max-w-screen-xl lg:grid lg:grid-rows-2 overflow-hidden rounded-lg">
+<div class="card gap-5 items-center sm:grid-row-6 mx-auto max-w-screen-xl lg:grid lg:grid-rows-2 overflow-hidden rounded-lg">
 	<Editor />
 </div>
 

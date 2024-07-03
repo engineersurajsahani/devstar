@@ -1,20 +1,34 @@
-<script lang="js">
-	// @ts-nocheck
-	import Intro from './Intro.svelte';
-	import Editor from './Editor.svelte';
-	// import './markdown.css';
+<!-- Markdown Input -->
+<div class="relative mb-8 flex-1">
+	<Label for="markdownText" class="text-gray-700 dark:text-gray-400 font-semibold">Markdown Input:</Label>
+	<Textarea 
+		bind:value={markdownText} 
+		on:input={updateHtml}
+		rows="20"
+		class="w-full mt-2 p-4 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1"
+	></Textarea>
+</div>
+</div>
 
-	// export let data;
-</script>
-
-<!-- <Intro heading={data.meta.title} description={data.meta.description} /> -->
-
-<div class="card gap-5 items-center sm:grid-row-6 mx-auto max-w-screen-xl lg:grid lg:grid-rows-2 overflow-hidden rounded-lg">
-	<Editor />
+<!-- HTML Preview (Right Half) -->
+<div class="w-full md:w-1/2 flex flex-col p-4">
+<Label class="text-gray-700 dark:text-gray-400 font-semibold mb-2">HTML Preview:</Label>
+<div 
+	class="w-full h-full rounded-lg border border-gray-300 p-6 bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600 overflow-auto shadow-inner flex-1"
+	bind:this={htmlElement}
+></div>
+</div>
+</main>
 </div>
 
 <style>
-	:is(.dark .card) {
-		box-shadow: rgba(255, 255, 255, 0.5) 0 0 0 2px;
-	}
+div[bind\:this="htmlElement"] {
+white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+main {
+flex-direction: column;
+}
+}
 </style>

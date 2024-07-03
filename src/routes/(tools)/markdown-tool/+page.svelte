@@ -1,3 +1,4 @@
+
 <div class="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center p-4">
 	<main class="w-full max-w-6xl bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col md:flex-row gap-8">
 		<!-- Settings (Left Half) -->
@@ -37,4 +38,3 @@
 				<input type="file" class="hidden" on:change={openMarkdown} />
 			</div>
 
-			

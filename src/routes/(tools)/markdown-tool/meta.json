@@ -1,12 +1,12 @@
 {
     "name": "Markdown Tool",
-    "description":"The Markdown tool allows users to create formatted text using plain text syntax, making it easy to add elements like headers, lists, and links. It's widely used for documentation, writing, and note-taking due to its simplicity and readability.",
+    "description":"A web-based tool to convert Markdown text to HTML, providing live preview, copy, and download functionalities.",
     "contributors": [{
-        "name": "Anand Kumar",
-        "githubId": "Anand98013"
-    }, {
         "name": "Abhishek Rajput",
         "githubId": "Abhishek-2502"
+    }, {
+        "name": "Anand Kumar",
+        "githubId": "Anand98013"
     },
     {
         "name": "Kshitij Sharma",
@@ -14,10 +14,6 @@
     },
     {
         "name": "Tanmay Chavan",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
+        "githubId": "tanmaychavan14"
     }]
 }

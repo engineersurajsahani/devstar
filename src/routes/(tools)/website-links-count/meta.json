@@ -1,23 +1,26 @@
 {
-    "name": "Website Links Count",
-    "description":"",
-    "contributors": [{
-        "name": "",
-        "githubId": ""
-    }, {
-        "name": "",
-        "githubId": ""
+  "name": "Website Links Count",
+  "description": "The Website Links Counter is an essential tool designed to efficiently count the number of links present on any given website. By simply entering the URL of the target website, developers and SEO professionals can quickly obtain an accurate count of all hyperlinks, including internal, external, and anchor links. This tool helps in analyzing the link structure of a website, providing valuable insights for optimizing SEO strategies and improving site navigation. Enhance your website analysis and optimization efforts with the precision and ease offered by the Website Links Counter tool.",
+  "contributors": [
+    {
+      "name": "Abdur Rehman Shaikh",
+      "githubId": "abdurrahmanshkh"
     },
     {
-        "name": "",
-        "githubId": ""
+      "name": "Aman Ilag",
+      "githubId": "ImGreY8"
     },
     {
-        "name": "",
-        "githubId": ""
+      "name": "Atharva Bhosale",
+      "githubId": "AT8Cool"
+    },
+        {
+      "name": "Monika Konde",
+      "githubId": "monikakonde"
     },
     {
-        "name": "",
-        "githubId": ""
-    }]
+      "name": "Raunak Singhal",
+      "githubId": "Raunak152003"
+    }
+  ]
 }

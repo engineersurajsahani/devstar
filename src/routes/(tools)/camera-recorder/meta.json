@@ -1,23 +1,24 @@
 {
     "name": "Camera Recorder",
-    "description":"",
-    "contributors": [{
-        "name": "",
-        "githubId": ""
-    }, {
-        "name": "",
-        "githubId": ""
+    "description":"This is recorder",
+    "contributors": [ {
+        "name": "Amit Yadav",
+        "githubId": "amit-yadav207"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Aniket Agrahari",
+        "githubId": "aniket-agr60"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Shashikanta Raut",
+        "githubId": "Skrout8"
     },
     {
-        "name": "",
-        "githubId": ""
-    }]
+        "name": "Suzanne Sunil Nazareth",
+        "githubId": "suzannenazareth"
+    },
+    {
+        "name": "Vidyanand Kumar",
+        "githubId": "vidyanandk"
+    } ]
 }

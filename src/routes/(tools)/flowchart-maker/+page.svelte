@@ -9,9 +9,14 @@
         currentPage = page;
     }
 
-    onMount(() => {
-        console.log('Component mounted');
+   onMount(() => {
+  shapes = document.querySelectorAll('.shape-item');
+  shapes.forEach((shape) => {
+    shape.addEventListener('resize', (event) => {
+      handleShapeResize(event, shape.id);
     });
+  });
+});
 
 	// download the flowchart
 	function downloadAsImage() {
@@ -42,6 +47,38 @@
 			shape.remove();
 		}
 	}
+
+	 // Function to handle search
+	 let shapes = [];
+
+onMount(() => {
+  shapes = document.querySelectorAll('.shape-item');
+});
+
+function handleSearch(event) {
+  const searchQuery = event.target.value.toLowerCase();
+  const shapes = document.querySelectorAll('.shape-item');
+  shapes.forEach((shape) => {
+	const shapeName = shape.id.toLowerCase();
+	if (shapeName.includes(searchQuery)) {
+	  shape.style.display = 'block';
+	} else {
+	  shape.style.display = 'none';
+	}
+  });
+}
+
+ // Function to handle shape resizing
+    function handleShapeResize(event, shapeId) {
+        const shape = document.getElementById(shapeId);
+        const rect = shape.getBoundingClientRect();
+        const width = event.clientX - rect.left;
+        const height = event.clientY - rect.top;
+
+        shape.style.width = `${width}px`;
+        shape.style.height = `${height}px`;
+    }
+
 </script>
 
 
@@ -83,8 +120,8 @@
 
 					<button class="home-button" on:click={() => navigate('home')}>Home</button>
 					<div class="search-bar">
-						<input type="text" placeholder="search shape...">
-					</div>
+						<input type="text" placeholder="search shape..." on:input={handleSearch}>
+					  </div>
 
 					<button class="add-text">Add Text</button>
 
@@ -99,10 +136,10 @@
 								<div class="shape rectangle"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
 							</div>
-							<div class="shape-item" id="diamond" draggable="true" on:dragstart={(e) => {
+                            <div class="shape-item" id="circle" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
 							}}>
-								<div class="shape diamond"></div>
+								<div class="shape circle"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
 							</div>
 							<div class="shape-item" id="oval" draggable="true" on:dragstart={(e) => {
@@ -117,58 +154,10 @@
 								<div class="shape parallelogram"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
 							</div>
-							<div class="shape-item" id="cloud" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape cloud"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="double-cloud" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape double-cloud"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
 							<div class="shape-item" id="trapezoid" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
 							}}>
 								<div class="shape trapezoid"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="hexagon" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape hexagon"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="rhombus" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape rhombus"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="cylinder" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape cylinder"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="double-cylinder" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape double-cylinder"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="data" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape data"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="flag" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape flag"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
 							</div>
 							<div class="shape-item" id="triangle" draggable="true" on:dragstart={(e) => {
@@ -177,60 +166,42 @@
 								<div class="shape triangle"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
 							</div>
-							<div class="shape-item" id="circle" draggable="true" on:dragstart={(e) => {
+
+							<div class="shape-item" id="hexagon" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
 							}}>
-								<div class="shape circle"></div>
+								<div class="shape hexagon"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
 							</div>
-							<div class="shape-item" id="plus" draggable="true" on:dragstart={(e) => {
+
+							<div class="shape-item" id="decision" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape plus"></div>
+							  }}>
+								<div class="shape decision"></div>
 								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="multiply" draggable="true" on:dragstart={(e) => {
+							  </div>
+
+							<div class="shape-item" id="arrow-up" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape multiply"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="pentagon" draggable="true" on:dragstart={(e) => {
+							  }}>
+								<div class="shape arrow-up"></div>
+							  </div>
+							  <div class="shape-item" id="arrow-down" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape pentagon"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="heart" draggable="true" on:dragstart={(e) => {
+							  }}>
+								<div class="shape arrow-down"></div>
+							  </div>
+							  <div class="shape-item" id="arrow-left" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape heart"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="curly-braces" draggable="true" on:dragstart={(e) => {
+							  }}>
+								<div class="shape arrow-left"></div>
+							  </div>
+							  <div class="shape-item" id="arrow-right" draggable="true" on:dragstart={(e) => {
 								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape curly-braces"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="square-braces" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape square-braces"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="grid-vertical" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape grid-vertical"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
-							<div class="shape-item" id="grid-horizontal" draggable="true" on:dragstart={(e) => {
-								e.dataTransfer.setData('text/plain', e.target.id);
-							}}>
-								<div class="shape grid-horizontal"></div>
-								<i class="fas fa-trash" on:click={deleteShape}></i>
-							</div>
+							  }}>
+								<div class="shape arrow-right"></div>
+							  </div>
+						  
 						</div>
 					</div>
 
@@ -548,6 +519,8 @@
     text-indent: 0;
 }
 
+
+
 .dashboard {
 		width: 150px;
 		height: 150px;
@@ -582,20 +555,22 @@
 	}
 
 	.shape-item {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		cursor: pointer;
-		position: relative;
-	}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  width: 40px; /* updated width */
+  height: 40px; /* updated height */
+}
 
-	.shape {
-  width: 20px;
-  height: 20px;
+.shape {
+  width: 30px; /* updated width */
+  height: 30px; /* updated height */
   border: 2px solid black;
-  background-color: black; /* Make all shapes black */
+  background-color: #ADD8E6; /* Make all shapes black */
 }
 
 	.rectangle {
@@ -603,14 +578,13 @@
 		height: 20px;
 	}
 
-	.diamond {
-		width: 0;
-		height: 0;
-		border-left: 15px solid transparent;
-		border-right: 15px solid transparent;
-		border-bottom: 30px solid black;
-	}
-
+	.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ADD8E6; /* Make all shapes black */
+}
+	
 	.oval {
 		width: 25px;
 		height: 15px;
@@ -623,67 +597,10 @@
 		transform: skewX(20deg);
 	}
 
-	.cloud {
-		width: 30px;
-		height: 15px;
-		border-radius: 50% 50% 0 0;
-	}
-
-	.double-cloud {
-		width: 30px;
-		height: 15px;
-		border-radius: 50% 50% 0 0;
-	}
-
 	.trapezoid {
 		width: 30px;
 		height: 15px;
 		clip-path: polygon(0 0, 30px 0, 25px 15px, 5px 15px);
-	}
-
-	.hexagon {
-		width: 30px;
-		height: 30px;
-		clip-path: polygon(15px 0, 30px 7.5px, 30px 22.5px, 15px 30px, 0 22.5px, 0 7.5px);
-	}
-
-	.rhombus {
-		width: 0;
-		height: 0;
-		border-left: 15px solid transparent;
-		border-right: 15px solid transparent;
-		border-bottom: 30px solid black;
-		transform: rotate(45deg);
-	}
-
-	.cylinder {
-		width: 10px;
-		height: 25px;
-		border-radius: 5px 5px 0 0;
-		background-color: black;
-	}
-
-	.double-cylinder {
-		width: 10px;
-		height: 25px;
-		border-radius: 5px 5px 0 0;
-		background-color: black;
-	}
-
-	.data {
-		width: 30px;
-		height: 15px;
-		border: 2px solid black;
-		border-radius: 5px;
-		background-color: black; /* Make data shape black */
-	}
-
-	.flag {
-		width: 30px;
-		height: 15px;
-		border: 2px solid black;
-		border-radius: 5px;
-		transform: rotate(45deg);
 	}
 
 	.triangle {
@@ -694,175 +611,114 @@
 		border-bottom: 30px solid black;
 	}
 
-	.circle {
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-	}
+	.hexagon {
+  width: 30px;
+  height: 30px;
+  background-color: #ADD8E6;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
 
-	.plus {
-		width: 25px;
-		height: 25px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-	}
+	.decision {
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  background-color: #ADD8E6; /* Make all shapes black */
+  transform: rotate(45deg);
+}
 
-	.plus::before,
-	.plus::after {
-		content: '';
-		position: absolute;
-		width: 2px;
-		height: 15px;
-		background-color: black;
-	}
+	.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid black;
+}
 
-	.plus::before {
-		transform: rotate(90deg);
-	}
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid black;
+}
 
-	.multiply {
-		width: 25px;
-		height: 25px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-	}
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid black;
+}
 
-	.multiply::before,
-	.multiply::after {
-		content: '';
-		position: absolute;
-		width: 2px;
-		height: 15px;
-		background-color: black;
-	}
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid black;
+}
 
-	.multiply::before {
-		transform: rotate(45deg);
-	}
-
-	.multiply::after {
-		transform: rotate(-45deg);
-	}
-
-	.pentagon {
-		width: 25px;
-		height: 25px;
-		clip-path: polygon(50% 0, 100% 19%, 81% 49%, 19% 49%, 0 19%);
-	}
-
-	.heart {
-		width: 25px;
-		height: 25px;
-		background-color: red;
-		border-radius: 50% 50% 0 0;
-		position: relative;
-	}
-
-	.heart::before,
-	.heart::after {
-		content: '';
-		position: absolute;
-		width: 25px;
-		height: 25px;
-		background-color: red;
-		border-radius: 50% 50% 0 0;
-		top: 0;
-	}
-
-	.heart::before {
-		transform: rotate(45deg);
-	}
-
-	.heart::after {
-		transform: rotate(-45deg);
-	}
-
-	.curly-braces {
-		width: 25px;
-		height: 25px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-	}
-
-	.curly-braces::before,
-	.curly-braces::after {
-		content: '';
-		position: absolute;
-		width: 2px;
-		height: 15px;
-		background-color: black;
-	}
-
-	.curly-braces::before {
-		transform: rotate(90deg);
-		border-radius: 0 0 5px 0;
-	}
-
-	.curly-braces::after {
-		transform: rotate(90deg);
-		border-radius: 0 0 0 5px;
-	}
-
-	.square-braces {
-		width: 25px;
-		height: 25px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-	}
-
-	.square-braces::before,
-	.square-braces::after {
-		content: '';
-		position: absolute;
-		width: 2px;
-		height: 15px;
-		background-color: black;
-	}
-
-	.square-braces::before {
-		transform: rotate(90deg);
-		border-radius: 3px 3px 0 0;
-	}
-
-	.square-braces::after {
-		transform: rotate(90deg);
-		border-radius: 0 0 3px 3px;
-	}
-
-	.grid-vertical {
-		width: 25px;
-		height: 25px;
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		grid-template-rows: repeat(5, 1fr);
-		border: 2px solid black;
-	}
-
-	.grid-horizontal {
-		width: 25px;
-		height: 25px;
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		grid-template-rows: repeat(5, 1fr);
-		border: 2px solid black;
-		transform: rotate(90deg);
-	}
-	
-	/* Delete button styling */
 	.shape-item i {
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		font-size: 12px;
-		color: red;
-		cursor: pointer;
-	}
+  display: none;
+}
+
+.elements-section {
+  position: relative;
+}
+
+.elements-section::before {
+  content: "\f1f8"; /* FontAwesome trash icon */
+  font-family: FontAwesome;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+}
+
+/* Search Bar Styles */
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #C0C0C0;
+}
+
+.search-bar input[type="search"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #C0C0C0;
+}
+
+.search-bar button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #FF8C00;
+  color: white;
+  cursor: pointer;
+}
+
+.search-bar button[type="submit"]:hover {
+  background-color: #FFA07A;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 768px) {
+ .dashboardbody.sidebar {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+ .dashboardbody.sidebar {
+    width: 150px;
+  }
+}
+
 </style>

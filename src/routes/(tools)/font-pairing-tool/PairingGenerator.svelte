@@ -75,14 +75,14 @@
     <button on:click={savePairing}>Save Pairing</button>
   </div>
   
-  <div class="font-display">
+  <FontDisplay class="font-display">
     <p style="font-family: {selectedFont1}; font-size: {fontSize}px; font-weight: {fontWeight};">
       {customText}
     </p>
     <p style="font-family: {selectedFont2}; font-size: {fontSize}px; font-weight: {fontWeight};">
       {customText}
     </p>
-  </div>
+  </FontDisplay>
   
   <style>
     .settings-panel {

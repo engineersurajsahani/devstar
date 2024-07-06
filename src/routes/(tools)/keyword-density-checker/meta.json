@@ -1,9 +1,9 @@
 {
     "name": "Keyword Density Checker",
-    "description":"",
+    "description":"The Keyword Density Checker Tool is designed to help you optimize your web content for search engines by analyzing the keyword density within your text or web pages. This tool allows you to input either a URL or text and quickly calculates the frequency and percentage of keywords appearing in your content. By providing detailed reports on one-word, two-word, and three-word keyword densities, it enables you to ensure your content is both relevant and search engine-friendly",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Vaishnavi Kshirsagar",
+        "githubId": "vaishuKshirsagar"
     }, {
         "name": "",
         "githubId": ""

@@ -128,10 +128,4 @@
   button:hover {
     background-color: #0056b3;
   }
-  .font-display {
-    margin-top: 20px;
-  }
-  .font-display p {
-    margin: 10px 0;
-  }
 </style>

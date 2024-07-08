@@ -1,5 +1,5 @@
 <script>
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
   
 	let url = '';
 	let inputType = 'url';
@@ -8,7 +8,25 @@ import { onMount } from 'svelte';
 	let includeTitle = false;
 	let includeAlt = false;
 	let results = [];
-	const stopWords = new Set(['i', 'before' ,'after','during','we','he','she','it','an', 'will', 'can', 'and', 'the', 'is', 'in', 'at', 'of', 'a', 'to', 'with']);
+	let showResults = false;
+  
+	let result = {
+	  url: "",
+	  loadTime: "",
+	  totalKeywords: 0,
+	  tagCloud: [],
+	  topKeywords: [],
+	  keywordDensity: {
+		oneWord: [],
+		twoWords: [],
+		threeWords: [],
+		fourWords: []
+	  }
+	};
+  
+	let selectedDensity = 'oneWord';
+  
+	const stopWords = new Set(['i', 'before', 'after', 'during', 'we', 'he', 'she', 'it', 'an', 'will', 'can', 'and', 'the', 'is', 'in', 'at', 'of', 'a', 'to', 'with']);
   
 	function setInputType(type) {
 	  inputType = type;
@@ -16,6 +34,7 @@ import { onMount } from 'svelte';
   
 	async function extractWords() {
 	  let text = '';
+	  showResults = false;
   
 	  try {
 		if (inputType === 'url') {
@@ -49,10 +68,11 @@ import { onMount } from 'svelte';
 			text += ' ' + altTags;
 		  }
 		} else {
-		  text = url;
+		  text = textInput;
 		}
   
 		calculateDensities(text);
+		showResults = true;
 	  } catch (err) {
 		console.error(err.message);
 	  }
@@ -60,8 +80,8 @@ import { onMount } from 'svelte';
   
 	function calculateDensities(text) {
 	  if (text) {
-		const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-  
+		// Use a regex that accounts for apostrophes within words
+		const words = text.toLowerCase().match(/(?:(?:\b\w+\b)(?:'\b\w+\b)*)/g) || [];
 		const filteredWords = words.filter(word => !stopWords.has(word));
   
 		const wordCounts = filteredWords.reduce((counts, word) => {
@@ -78,100 +98,221 @@ import { onMount } from 'svelte';
 		}));
   
 		results.sort((a, b) => b.density - a.density);
+  
+		// Prepare keyword densities for 2-word, 3-word, and 4-word combinations
+		result = {
+		  url: inputType === 'url' ? url : 'Text Input',
+		  loadTime: "N/A", // Placeholder, you might want to calculate this
+		  totalKeywords: totalWords,
+		  tagCloud: Object.keys(wordCounts),
+		  topKeywords: results.slice(0, 10).map(item => ({ keyword: item.keyword, freq: item.count })),
+		  keywordDensity: {
+			oneWord: results.slice(0, 10).map(item => ({ keyword: item.keyword, freq: item.count, density: item.density })),
+			twoWords: calculateNWordsDensity(filteredWords, 2),
+			threeWords: calculateNWordsDensity(filteredWords, 3),
+			fourWords: calculateNWordsDensity(filteredWords, 4)
+		  }
+		};
 	  } else {
 		results = [];
+		result = {
+		  url: "",
+		  loadTime: "",
+		  totalKeywords: 0,
+		  tagCloud: [],
+		  topKeywords: [],
+		  keywordDensity: {
+			oneWord: [],
+			twoWords: [],
+			threeWords: [],
+			fourWords: []
+		  }
+		};
 	  }
+	}
+  
+	function calculateNWordsDensity(filteredWords, n) {
+	  const nWordsDensity = {};
+	  for (let i = 0; i <= filteredWords.length - n; i++) {
+		const nWords = filteredWords.slice(i, i + n).join(' ');
+		nWordsDensity[nWords] = (nWordsDensity[nWords] || 0) + 1;
+	  }
+	  const sortedNWords = Object.entries(nWordsDensity)
+		.map(([words, count]) => ({
+		  keyword: words,
+		  freq: count,
+		  density: ((count / filteredWords.length) * 100).toFixed(2)
+		}))
+		.sort((a, b) => b.freq - a.freq);
+	  return sortedNWords.slice(0, 10); // Return top 10 results
+	}
+  
+	function selectDensity(density) {
+	  selectedDensity = density;
 	}
   </script>
   
-  <div class="card mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 gap-16 overflow-hidden rounded-lg">
-	<!-- Add tool here -->	<div class="content text-center mx-auto flex flex-col justify-center items-center">
-	  <p class="mt-4 text-lg">Keyword density tool: check by URL or text. Get density for one, two, and three words, etc.</p>
-	  <div class="input-type mt-4 flex justify-center">
-		<button 
-		  on:click={() => setInputType('url')} 
-		  class={`px-4 py-2 rounded-l focus:outline-none ${inputType === 'url' ? 'bg-gray-300' : 'bg-gray-200'}`}
+  <div class="container mx-auto flex flex-col items-center justify-center min-h-screen">
+	<div class="card max-w-screen-xl p-5 mb-8">
+	  <div class="content mx-auto flex flex-col justify-center items-center">
+		<p class="mt-4 text-lg text-center">Keyword density tool: check by URL or text. Get density for one, two, and three words, etc.</p>
+		<div class="input-type mt-4 flex justify-center">
+		  <button 
+			on:click={() => setInputType('url')} 
+			class={`px-4 py-2 rounded-l focus:outline-none ${inputType === 'url' ? 'bg-gray-300' : 'bg-gray-200'}`}
+		  >
+			URL Input
+		  </button>
+		  <button 
+			on:click={() => setInputType('text')} 
+			class={`px-4 py-2 rounded-r focus:outline-none ${inputType === 'text' ? 'bg-gray-300' : 'bg-gray-200'}`}
+		  >
+			Text Input
+		  </button>
+		</div>
+		{#if inputType === 'url'}
+		  <input 
+			type="url" 
+			bind:value={url} 
+			placeholder="http://"
+			class="mt-4 p-2 border border-gray-300 rounded w-full"
+		  />
+		  <div class="mt-4 flex flex-row items-center justify-between w-full">
+			<label class="flex items-center">
+			  <input type="checkbox" bind:checked={includeMeta} />
+			  <span class="ml-2">Include Meta Tags</span>
+			</label>
+			<label class="flex items-center">
+			  <input type="checkbox" bind:checked={includeTitle} />
+			  <span class="ml-2">Include Titles</span>
+			</label>
+			<label class="flex items-center">
+			  <input type="checkbox" bind:checked={includeAlt} />
+			  <span class="ml-2">Include Alt Titles</span>
+			</label>
+		  </div>
+		{:else}
+		  <textarea 
+			bind:value={textInput} 
+			placeholder="Enter text here..." 
+			class="mt-4 p-2 border border-gray-300 rounded w-full h-24"
+		  ></textarea>
+		{/if}
+		<button
+		  on:click={extractWords}
+		  class="bg-blue-500 text-white px-4 py-2 rounded mt-4 focus:outline-none focus:bg-blue-700"
 		>
-		  URL Input
-		</button>
-		<button 
-		  on:click={() => setInputType('text')} 
-		  class={`px-4 py-2 rounded-r focus:outline-none ${inputType === 'text' ? 'bg-gray-300' : 'bg-gray-200'}`}
-		>
-		  Text Input
+		  Check Keyword Density
 		</button>
 	  </div>
-	  {#if inputType === 'url'}
-		<input 
-		  type="url" 
-		  bind:value={url} 
-		  placeholder="http://"
-		  class="mt-4 p-2 border border-gray-300 rounded w-full"
-		/>
-		<div class="mt-4 flex flex-row items-center justify-between w-full">
-		  <label class="flex items-center">
-			<input type="checkbox" bind:checked={includeMeta} />
-			<span class="ml-2">Include Meta Tags</span>
-		  </label>
-		  <label class="flex items-center">
-			<input type="checkbox" bind:checked={includeTitle} />
-			<span class="ml-2">Include Titles</span>
-		  </label>
-		  <label class="flex items-center">
-			<input type="checkbox" bind:checked={includeAlt} />
-			<span class="ml-2">Include Alt Titles</span>
-		  </label>
-		</div>
-	  {:else}
-		<textarea 
-		  bind:value={url} 
-		  placeholder="Enter text here..." 
-		  class="mt-4 p-2 border border-gray-300 rounded w-full h-24"
-		></textarea>
-	  {/if}
-	  <button
-		on:click={extractWords}
-		class="bg-blue-500 text-white px-4 py-2 rounded mt-4 focus:outline-none focus:bg-blue-700"
-	  >
-		Check Keyword Density
-	  </button>
 	</div>
-  </div>
   
-  <div class="results-container">
-	{#if results.length > 0}
-	  <h3>Keyword Density Table:</h3>
-	  <table>
-		<thead>
-		  <tr>
-			<th>Keyword</th>
-			<th>Count</th>
-			<th>Density (%)</th>
-		  </tr>
-		</thead>
-		<tbody>
-		  {#each results as result}
-			<tr>
-			  <td>{result.keyword}</td>
-			  <td>{result.count}</td>
-			  <td>{result.density}%</td>
-			</tr>
-		  {/each}
-		</tbody>
-	  </table>
-	{:else}
-	  <p>No valid words to display. Please enter some text.</p>
+	{#if showResults}
+	  <div class="card gap-16 items-center mx-auto w-full max-w-screen-xl lg:grid lg:grid-cols-1 overflow-hidden rounded-lg p-5">
+		<div class="result-container w-full p-5 border border-gray-300 rounded-lg shadow-lg bg-white flex flex-col items-center">
+		  <div class="main-result text-center mb-5">
+			<p><strong>URL to Verify:</strong> {result.url}</p>
+			<p><strong>Load Time:</strong> {result.loadTime}</p>
+			<p><strong>Total Keywords:</strong> {result.totalKeywords}</p>
+		  </div>
+		
+		  <div class="tag-cloud flex flex-wrap gap-2 mt-5 justify-center mb-5">
+			{#each result.tagCloud as tag}
+			  <span>{tag}</span>
+			{/each}
+		  </div>
+		
+		  <h3 class="mt-5 text-center text-lg font-semibold">Top Keywords</h3>
+		  <table class="w-full">
+			<thead>
+			  <tr>
+				<th>Keyword</th>
+				<th>Frequency</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>&lt;H*&gt;</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  {#each result.topKeywords as keyword}
+				<tr>
+				  <td>{keyword.keyword}</td>
+				  <td>{keyword.freq}</td>
+				  <td class="cursor-pointer">✗</td>
+				  <td class="cursor-pointer">✗</td>
+				</tr>
+			  {/each}
+			</tbody>
+		  </table>
+		
+		  <div class="result-container mt-5">
+			<h3 class="text-center text-lg font-semibold">Keyword Density</h3>
+			<div class="tabs">
+			  <div class:tab-active={selectedDensity === 'oneWord'} class="tab" on:click={() => selectDensity('oneWord')}>One word</div>
+			  <div class:tab-active={selectedDensity === 'twoWords'} class="tab" on:click={() => selectDensity('twoWords')}>Two words</div>
+			  <div class:tab-active={selectedDensity === 'threeWords'} class="tab" on:click={() => selectDensity('threeWords')}>Three words</div>
+			  <div class:tab-active={selectedDensity === 'fourWords'} class="tab" on:click={() => selectDensity('fourWords')}>Four words</div>
+			</div>
+		  
+			<table class="w-full">
+			  <thead>
+				<tr>
+				  <th>Keyword</th>
+				  <th>Frequency</th>
+				  <th>Density</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{#each result.keywordDensity[selectedDensity] as density}
+				  <tr>
+					<td>{density.keyword}</td>
+					<td>{density.freq}</td>
+					<td>{density.density}%</td>
+				  </tr>
+				{/each}
+			  </tbody>
+			</table>
+		  </div>
+		</div>
+	  </div>
 	{/if}
   </div>
   
   <style>
-  .form-container {
-    margin: 20px;
-  }
-  .results-container {
-    margin: 20px;
-  }
-  table {
+	.container {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 100vh;
+	}
+	.card {
+	  background: white;
+	  padding: 20px;
+	  border-radius: 10px;
+	  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	  width: 100%;
+	  max-width: 800px; /* Increased max-width */
+	}
+	.content {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	}
+	.input-type {
+	  display: flex;
+	  justify-content: center;
+	  margin-top: 20px;
+	}
+	.input-type button {
+	  padding: 10px 20px;
+	  border: none;
+	  cursor: pointer;
+	}
+	.results-container {
+	  margin: 20px;
+	}
+	table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -184,5 +325,41 @@ import { onMount } from 'svelte';
   th {
     background-color: #f2f2f2;
   }
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tr:hover {
+    background-color: #e2e8f0; /* Change this color to adjust hover effect */
+  }
+	.result-container {
+	  padding: 20px;
+	  width: 100%;
+	}
+	.tag-cloud span {
+	  display: inline-block;
+	  background-color: #e2e8f0;
+	  padding: 5px 10px;
+	  border-radius: 15px;
+	}
+	.tabs {
+	  display: flex;
+	  gap: 10px;
+	  justify-content: center;
+	  margin-top: 20px;
+	  margin-bottom: 20px;
+	}
+	.tab {
+	  cursor: pointer;
+	  padding: 10px 20px;
+	  border: 1px solid #ddd;
+	  border-radius: 5px;
+	}
+	.tab-active {
+	  background-color: #3182ce;
+	  color: white;
+	}
+	.cursor-pointer {
+	  cursor: pointer;
+	}
   </style>
   

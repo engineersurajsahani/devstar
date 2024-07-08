@@ -12,8 +12,6 @@
         patternContainer.innerHTML = '';
         patternContainer.style.background = 'none'; // Reset background
 
-        const size = 32 / patternSize; // Adjust the size based on the patternSize slider
-
         if (patternType === 'checks') {
             const squareSize = patternContainer.clientWidth / patternSize;
             patternContainer.style.gridTemplateColumns = `repeat(${patternSize}, ${squareSize}px)`;
@@ -41,127 +39,155 @@
                     background-color: ${backgroundColor};
                 }
             `;
-        } else if (patternType === 'diamonds') {
+        } else if (patternType === 'candy') {
             const background = `
-                linear-gradient(45deg, ${patternColor} 25%, transparent 25%) -${size / 2}px 0/ ${size}px ${size}px,
-                linear-gradient(135deg, ${patternColor} 25%, transparent 25%) -${size / 2}px 0/ ${size}px ${size}px,
-                linear-gradient(45deg, transparent 75%, ${backgroundColor} 75%) -${size / 2}px 0/ ${size}px ${size}px,
-                linear-gradient(135deg, transparent 75%, ${backgroundColor} 75%) -${size / 2}px 0/ ${size}px ${size}px
-            `;
+                radial-gradient(25% 25% at 25% 25%, #474bff 99%, #0000 101%) ${patternSize}px ${patternSize}px/calc(2*${patternSize}px) calc(2*${patternSize}px),
+                radial-gradient(25% 25% at 25% 25%, #474bff 99%, #0000 101%) 0 0/calc(2*${patternSize}px) calc(2*${patternSize}px),
+                radial-gradient(50% 50%, #adafff 98%, #0000) 0 0/${patternSize}px ${patternSize}px,
+                repeating-conic-gradient(#adafff 0 25%, #474bff 0 50%) calc(.5*${patternSize}px) 0/calc(2*${patternSize}px) ${patternSize}px`;
             patternContainer.style.background = background;
             cssCode = `
                 background: ${background};
-                background-size: ${size}px ${size}px;
+                background-size: ${patternSize}px ${patternSize}px;
             `;
-        } else if (patternType === 'grid') {
+        } else if (patternType === 'nested-cubes') {
             const background = `
-                linear-gradient(${patternColor} 1px, transparent 1px) 0 0 / ${size}px ${size}px,
-                linear-gradient(90deg, ${patternColor} 1px, transparent 1px) 0 0 / ${size}px ${size}px,
-                ${backgroundColor}
-            `;
+                conic-gradient(from 0deg at calc(500%/6) calc(100%/3), #fff 0 120deg, #0000 0),
+          conic-gradient(from -120deg at calc(100%/6) calc(100%/3), #adafff 0 120deg, #0000 0),
+          conic-gradient(from 120deg at calc(100%/3) calc(500%/6), #474bff 0 120deg, #0000 0),
+          conic-gradient(from 120deg at calc(200%/3) calc(500%/6), #474bff 0 120deg, #0000 0),
+          conic-gradient(from -180deg at calc(100%/3) 50%, #adafff 60deg, #474bff 0 120deg, #0000 0),
+          conic-gradient(from 60deg at calc(200%/3) 50%, #474bff 60deg, #fff 0 120deg, #0000 0),
+          conic-gradient(from -60deg at 50% calc(100%/3), #474bff 120deg, #adafff 0 240deg, #fff 0)`;
+                
             patternContainer.style.background = background;
             cssCode = `
                 background: ${background};
-                background-size: ${size}px ${size}px;
+                background-size: ${patternSize}px ${patternSize}px;
             `;
-        } else if (patternType === 'dot') {
-            const background = `
-                radial-gradient(circle, ${patternColor} 1px, ${backgroundColor} 1px) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'crossDots') {
-            const background = `
-                radial-gradient(circle, ${patternColor} 1px, ${backgroundColor} 1px) 0 0 / ${size}px ${size}px,
-                linear-gradient(${patternColor} 1px, transparent 1px) 0 0 / ${size}px ${size}px,
-                linear-gradient(90deg, ${patternColor} 1px, transparent 1px) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'verticalLines') {
-            const background = `
-                linear-gradient(90deg, ${patternColor} 1px, ${backgroundColor} 1px) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'horizontalLines') {
-            const background = `
-                linear-gradient(${patternColor} 1px, ${backgroundColor} 1px) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'diagonalLines') {
-            const background = `
-                linear-gradient(45deg, ${patternColor} 25%, transparent 25%, transparent 50%, ${patternColor} 50%, ${patternColor} 75%, transparent 75%, transparent 100%)
-            `;
-            patternContainer.style.backgroundImage = background;
-            patternContainer.style.backgroundSize = `${size}px ${size}px`;
-            cssCode = `
-                background-image: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'verticalStripes') {
-            const background = `
-                linear-gradient(90deg, ${patternColor} 50%, ${backgroundColor} 50%) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'horizontalStripes') {
-            const background = `
-                linear-gradient(${patternColor} 50%, ${backgroundColor} 50%) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'diagonalStripes') {
-            const background = `
-                linear-gradient(45deg, ${patternColor} 50%, ${backgroundColor} 50%) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        } else if (patternType === 'crosses') {
-            const background = `
-                linear-gradient(${patternColor} 1px, transparent 1px) 0 0 / ${size}px ${size}px,
-                linear-gradient(90deg, ${patternColor} 1px, transparent 1px) 0 0 / ${size}px ${size}px
-            `;
-            patternContainer.style.background = background;
-            cssCode = `
-                background: ${background};
-                background-size: ${size}px ${size}px;
-            `;
-        }
+        }else if (patternType === 'adjacent-cubes-v1') {
+        patternContainer.style.backgroundImage = `
+          linear-gradient(30deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(150deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(30deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(150deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(60deg, rgba(71,75,255,0.5) 25%, transparent 25.5%, transparent 75%, rgba(71,75,255,0.5)),
+          linear-gradient(60deg, rgba(71,75,255,0.5) 25%, transparent 25.5%, transparent 75%, rgba(71,75,255,0.5))`;
+        patternContainer.style.backgroundSize = '64px 112px';
+        patternContainer.style.backgroundPosition = '0 0, 0 0, 32px 56px, 32px 56px, 0 0, 32px 56px';
+        patternContainer.style.backgroundColor = backgroundColor;
+        cssCode = `
+                linear-gradient(30deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(150deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(30deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(150deg, #474bff 12%, transparent 12.5%, transparent 87%, #474bff 87.5%, #474bff),
+          linear-gradient(60deg, rgba(71,75,255,0.5) 25%, transparent 25.5%, transparent 75%, rgba(71,75,255,0.5)),
+          linear-gradient(60deg, rgba(71,75,255,0.5) 25%, transparent 25.5%, transparent 75%, rgba(71,75,255,0.5))`;
+            
+      }else if (patternType === 'adjacent-cubes-v2') {
+        patternContainer.style.background = `
+          repeating-conic-gradient(from 30deg, #0000 0 120deg, #fff 0 180deg) 64px 36.928px,
+          repeating-conic-gradient(from 30deg, #474bff 0 60deg, #adafff 0 120deg, #fff 0 180deg)`;
+        patternContainer.style.backgroundSize = '128px 74px';
+        patternContainer.style.backgroundColor = backgroundColor;
+        cssCode = `
+               repeating-conic-gradient(from 30deg, #0000 0 120deg, #fff 0 180deg) 64px 36.928px,
+          repeating-conic-gradient(from 30deg, #474bff 0 60deg, #adafff 0 120deg, #fff 0 180deg)`;
+      }else if (patternType === 'waves') {
+        patternContainer.style.backgroundImage = `
+          repeating-radial-gradient(circle at 0 0, transparent 0, #47d3ff 32px),
+          repeating-linear-gradient(#474bff, #474bff)`;
+        patternContainer.style.backgroundColor = backgroundColor;
+         cssCode = `
+         repeating-radial-gradient(circle at 0 0, transparent 0, #47d3ff 32px),
+          repeating-linear-gradient(#474bff, #474bff)`;
+      }else if (patternType === 'waterdrop') {
+        patternContainer.style.backgroundImage = `
+          radial-gradient(circle at center center, #474bff, #47d3ff),
+          repeating-radial-gradient(circle at center center, #474bff, #474bff, 32px, transparent 64px, transparent 32px)`;
+        patternContainer.style.backgroundBlendMode = "multiply";
+        patternContainer.style.backgroundColor = backgroundColor;
+        cssCode = ` radial-gradient(circle at center center, #474bff, #47d3ff),
+          repeating-radial-gradient(circle at center center, #474bff, #474bff, 32px, transparent 64px, transparent 32px)`;
+       
+      } else if (patternType === 'buildings') {
+        patternContainer.style.background = `
+          conic-gradient(from -60deg at 50% calc(100%/3), #474bff 0 120deg, #0000 0),
+          conic-gradient(from 120deg at 50% calc(200%/3), #474bff 0 120deg, #0000 0),
+          conic-gradient(from 60deg at calc(200%/3), #474bff 60deg, #adafff 0 120deg, #0000 0),
+          conic-gradient(from 180deg at calc(100%/3), #fff 60deg, #474bff 0 120deg, #0000 0),
+          linear-gradient(90deg, #fff calc(100%/6), #adafff 0 50%, #fff 0 calc(500%/6), #adafff 0)`;
+        patternContainer.style.backgroundSize = '111px 64px';
+        patternContainer.style.backgroundColor = backgroundColor;
+        cssCode = `  conic-gradient(from -60deg at 50% calc(100%/3), #474bff 0 120deg, #0000 0),
+          conic-gradient(from 120deg at 50% calc(200%/3), #474bff 0 120deg, #0000 0),
+          conic-gradient(from 60deg at calc(200%/3), #474bff 60deg, #adafff 0 120deg, #0000 0),
+          conic-gradient(from 180deg at calc(100%/3), #fff 60deg, #474bff 0 120deg, #0000 0),
+          linear-gradient(90deg, #fff calc(100%/6), #adafff 0 50%, #fff 0 calc(500%/6), #adafff 0)`;
+      } else if (patternType === 'discrete-cubes') {
+        patternContainer.style.background = `
+          linear-gradient(135deg, #47d3ff 16.66%, transparent 0 83.33%, #47d3ff 0),
+          conic-gradient(from 45deg at 66.66% 33.33%, #474bff 135deg, rgba(71,75,255,0.75) 0% 225deg, rgba(71,75,255,0.5) 0%)`;
+        patternContainer.style.backgroundSize = '64px 64px';
+        patternContainer.style.backgroundColor = backgroundColor;
+         cssCode = ` linear-gradient(135deg, #47d3ff 16.66%, transparent 0 83.33%, #47d3ff 0),
+          conic-gradient(from 45deg at 66.66% 33.33%, #474bff 135deg, rgba(71,75,255,0.75) 0% 225deg, rgba(71,75,255,0.5) 0%)`;
+       
+      } else if (patternType === 'rooms') {
+        patternContainer.style.background = `
+          conic-gradient(from -116.36deg at 25% 75%, #47d3ff 52.72deg, #0000 0),
+          conic-gradient(from -116.36deg at 25% 75%, #47d3ff 52.72deg, #0000 0) calc(3*32px) calc(32px/2),
+          conic-gradient(from 63.43deg at 75% 75%, #47d3ff 52.72deg, #0000 0),
+          conic-gradient(from 63.43deg at 75% 75%, #47d3ff 52.72deg, #0000 0) calc(3*32px) calc(32px/2),
+          conic-gradient(#adafff 63.43deg, #474bff 0 116.36deg, #adafff 0 180deg, #474bff 0 243.43deg, #adafff 0 296.15deg, #474bff 0)`;
+        patternContainer.style.backgroundSize = '64px 32px';
+        patternContainer.style.backgroundColor = backgroundColor;
+         cssCode = `conic-gradient(from -116.36deg at 25% 75%, #47d3ff 52.72deg, #0000 0),
+          conic-gradient(from -116.36deg at 25% 75%, #47d3ff 52.72deg, #0000 0) calc(3*32px) calc(32px/2),
+          conic-gradient(from 63.43deg at 75% 75%, #47d3ff 52.72deg, #0000 0),
+          conic-gradient(from 63.43deg at 75% 75%, #47d3ff 52.72deg, #0000 0) calc(3*32px) calc(32px/2),
+          conic-gradient(#adafff 63.43deg, #474bff 0 116.36deg, #adafff 0 180deg, #474bff 0 243.43deg, #adafff 0 296.15deg, #474bff 0)`;
+        
+      } else if (patternType === 'tubes') {
+        patternContainer.style.background = `
+          linear-gradient(145deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%),
+          linear-gradient(145deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%) calc(32px) 64px,
+          linear-gradient(35deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%),
+          linear-gradient(35deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%) calc(32px) 64px,
+          conic-gradient(from -90deg at 37.5% 50%, #0000 75%, #adafff 0) calc(32px/4) 0,
+          conic-gradient(from -90deg at 37.5% 50%, #0000 75%, #fff 0) calc(32px) 0,
+          linear-gradient(90deg, #fff 38%, #adafff 0 50%, #fff 0 62%, #adafff 0)`;
+        patternContainer.style.backgroundSize = '64px calc(2*64px/3)';
+         cssCode = `linear-gradient(145deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%),
+          linear-gradient(145deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%) calc(32px) 64px,
+          linear-gradient(35deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%),
+          linear-gradient(35deg, #adafff 10%, #474bff 10.5% 19%, #0000 19.5% 80.5%, #474bff 81% 89.5%, #fff 90%) calc(32px) 64px,
+          conic-gradient(from -90deg at 37.5% 50%, #0000 75%, #adafff 0) calc(32px/4) 0,
+          conic-gradient(from -90deg at 37.5% 50%, #0000 75%, #fff 0) calc(32px) 0,
+          linear-gradient(90deg, #fff 38%, #adafff 0 50%, #fff 0 62%, #adafff 0)`;
+      } else if (patternType === 'stairs') {
+        patternContainer.style.background = `
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0),
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) 32px 32px,
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) calc(2*32px) calc(2*32px),
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) calc(3*32px) calc(3*32px),
+          repeating-linear-gradient(135deg, #adafff 0 12.5%, #474bff 0 25%)`;
+        patternContainer.style.backgroundSize = 'calc(4*32px) calc(4*32px)';
+         cssCode = `conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0),
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) 32px 32px,
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) calc(2*32px) calc(2*32px),
+          conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) calc(3*32px) calc(3*32px),
+          repeating-linear-gradient(135deg, #adafff 0 12.5%, #474bff 0 25%)`;
+      }
 
         // Ensure textarea is updated
         document.getElementById('css-code').value = cssCode.trim();
     }
 
     function shuffleColors() {
-        const colors = ['#474BFF', '#47D3FF', '#ADAFFF', '#FFF', '#000', '#CCC'];
+        const colors = ['#474BFF', '#47D3FF', '#F79474', '#74C6F7', '#85C57F', '#F29981'];
         const randomIndex1 = Math.floor(Math.random() * colors.length);
-        let randomIndex2 = Math.floor(Math.random() * colors.length);
-        while (randomIndex1 === randomIndex2) {
-            randomIndex2 = Math.floor(Math.random() * colors.length);
-        }
+        const randomIndex2 = Math.floor(Math.random() * colors.length);
         patternColor = colors[randomIndex1];
         backgroundColor = colors[randomIndex2];
         generatePattern();
@@ -172,7 +198,6 @@
     });
 </script>
 
-
 <div class="card gap-16 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 overflow-hidden rounded-lg">
     <div class="pattern" id="pattern"></div>
     <div class="controls">
@@ -180,33 +205,32 @@
             <label for="pattern-type">Pattern Type:</label>
             <select bind:value={patternType} on:change={generatePattern}>
                 <option value="checks">Checks</option>
-                <option value="diamonds">Diamonds</option>
-                <option value="grid">Grid</option>
-                <option value="dot">Dot</option>
-                <option value="crossDots">CrossDots</option>
-                <option value="verticalLines">VerticalLines</option>
-                <option value="horizontalLines">HorizontalLines</option>
-                <option value="diagonalLines">DiagonalLines</option>
-                <option value="verticalStripes">VerticalStripes</option>
-                <option value="horizontalStripes">HorizontalStripes</option>
-                <option value="diagonalStripes">DiagonalStripes</option>
-                <option value="crosses">Crosses</option>
+                <option value="candy">Candy</option>
+                <option value="nested-cubes">Nested Cubes</option>
+                <option value="adjacent-cubes-v1">Adjacent Cubes V1</option>
+                <option value="adjacent-cubes-v2">Adjacent Cubes V2</option>
+          <option value="waves">Waves</option>
+          <option value="waterdrop">Water Drop</option>
+          <option value="buildings">Buildings</option>
+          <option value="discrete-cubes">Discrete Cubes</option>
+          <option value="rooms">Rooms</option>
+          <option value="tubes">Tubes</option>
+          <option value="stairs">Stairs</option>
             </select>
         </div>
         <div class="input-group">
             <label for="pattern-color">Pattern Color:</label>
-            <input type="color" bind:value={patternColor} on:change={generatePattern} />
+            <input type="color" bind:value={patternColor} on:input={generatePattern}>
         </div>
         <div class="input-group">
             <label for="background-color">Background Color:</label>
-            <input type="color" bind:value={backgroundColor} on:change={generatePattern} />
+            <input type="color" bind:value={backgroundColor} on:input={generatePattern}>
         </div>
         <div class="input-group">
             <label for="pattern-size">Pattern Size:</label>
-            <input type="range" min="1" max="16" bind:value={patternSize} on:change={generatePattern} />
+            <input type="range" min="1" max="32" bind:value={patternSize} on:input={generatePattern}>
         </div>
-        <button on:click={shuffleColors}>Shuffle Colors</button>
-        
+        <button class="button" on:click={shuffleColors}>Shuffle Colors</button>
     </div>
 </div>
 <textarea id="css-code" readonly></textarea>
@@ -243,13 +267,6 @@
         display: grid;
         border: 2px solid #ccc;
         box-sizing: border-box;
-        background: radial-gradient(27% 29% at right, #0000 83%, #474BFF 85%, #0000 101%) calc(32px/2) 32px,
-                    radial-gradient(27% 29% at left, #0000 83%, #474BFF 85%, #0000 101%) calc(32px/-2) 32px,
-                    radial-gradient(29% 27% at top, #0000 83%, #474BFF 85%, #0000 101%) 0 calc(32px/2),
-                    radial-gradient(29% 27% at bottom, #0000 83%, #474BFF 85%, #0000 101%) 0 calc(32px/-2),
-                    #47D3FF;
-        background-size: 64px 64px;
-        background-repeat: no-repeat;
     }
 
     .square {
@@ -289,7 +306,7 @@
 
     .button {
         background-color: #47D3FF;
-        color: rgb(255, 255, 255);
+        color: white;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;

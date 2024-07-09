@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "Diff" (
+    "_id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "original" TEXT NOT NULL,
+    "changed" TEXT NOT NULL,
+    "fileType" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);

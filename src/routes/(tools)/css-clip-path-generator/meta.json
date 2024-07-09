@@ -1,23 +1,31 @@
 {
     "name": "CSS Clip Path Generator",
-    "description":"",
-    "contributors": [{
-        "name": "",
-        "githubId": ""
-    }, {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    }]
-}
+    "description": "This online CSS Clip Path Generator helps with creating shapes for images using the css clip-path property. Select from a range of preset shapes",
+    "contributors": [
+      {
+        "name": "MD Kabir Hossain Molla",
+        "githubId": "Kabir-786"
+      },
+      {
+        "name": "Aditya Patil",
+        "githubId": "AdityaPatil08"
+      },
+      {
+        "name": "Aditya Pai",
+        "githubId": "AdityaPai03"
+      },
+      {
+        "name": "Sarfaraj Shaikh",
+        "githubId": "Shaikhsarfaraj19"
+      },
+      {
+        "name": "Esakkimuthu Konar",
+        "githubId": "Solteirostic-EK"
+      },
+      {
+        "name": "Akshay Aramani",
+        "githubId": "AkshayAramani"
+      }
+    ]
+  }
+  

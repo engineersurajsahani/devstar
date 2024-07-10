@@ -110,27 +110,23 @@
     "code-comparison-tool": {
         "name": "Code Comparison Tool",
         "link": "/code-comparison-tool",
-        "description": "",
+        "description": "This project provides a web-based tool designed to facilitate the comparison of code snippets and code files. The tool allows users to input code directly or upload text files for comparison, highlighting differences line-by-line.",
         "contributors": [
             {
-                "name": "",
-                "githubId": ""
+                "name": "Sairaj Bandre",
+                "githubId": "SairajBandre16"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Zane Falcao",
+                "githubId": "falcaozane"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Kaustubh Patil",
+                "githubId": "kaustubh1385"
             },
             {
-                "name": "",
-                "githubId": ""
-            },
-            {
-                "name": "",
-                "githubId": ""
+                "name": "Roy Kunjumon",
+                "githubId": "Royk08"
             }
         ]
     },

@@ -1,9 +1,9 @@
 {
     "name": "Virtual Graph Paper",
-    "description":"",
+    "description":"Virtual Graph Paper is a versatile and user-friendly tool designed to provide a digital equivalent of traditional graph paper. It offers a customizable grid layout where users can adjust the size and color of the grid to suit their specific needs, making it perfect for a wide range of applications including mathematics, engineering, design, and art. The tool includes intuitive features such as zoom-in and zoom-out functionalities, ensuring that users can focus on detailed sections or get an overview of their work effortlessly. Additionally, Virtual Graph Paper supports interactive annotations, allowing users to add text labels and notes directly on the grid, enhancing its utility for educational purposes and collaborative projects. Whether you are plotting graphs, drawing designs, or simply need a structured workspace, Virtual Graph Paper provides a flexible and efficient solution, combining the familiarity of traditional graph paper with the convenience of digital technology.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Akash Modak",
+        "githubId": "https://github.com/Akash-9832"
     }, {
         "name": "",
         "githubId": ""

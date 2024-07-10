@@ -80,6 +80,60 @@
             }
         ]
     },
+    "camera-recorder": {
+        "name": "Camera Recorder",
+        "link": "/camera-recorder",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "code-comparison-tool": {
+        "name": "Code Comparison Tool",
+        "link": "/code-comparison-tool",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "css-animator": {
         "name": "CSS Animator",
         "link": "/css-animator",
@@ -95,6 +149,60 @@
             }
         ]
     },
+    "css-background-pattern-generator": {
+        "name": "CSS Background Pattern Generator",
+        "link": "/css-background-pattern-generator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "css-clip-path-generator": {
+        "name": "CSS Clip Path Generator",
+        "link": "/css-clip-path-generator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "device-details": {
         "name": "Device Details",
         "link": "/device-details",
@@ -103,6 +211,33 @@
             {
                 "name": "Hannan Satopay",
                 "githubId": "hannansatopay"
+            }
+        ]
+    },
+    "email-header-analyzer": {
+        "name": "Email Header Analyzer",
+        "link": "/email-header-analyzer",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
             }
         ]
     },
@@ -117,9 +252,63 @@
             }
         ]
     },
-    "gradient-generator": {
+    "flowchart-maker": {
+        "name": "Flowchart Maker",
+        "link": "/flowchart-maker",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "font-pairing-tool": {
+        "name": "Font Pairing Tool",
+        "link": "/font-pairing-tool",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "Gradient-generator": {
         "name": "Gradient Generator",
-        "link": "/gradient-generator",
+        "link": "/Gradient-generator",
         "description": "The Gradient Generator is a tool for Developers which allows you to create Gradient between 2 Colors and Copy its CSS Output.",
         "contributors": [
             {
@@ -172,6 +361,33 @@
             }
         ]
     },
+    "keyword-density-checker": {
+        "name": "Keyword Density Checker",
+        "link": "/keyword-density-checker",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "living-background-generator": {
         "name": "Living Background Generator",
         "link": "/living-background-generator",
@@ -195,6 +411,60 @@
             {
                 "name": "Hannan Satopay",
                 "githubId": "hannansatopay"
+            }
+        ]
+    },
+    "markdown-tool": {
+        "name": "Markdown Tool",
+        "link": "/markdown-tool",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "metatag-checker-generator": {
+        "name": "Metatag Checker/Generator",
+        "link": "/metatag-checker-generator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
             }
         ]
     },
@@ -265,6 +535,33 @@
             }
         ]
     },
+    "remove-unused-css": {
+        "name": "Remove Unused CSS",
+        "link": "/remove-unused-css",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "robots-txt-generator": {
         "name": "Robots.txt Generator",
         "link": "/robots-txt-generator",
@@ -291,11 +588,65 @@
             }
         ]
     },
+    "virtual-graph-paper": {
+        "name": "Virtual Graph Paper",
+        "link": "/virtual-graph-paper",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "watermark-pdf": {
         "name": "Watermark PDF",
         "link": "/watermark-pdf",
         "description": "Add Text or Image as a watermark to the PDF document",
         "contributors": []
+    },
+    "website-links-count": {
+        "name": "Website Links Count",
+        "link": "/website-links-count",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
     },
     "whatsapp-api-generator": {
         "name": "WhatsApp Link Generator",

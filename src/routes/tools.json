@@ -233,41 +233,7 @@
     "css-toolkit": {
         "name": "CSS Toolkit",
         "link": "/css-toolkit",
-        "description": "Welcome to the CSS Toolkit. This collection  is designed to streamline your CSS development process and enhance your web design projects. Whether you're looking to create stunning text gradients, add dynamic box shadows, craft engaging hover effects, or apply sleek glassmorphism styles, our toolkit has you covered.",
-        "contributors": [
-            {
-                "name": "Bushra Shaikh",
-                "githubId": "bushra-07"
-            },
-            {
-                "name": "Saiesh Gaonkar",
-                "githubId": "Saiesh-Gaonkar"
-            },
-            {
-                "name": "Iqra Miyaji",
-                "githubId": "IqraMiyaji"
-            },
-            {
-                "name": "Kaif Satopay",
-                "githubId": "TYpeKAIF"
-            },
-            {
-                "name": "Tanvi More",
-                "githubId": "Tanvi119"
-            },
-            {
-                "name": "Samaan Sayed",
-                "githubId": "Samaanl"
-            },
-            {
-                "name": "Rishabh Rai",
-                "githubId": "RishabhRai280"
-            },
-            {
-                "name": "Tejas Gilbile",
-                "githubId": "TejasGilbile"
-            }
-        ]
+        "description": ""
     },
     "device-details": {
         "name": "Device Details",
@@ -372,9 +338,9 @@
             }
         ]
     },
-    "Gradient-generator": {
+    "gradient-generator": {
         "name": "Gradient Generator",
-        "link": "/Gradient-generator",
+        "link": "/gradient-generator",
         "description": "The Gradient Generator is a tool for Developers which allows you to create Gradient between 2 Colors and Copy its CSS Output.",
         "contributors": [
             {

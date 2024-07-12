@@ -1,23 +1,42 @@
 {
     "name": "CSS Toolkit",
     "description":"",
-    "contributors": [{
-        "name": "",
-        "githubId": ""
-    }, {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    }]
+    "css-toolkit": {
+    "contributors": [
+            {
+                "name": "Bushra Shaikh",
+                "githubId": "bushra-07"
+            },
+            {
+                "name": "Saiesh Gaonkar",
+                "githubId": "Saiesh-Gaonkar"
+            },
+            {
+                "name": "Iqra Miyaji",
+                "githubId": "IqraMiyaji"
+            },
+            {
+                "name": "Kaif Satopay",
+                "githubId": "TYpeKAIF"
+            },
+            {
+                "name": "Tanvi More",
+                "githubId": "Tanvi119"
+            },
+            {
+                "name": "Samaan Sayed",
+                "githubId": "Samaanl"
+            },
+            {
+                "name": "Rishabh Rai",
+                "githubId": "RishabhRai280"
+            },
+            {
+                "name": "Tejas Gilbile",
+                "githubId": "TejasGilbile"
+            }
+        ]
+    }
 }
+
+

@@ -39,7 +39,15 @@
     function downloadAsPDF() {
         html2canvas(document.querySelector("#card")).then(canvas => {
             const pdf = new jsPDF();
-            pdf.addImage(canvas.toDataURL("image/png"), 'PNG', 10, 10, 85, 54);
+            const imgData = canvas.toDataURL("image/png");
+
+            // Increase the size of the card in the PDF
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const cardWidth = pdfWidth * 2.0; // Scale the card width to 90% of the page width
+            const cardHeight = (canvas.height * cardWidth) / canvas.width;
+
+            pdf.addImage(imgData, 'PNG', (pdfWidth - cardWidth) / 2, (pdfHeight - cardHeight) / 2, cardWidth, cardHeight);
             pdf.save('business-card.pdf');
         });
     }
@@ -184,5 +192,4 @@
         <button on:click={downloadAsImage} id="button1">Download as PNG</button>
         <button on:click={downloadAsPDF} id="button2">Download as PDF</button>
     </div>
-
 </body>

@@ -233,27 +233,39 @@
     "css-toolkit": {
         "name": "CSS Toolkit",
         "link": "/css-toolkit",
-        "description": "",
+        "description": "Welcome to the CSS Toolkit. This collection is designed to streamline your CSS development process and enhance your web design projects. Whether you're looking to create stunning text gradients, add dynamic box shadows, craft engaging hover effects, or apply sleek glassmorphism styles, our toolkit has you covered.",
         "contributors": [
             {
-                "name": "",
-                "githubId": ""
+                "name": "Bushra Shaikh",
+                "githubId": "bushra-07"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Saiesh Gaonkar",
+                "githubId": "Saiesh-Gaonkar"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Iqra Miyaji",
+                "githubId": "IqraMiyaji"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Kaif Satopay",
+                "githubId": "TYpeKAIF"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Tanvi More",
+                "githubId": "Tanvi119"
+            },
+            {
+                "name": "Samaan Sayed",
+                "githubId": "Samaanl"
+            },
+            {
+                "name": "Rishabh Rai",
+                "githubId": "RishabhRai280"
+            },
+            {
+                "name": "Tejas Gilbile",
+                "githubId": "TejasGilbile"
             }
         ]
     },

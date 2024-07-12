@@ -18,3 +18,6 @@ static/samples/*
 .vercel
 .pnpm-lock.yaml
 /.vscode
+# /src/routes/(tools)/metatag-checker-generator/api
+# /src/routes/(tools)/metatag-checker-generator/components/metaTagGenerator.svelte
+# /src/routes/(tools)/metatag-checker-generator/components/metaTagsDisplay.svelte

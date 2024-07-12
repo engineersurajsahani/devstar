@@ -80,7 +80,6 @@
             }
         ]
     },
-
     "business-card-generator": {
         "name": "Business Card Generator",
         "link": "/business-card-generator",
@@ -108,7 +107,6 @@
             }
         ]
     },
-
     "camera-recorder": {
         "name": "Camera Recorder",
         "link": "/camera-recorder",
@@ -208,6 +206,33 @@
     "css-clip-path-generator": {
         "name": "CSS Clip Path Generator",
         "link": "/css-clip-path-generator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "css-toolkit": {
+        "name": "CSS Toolkit",
+        "link": "/css-toolkit",
         "description": "",
         "contributors": [
             {
@@ -346,6 +371,33 @@
             }
         ]
     },
+    "health-calculator": {
+        "name": "Health Calculator",
+        "link": "/health-calculator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "image-base64-decode": {
         "name": "Image Base64 Decode",
         "link": "/image-base64-decode",
@@ -390,9 +442,9 @@
             }
         ]
     },
-    "list-toolkit": {
-        "name": "List Toolkit",
-        "link": "/list-toolkit",
+    "keyword-density-checker": {
+        "name": "Keyword Density Checker",
+        "link": "/keyword-density-checker",
         "description": "",
         "contributors": [
             {
@@ -564,6 +616,33 @@
             }
         ]
     },
+    "readibility-calculator": {
+        "name": "Readibility Calculator",
+        "link": "/readibility-calculator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "remove-unused-css": {
         "name": "Remove Unused CSS",
         "link": "/remove-unused-css",
@@ -617,10 +696,9 @@
             }
         ]
     },
-
-    "signature-maker": {
-        "name": "Signature Maker",
-        "link": "/signature-maker",
+    "text-toolkit": {
+        "name": "Text Toolkit",
+        "link": "/text-toolkit",
         "description": "",
         "contributors": [
             {
@@ -645,7 +723,6 @@
             }
         ]
     },
-
     "virtual-graph-paper": {
         "name": "Virtual Graph Paper",
         "link": "/virtual-graph-paper",
@@ -682,7 +759,6 @@
     "website-links-count": {
         "name": "Website Links Count",
         "link": "/website-links-count",
-
         "description": "Website Link Count is a tool that allows users to enter a URL and instantly see the total number of hyperlinks present on the given webpage. This utility helps in quickly analyzing the link density and structure of any website.",
         "contributors": [
             {
@@ -704,7 +780,23 @@
             {
                 "name": "Raunak Singhal",
                 "githubId": "Raunak152003"
-
+            }
+        ]
+    },
+    "whatsapp-api-generator": {
+        "name": "WhatsApp Link Generator",
+        "link": "/whatsapp-api-generator",
+        "description": "The WhatsApp Link Generator is a specialized tool that simplifies the process of generating API integration code for the WhatsApp Me feature. With this tool, developers can quickly create the necessary code snippets to enable users to initiate conversations with a specific phone number on WhatsApp. This generator streamlines the integration of the WhatsApp Me functionality into your applications, allowing users to reach out and engage with your business or service effortlessly. Enhance user communication and engagement by utilizing this powerful API generator for WhatsApp integration.",
+        "contributors": [
+            {
+                "name": "Hannan Satopay",
+                "githubId": "hannansatopay"
+            }
+        ]
+    },
+    "wordpress-theme-detector": {
+        "name": "WordPress Theme Detector",
+        "link": "/wordpress-theme-detector",
         "description": "",
         "contributors": [
             {
@@ -726,18 +818,6 @@
             {
                 "name": "",
                 "githubId": ""
-
-            }
-        ]
-    },
-    "whatsapp-api-generator": {
-        "name": "WhatsApp Link Generator",
-        "link": "/whatsapp-api-generator",
-        "description": "The WhatsApp Link Generator is a specialized tool that simplifies the process of generating API integration code for the WhatsApp Me feature. With this tool, developers can quickly create the necessary code snippets to enable users to initiate conversations with a specific phone number on WhatsApp. This generator streamlines the integration of the WhatsApp Me functionality into your applications, allowing users to reach out and engage with your business or service effortlessly. Enhance user communication and engagement by utilizing this powerful API generator for WhatsApp integration.",
-        "contributors": [
-            {
-                "name": "Hannan Satopay",
-                "githubId": "hannansatopay"
             }
         ]
     }

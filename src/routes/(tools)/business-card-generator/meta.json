@@ -1,12 +1,12 @@
 {
     "name": "Business Card Generator",
-    "description":"",
+    "description":"A business card generator is an online tool that helps users design and customize their business cards. Users can input their personal and professional details such as name, title, company, email, phone number, and website. The generator provides a real-time preview of the business card, reflecting the entered information instantly. It typically offers various templates and design options, allowing users to choose different styles, fonts, and colors. Built with HTML, CSS, and JavaScript (or Svelte), this tool can also include advanced features like logo uploads and options to download or print the final card.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Samruddhi Badgujar",
+        "githubId": "https://github.com/samruddhi2006"
     }, {
-        "name": "",
-        "githubId": ""
+        "name": "Pratik Gangavane",
+        "githubId": "https://github.com/Syntax-19"
     },
     {
         "name": "",

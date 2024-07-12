@@ -83,15 +83,15 @@
     "business-card-generator": {
         "name": "Business Card Generator",
         "link": "/business-card-generator",
-        "description": "",
+        "description": "A business card generator is an online tool that helps users design and customize their business cards. Users can input their personal and professional details such as name, title, company, email, phone number, and website. The generator provides a real-time preview of the business card, reflecting the entered information instantly. It typically offers various templates and design options, allowing users to choose different styles, fonts, and colors. Built with HTML, CSS, and JavaScript (or Svelte), this tool can also include advanced features like logo uploads and options to download or print the final card.",
         "contributors": [
             {
-                "name": "",
-                "githubId": ""
+                "name": "Samruddhi Badgujar",
+                "githubId": "https://github.com/samruddhi2006"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Pratik Gangavane",
+                "githubId": "https://github.com/Syntax-19"
             },
             {
                 "name": "",
@@ -233,39 +233,27 @@
     "css-toolkit": {
         "name": "CSS Toolkit",
         "link": "/css-toolkit",
-        "description": "Welcome to the CSS Toolkit. This collection  is designed to streamline your CSS development process and enhance your web design projects. Whether you're looking to create stunning text gradients, add dynamic box shadows, craft engaging hover effects, or apply sleek glassmorphism styles, our toolkit has you covered.",
+        "description": "",
         "contributors": [
             {
-                "name": "Bushra Shaikh",
-                "githubId": "bushra-07"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Saiesh Gaonkar",
-                "githubId": "Saiesh-Gaonkar"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Iqra Miyaji",
-                "githubId": "IqraMiyaji"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Kaif Satopay",
-                "githubId": "TYpeKAIF"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Tanvi More",
-                "githubId": "Tanvi119"
-            },
-            {
-                "name": "Samaan Sayed",
-                "githubId": "Samaanl"
-            },
-            {
-                "name": "Rishabh Rai",
-                "githubId": "RishabhRai280"
-            },
-            {
-                "name": "Tejas Gilbile",
-                "githubId": "TejasGilbile"
+                "name": "",
+                "githubId": ""
             }
         ]
     },
@@ -372,9 +360,9 @@
             }
         ]
     },
-    "Gradient-generator": {
+    "gradient-generator": {
         "name": "Gradient Generator",
-        "link": "/Gradient-generator",
+        "link": "/gradient-generator",
         "description": "The Gradient Generator is a tool for Developers which allows you to create Gradient between 2 Colors and Copy its CSS Output.",
         "contributors": [
             {

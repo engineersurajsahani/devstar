@@ -1,6 +1,6 @@
 <script>
     import { Avatar } from 'flowbite-svelte';
-
+    // import Navbar from '../components/Navbar.svelte';
     export let data;
 </script>
 
@@ -25,7 +25,7 @@
         <h2 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">Contributors</h2>
         <div class="flex items-center space-x-2">
             {#each data.meta.contributors as contributor}
-                <a href="https://github.com/{contributor.githubId}" target="_blank" class="flex items-center space-x-2 font-medium inline-flex items-center justify-center px-2.5 py-1 text-sm text-gray-900 bg-gray-100 dark:bg-white border-primary-400 rounded">
+                <a href="https://github.com/{contributor.githubId}" target="_blank" class="space-x-2 font-medium inline-flex items-center justify-center px-2.5 py-1 text-sm text-gray-900 bg-gray-100 dark:bg-white border-primary-400 rounded">
                     <Avatar src="https://github.com/{contributor.githubId}.png" size="sm"/>
                     <div>{contributor.name}</div>
                 </a>

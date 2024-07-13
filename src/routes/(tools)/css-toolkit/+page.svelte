@@ -90,7 +90,7 @@
 	<div class="flex border-b border-gray-200 dark:border-gray-700 justify-center space-x-4">
 	  {#each tabs as tab}
 		<button
-		  class="tab-button inline-block py-4 px-6 rounded-t-lg text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-indigo-300"
+		  class="tab-button inline-block py-4 px-6 rounded-t-lg text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-indigo-500 "
 		  class:active-tab={currentTab === tab.name}
 		  on:click={() => selectTab(tab.name)}
 		>

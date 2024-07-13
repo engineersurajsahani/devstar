@@ -233,39 +233,27 @@
     "css-toolkit": {
         "name": "CSS Toolkit",
         "link": "/css-toolkit",
-        "description": "Welcome to the CSS Toolkit. This collection is designed to streamline your CSS development process and enhance your web design projects. Whether you're looking to create stunning text gradients, add dynamic box shadows, craft engaging hover effects, or apply sleek glassmorphism styles, our toolkit has you covered.",
+        "description": "",
         "contributors": [
             {
-                "name": "Bushra Shaikh",
-                "githubId": "bushra-07"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Saiesh Gaonkar",
-                "githubId": "Saiesh-Gaonkar"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Iqra Miyaji",
-                "githubId": "IqraMiyaji"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Kaif Satopay",
-                "githubId": "TYpeKAIF"
+                "name": "",
+                "githubId": ""
             },
             {
-                "name": "Tanvi More",
-                "githubId": "Tanvi119"
-            },
-            {
-                "name": "Samaan Sayed",
-                "githubId": "Samaanl"
-            },
-            {
-                "name": "Rishabh Rai",
-                "githubId": "RishabhRai280"
-            },
-            {
-                "name": "Tejas Gilbile",
-                "githubId": "TejasGilbile"
+                "name": "",
+                "githubId": ""
             }
         ]
     },
@@ -372,9 +360,9 @@
             }
         ]
     },
-    "gradient-generator": {
+    "Gradient-generator": {
         "name": "Gradient Generator",
-        "link": "/gradient-generator",
+        "link": "/Gradient-generator",
         "description": "The Gradient Generator is a tool for Developers which allows you to create Gradient between 2 Colors and Copy its CSS Output.",
         "contributors": [
             {

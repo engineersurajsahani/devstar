@@ -6,6 +6,7 @@
 	let blurValue = 16;
 	let opacity = 0.75;
 	let saturation = 180;
+	let color = '#ffffff'; // Default color
 	let generatedCSS = generateCSS();
 
 	// Function to generate the CSS code
@@ -21,7 +22,7 @@ body {
 .card {
 	backdrop-filter: blur(${blurValue}px) saturate(${saturation}%);
 	-webkit-backdrop-filter: blur(${blurValue}px) saturate(${saturation}%);
-	background-color: rgba(255, 255, 255, ${opacity});
+	background-color: ${hexToRgba(color, opacity)};
 	border-radius: 12px;
 	border: 1px solid rgba(209, 213, 219, 0.3);
 }
@@ -47,17 +48,25 @@ body {
 		const card = document.querySelector('.preview .card');
 		card.style.backdropFilter = `blur(${blurValue}px) saturate(${saturation}%)`;
 		card.style.webkitBackdropFilter = `blur(${blurValue}px) saturate(${saturation}%)`;
-		card.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+		card.style.backgroundColor = hexToRgba(color, opacity);
 
 		generatedCSS = generateCSS();
+	}
+
+	// Convert hex color to rgba
+	function hexToRgba(hex, alpha) {
+		const r = parseInt(hex.slice(1, 3), 16);
+		const g = parseInt(hex.slice(3, 5), 16);
+		const b = parseInt(hex.slice(5, 7), 16);
+		return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 	}
 </script>
 
 <div class="tool-container">
-	<div class="settings">
-		<label >
+	<div class="settings text-black-100 dark:text-gray-500">
+		<label>
 			Background image URL:
-			<input type="text" style="border-radius: 10px;" bind:value={backgroundImageURL} on:input={updatePreviewStyles} placeholder="Enter image URL or leave blank for default" />
+			<input type="text" style="border-radius: 10px; margin-top: 0.5rem" bind:value={backgroundImageURL} on:input={updatePreviewStyles} placeholder="Enter image URL or leave blank for default" />
 		</label>
 		<label>
 			Blur value:
@@ -74,6 +83,11 @@ body {
 			<input type="range" min="0" max="300" bind:value={saturation} on:input={updatePreviewStyles} />
 			<span>{saturation}%</span>
 		</label>
+		<label>
+			Color:
+			<input type="color" bind:value={color} on:input={updatePreviewStyles} />
+			<span>{color}</span>
+		</label>
 	</div>
 
 	<div class="preview" style="background-image: url({backgroundImageURL || defaultBackgroundImageURL})">
@@ -86,7 +100,7 @@ body {
 		</div>
 	</div>
 
-	<div class="css-output">
+	<div class="css-output text-black-100 dark:text-gray-500">
 		<h3><b>Generated CSS:</b></h3>
 		<div class="css-container">
 			<pre>{generatedCSS}</pre>
@@ -157,5 +171,13 @@ body {
 
 	h3 {
 		margin-top: 0;
+	}
+	input[type=color] {
+		background-color: transparent; 
+		border: 0.5px solid gray; 
+		padding: 1px;
+		height: 2rem; 
+		width: 4rem; 
+		border-radius: 3px;
 	}
 </style>

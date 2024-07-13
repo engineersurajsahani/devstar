@@ -233,7 +233,13 @@
     "css-toolkit": {
         "name": "CSS Toolkit",
         "link": "/css-toolkit",
-        "description": ""
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
     },
     "device-details": {
         "name": "Device Details",

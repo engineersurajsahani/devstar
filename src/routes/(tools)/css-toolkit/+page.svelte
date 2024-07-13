@@ -44,7 +44,7 @@
 			<Glassmorphism />
 		{/if}
 	</div>
-</div>
+</div> 
 
 <style>
 	.flowbite {

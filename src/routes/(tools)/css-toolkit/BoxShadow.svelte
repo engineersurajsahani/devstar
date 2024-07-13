@@ -1,6 +1,5 @@
-
 <script>
-	//Box Shadow Generator is done by Kaif Satopay and Tanvi More
+	// Box Shadow Generator is done by Kaif Satopay and Tanvi More
 	let offsetX = 10;
 	let offsetY = 10;
 	let blurRadius = 5;
@@ -47,7 +46,7 @@
 	  <!-- Preview box -->
 	  <div class="preview-box w-64 h-64 bg-white shadow-md rounded-lg" style="box-shadow: {boxShadow}"></div>
 	  <!-- CSS output preview -->
-	  <pre class="bg-gray-200 p-4 mt-4 rounded-lg text-sm text-gray-800 ">
+	  <pre class="bg-gray-200 p-4 mt-4 rounded-lg text-sm text-gray-800 text-center custom-pre">
 		box-shadow: {boxShadow};
 	  </pre>
 	</div>
@@ -57,5 +56,10 @@
 	.preview-box {
 	  transition: box-shadow 0.3s ease-in-out;
 	}
+	.custom-pre {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  height: 100px; /* Adjust height as needed */
+	}
   </style>
-  

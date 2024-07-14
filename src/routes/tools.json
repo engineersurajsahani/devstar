@@ -80,8 +80,6 @@
             }
         ]
     },
-<<<<<<< HEAD
-=======
     "business-card-generator": {
         "name": "Business Card Generator",
         "link": "/business-card-generator",
@@ -109,7 +107,6 @@
             }
         ]
     },
->>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "camera-recorder": {
         "name": "Camera Recorder",
         "link": "/camera-recorder",
@@ -233,8 +230,6 @@
             }
         ]
     },
-<<<<<<< HEAD
-=======
     "css-toolkit": {
         "name": "CSS Toolkit",
         "link": "/css-toolkit",
@@ -262,7 +257,6 @@
             }
         ]
     },
->>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "device-details": {
         "name": "Device Details",
         "link": "/device-details",
@@ -622,8 +616,6 @@
             }
         ]
     },
-<<<<<<< HEAD
-=======
     "readibility-calculator": {
         "name": "Readibility Calculator",
         "link": "/readibility-calculator",
@@ -651,15 +643,14 @@
             }
         ]
     },
->>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "remove-unused-css": {
         "name": "Remove Unused CSS",
         "link": "/remove-unused-css",
-        "description": "",
+        "description": "Removing unused CSS boosts website performance by eliminating unnecessary styles, ensuring faster loading times and better user experience.",
         "contributors": [
             {
-                "name": "",
-                "githubId": ""
+                "name": "Manoj R Gupta",
+                "githubId": "https://github.com/Manojgupta103"
             },
             {
                 "name": "",
@@ -705,8 +696,6 @@
             }
         ]
     },
-<<<<<<< HEAD
-=======
     "text-toolkit": {
         "name": "Text Toolkit",
         "link": "/text-toolkit",
@@ -734,7 +723,6 @@
             }
         ]
     },
->>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "virtual-graph-paper": {
         "name": "Virtual Graph Paper",
         "link": "/virtual-graph-paper",
@@ -771,29 +759,6 @@
     "website-links-count": {
         "name": "Website Links Count",
         "link": "/website-links-count",
-<<<<<<< HEAD
-        "description": "",
-        "contributors": [
-            {
-                "name": "",
-                "githubId": ""
-            },
-            {
-                "name": "",
-                "githubId": ""
-            },
-            {
-                "name": "",
-                "githubId": ""
-            },
-            {
-                "name": "",
-                "githubId": ""
-            },
-            {
-                "name": "",
-                "githubId": ""
-=======
         "description": "Website Link Count is a tool that allows users to enter a URL and instantly see the total number of hyperlinks present on the given webpage. This utility helps in quickly analyzing the link density and structure of any website.",
         "contributors": [
             {
@@ -815,7 +780,6 @@
             {
                 "name": "Raunak Singhal",
                 "githubId": "Raunak152003"
->>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
             }
         ]
     },

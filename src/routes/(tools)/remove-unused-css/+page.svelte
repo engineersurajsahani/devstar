@@ -89,9 +89,9 @@
   </style>
   
   <div>
-	<input type="file" accept=".html" onchange={handleHTMLFileChange} />
-	<input type="file" accept=".css" onchange={handleCSSFileChange} />
-	<button on:click={removeUnusedCSS}>Remove Unused CSS</button>
+	<input style="color: aqua;" type="file" accept=".html" onchange={handleHTMLFileChange} />
+	<input style="color: aqua;" type="file" accept=".css" onchange={handleCSSFileChange} />
+	<button style="color: aqua;" on:click={removeUnusedCSS}>Remove Unused CSS</button>
   </div>
   
   {#if originalCSS && cleanedCSS}

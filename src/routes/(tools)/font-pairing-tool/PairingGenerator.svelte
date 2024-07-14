@@ -9,6 +9,7 @@
   let customText = 'The quick brown fox jumps over the lazy dog';
   let fontSize = 20;
   let fontWeight = 400;
+  let username = '';
 
   // Fetch fonts from Google Fonts API on component mount
   onMount(async () => {
@@ -23,18 +24,49 @@
       console.error('Error fetching fonts:', error);
     }
   });
+  async function savePairing() {
+    try {
+      const response = await fetch('/api/savePairing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          font1: selectedFont1,
+          font2: selectedFont2,
+        })
+      });
 
-  function savePairing() {
-    const pairings = JSON.parse(localStorage.getItem('pairings') || '[]');
-    pairings.push({
-      font1: selectedFont1,
-      font2: selectedFont2,
-      text: customText,
-      size: fontSize,
-      weight: fontWeight
-    });
-    localStorage.setItem('pairings', JSON.stringify(pairings));
+      if (!response.ok) {
+        throw new Error('Failed to save pairing');
+      }
+
+      const pairings = JSON.parse(localStorage.getItem('pairings') || '[]');
+      pairings.push({
+        font1: selectedFont1,
+        font2: selectedFont2,
+        text: customText,
+        size: fontSize,
+        weight: fontWeight
+      });
+      localStorage.setItem('pairings', JSON.stringify(pairings));
+    } catch (error) {
+      console.error('Error saving pairing:', error);
+    }
   }
+
+  // function savePairing() {
+  //   const pairings = JSON.parse(localStorage.getItem('pairings') || '[]');
+  //   pairings.push({
+  //     font1: selectedFont1,
+  //     font2: selectedFont2,
+  //     text: customText,
+  //     size: fontSize,
+  //     weight: fontWeight
+  //   });
+  //   localStorage.setItem('pairings', JSON.stringify(pairings));
+  // }
 
   function loadFont(font) {
     const link = document.createElement('link');
@@ -48,8 +80,13 @@
 </script>
 
 <!-- HTML structure for settings panel and font display -->
+ <form class="container mx-auto p-5" enctype="multipart/form-data">
 <div class="settings-panel">
   <h2>Customize Font Pairing</h2>
+
+  <label for="username">Username:</label>
+  <input type="text" bind:value={username} id="username" />
+
   <label for="font1">Font 1:</label>
   <select bind:value={selectedFont1} id="font1">
     {#each fonts as font}
@@ -74,16 +111,21 @@
   <input type="number" bind:value={fontWeight} id="fontWeight" min="100" max="900" step="100" />
 
   <button on:click={savePairing}>Save Pairing</button>
+  <FontDisplay font1={selectedFont1} font2={selectedFont2} text={customText} size={fontSize} weight={fontWeight} />
+
 </div>
 
-<FontDisplay class="font-display">
+</form>
+
+
+<!-- <FontDisplay class="font-display">
   <p style="font-family: {selectedFont1}; font-size: {fontSize}px; font-weight: {fontWeight};">
     {customText}
   </p>
   <p style="font-family: {selectedFont2}; font-size: {fontSize}px; font-weight: {fontWeight};">
     {customText}
   </p>
-</FontDisplay>
+</FontDisplay> -->
 
 <style>
   .settings-panel {

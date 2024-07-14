@@ -7,7 +7,7 @@
   </script>
   
   <div class="font-display">
-    <h4>Font 1 :</h4>
+    <h4 >Font 1 :</h4>
     <div style="font-family: {font1}; font-size: {size}px; font-weight: {weight};">{text}</div>
     <h4>Font 2 :</h4>
     <div style="font-family: {font2}; font-size: {size}px; font-weight: {weight};">{text}</div>

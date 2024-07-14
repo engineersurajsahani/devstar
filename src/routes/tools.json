@@ -282,19 +282,19 @@
     "font-pairing-tool": {
         "name": "Font Pairing Tool",
         "link": "/font-pairing-tool",
-        "description": "",
+        "description": "This Font Pairing Tool can easily convert the Font text and style you want to use in your project. It allows customization of text and styles of your quick visulization, thus making it easier to design projects.",
         "contributors": [
             {
                 "name": "Aditya Pol",
-                "githubId": ""
+                "githubId": "https://github.com/adityapol41c"
             },
             {
                 "name": "Ajay Nadar",
-                "githubId": ""
+                "githubId": "https://github.com/sai2003a"
             },
             {
                 "name": "Ritik Shukla",
-                "githubId": ""
+                "githubId": "https://github.com/07Ritik"
             },
             {
                 "name": "",

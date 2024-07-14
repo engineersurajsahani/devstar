@@ -606,9 +606,9 @@
         ]
     },
     "random-image-generator": {
-        "name": "Random Image Generator",
+        "name": "BMI Calculator",
         "link": "/random-image-generator",
-        "description": "The Random Image Generator is a dynamic tool that enables developers to generate random images on the fly. Whether you need placeholder images for testing or want to add visual elements to your applications, this tool can generate a wide variety of random images based on different categories, dimensions, and styles. Utilize this tool to add visual appeal and realism to your applications effortlessly.",
+        "description": "BMI Calculator: Quickly determine your Body Mass Index (BMI) with this easy-to-use tool. Input your height and weight to assess your body composition instantly.",
         "contributors": [
             {
                 "name": "Hannan Satopay",

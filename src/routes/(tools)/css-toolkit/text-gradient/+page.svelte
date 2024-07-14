@@ -45,7 +45,7 @@
     $: updateGradient();
   </script>
   
-  <div class="container">
+  <div class="container bg-gray-100">
     <h1>Text Gradient Generator</h1>
   
     <div class="preview" style="background: {$gradientCSS}; font-size: {fontSize}px; font-family: {fontType}; color: {fontColor};">
@@ -91,6 +91,7 @@
       padding: 20px;
       font-family: Arial, sans-serif;
     }
+    
   
     .preview {
       padding: 20px;
@@ -137,6 +138,8 @@
       padding: 10px;
       border-radius: 5px;
       margin-bottom: 20px;
+      overflow: auto;
+
     }
   
     button {

@@ -1,4 +1,5 @@
 <script>
+	// Glassmorphism is done by Bushra Shaikh
 	import { onMount } from 'svelte';
 
 	let defaultBackgroundImageURL = 'https://images.unsplash.com/photo-1519681393784-d120267933ba';
@@ -114,6 +115,7 @@ body {
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		gap: 1rem;
+		margin: 20px;
 	}
 
 	.settings {

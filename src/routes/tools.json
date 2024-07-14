@@ -80,6 +80,36 @@
             }
         ]
     },
+<<<<<<< HEAD
+=======
+    "business-card-generator": {
+        "name": "Business Card Generator",
+        "link": "/business-card-generator",
+        "description": "A business card generator is an online tool that helps users design and customize their business cards. Users can input their personal and professional details such as name, title, company, email, phone number, and website. The generator provides a real-time preview of the business card, reflecting the entered information instantly. It typically offers various templates and design options, allowing users to choose different styles, fonts, and colors. Built with HTML, CSS, and JavaScript (or Svelte), this tool can also include advanced features like logo uploads and options to download or print the final card.",
+        "contributors": [
+            {
+                "name": "Samruddhi Badgujar",
+                "githubId": "https://github.com/samruddhi2006"
+            },
+            {
+                "name": "Pratik Gangavane",
+                "githubId": "https://github.com/Syntax-19"
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+>>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "camera-recorder": {
         "name": "Camera Recorder",
         "link": "/camera-recorder",
@@ -203,6 +233,36 @@
             }
         ]
     },
+<<<<<<< HEAD
+=======
+    "css-toolkit": {
+        "name": "CSS Toolkit",
+        "link": "/css-toolkit",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+>>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "device-details": {
         "name": "Device Details",
         "link": "/device-details",
@@ -562,6 +622,36 @@
             }
         ]
     },
+<<<<<<< HEAD
+=======
+    "readibility-calculator": {
+        "name": "Readibility Calculator",
+        "link": "/readibility-calculator",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+>>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "remove-unused-css": {
         "name": "Remove Unused CSS",
         "link": "/remove-unused-css",
@@ -615,6 +705,36 @@
             }
         ]
     },
+<<<<<<< HEAD
+=======
+    "text-toolkit": {
+        "name": "Text Toolkit",
+        "link": "/text-toolkit",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+>>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
     "virtual-graph-paper": {
         "name": "Virtual Graph Paper",
         "link": "/virtual-graph-paper",
@@ -651,6 +771,7 @@
     "website-links-count": {
         "name": "Website Links Count",
         "link": "/website-links-count",
+<<<<<<< HEAD
         "description": "",
         "contributors": [
             {
@@ -672,6 +793,29 @@
             {
                 "name": "",
                 "githubId": ""
+=======
+        "description": "Website Link Count is a tool that allows users to enter a URL and instantly see the total number of hyperlinks present on the given webpage. This utility helps in quickly analyzing the link density and structure of any website.",
+        "contributors": [
+            {
+                "name": "Abdur Rehman Shaikh",
+                "githubId": "abdurrahmanshkh"
+            },
+            {
+                "name": "Aman Ilag",
+                "githubId": "ImGreY8"
+            },
+            {
+                "name": "Atharva Bhosale",
+                "githubId": "AT8Cool"
+            },
+            {
+                "name": "Monika Konde",
+                "githubId": "monikakonde"
+            },
+            {
+                "name": "Raunak Singhal",
+                "githubId": "Raunak152003"
+>>>>>>> 005ba4101a6f077524aeee26c70c9cfab9aee524
             }
         ]
     },

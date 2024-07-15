@@ -1,6 +1,6 @@
 <script>	
-	import { Search } from 'flowbite-svelte';	
-	import { Card } from 'flowbite-svelte';	
+	import { Card, Search } from 'flowbite-svelte';
+	
 	export let data;
 	let query = '';	
 	$: results = Object.values(data.tools).filter((tool) => {	

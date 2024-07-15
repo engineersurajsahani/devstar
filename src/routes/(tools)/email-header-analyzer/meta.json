@@ -1,23 +1,30 @@
 {
     "name": "Email Header Analyzer",
-    "description":"",
-    "contributors": [{
-        "name": "",
-        "githubId": ""
-    }, {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    }]
+    "description": "This tool will make email headers human readable by parsing them according to RFC 822. Email headers are present on every email you receive via the Internet and can provide valuable diagnostic information like hop delays, authentication results, and more.",
+    "contributors": [
+        {
+            "name": "Umesh Munde",
+            "githubId": "https://github.com/umeshmunde"
+        },
+        {
+            "name": "Onkar Mendhapurkar",
+            "githubId": "https://github.com/onkar69483"
+        },
+        {
+            "name": "Pratham Garg",
+            "githubId": "https://github.com/pra-060606"
+        },
+        {
+            "name": "Tejaswini Kolapkar",
+            "githubId": "https://github.com/tejaswini26k"
+        },
+        {
+            "name": "Shravani Pidurkar",
+            "githubId": "https://github.com/shravanipidurkar"
+        },
+        {
+            "name": "Sanika Jadhav",
+            "githubId": " https://www.linkedin.com/in/sanika-jadhav-889488299/"
+        }
+    ]
 }

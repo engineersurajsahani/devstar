@@ -33,6 +33,7 @@
 		"downloadjs": "^1.4.7",
 		"express": "^4.19.2",
 		"jspdf": "^2.5.1",
+		"node-fetch": "^3.3.2",
 		"pdf-lib": "^1.17.1",
 		"svelte-awesome-color-picker": "^3.1.0",
 		"svelte-tags-input": "^6.0.0",

@@ -57,6 +57,38 @@
 		  return `Your BMR is ${value}`;
 		},
 	  },
+	  
+    {
+       "id": 15,
+       "name": "Resting Metabolic Rate (RMR)",
+       "description": "The Resting Metabolic Rate (RMR) is closely related to the basal metabolic rate (BMR) and it is the amount of energy required to maintain the body's normal metabolic activity, such as respiration, maintenance of body temperature (thermogenesis), and digestion. Specifically, it is the amount of energy required at rest with no additional activity. The energy consumed is sufficient only for the functioning of the vital organs such as the heart, lungs, nervous system, kidneys, liver, intestine, sex organs, muscles, and skin.",
+       "tooltip": "Resting Metabolic Rate (RMR) is the number of calories your body needs to function at rest.",
+       "icon_class": "fas fa-heartbeat",
+       "inputs": [
+       { "name": "sex", "label": "Sex(Male/Female)", "type": "select", "options": ["Male", "Female"] },
+       { "name": "weight", "label": "Weight (kg)", "type": "number" },
+       { "name": "height", "label": "Height (cm)", "type": "number" },
+       { "name": "age", "label": "Age (years)", "type": "number" },
+    
+     ],
+       "calculate": function (inputs) {
+       const sex = inputs.sex;
+       const weightInKg = inputs.weight;
+       const heightInCm = inputs.height;
+       const age = inputs.age;
+      let heightInMeters = heightInCm / 100; // convert cm to meters
+      let rmr;
+    if (sex === "Male") {
+      rmr = (9.99 * weightInKg) + (6.25 * heightInCm) - (4.92 * age) + 5;
+    } else {
+      rmr = (9.99 * weightInKg) + (6.25 * heightInCm) - (4.92 * age) - 161;
+    }
+    return rmr.toFixed(2);
+  },
+  "result": function (value) {
+    return `Your RMR is ${value} kcal/day`;
+  },
+},
 	];
   
 	let selectedMeasurement = null;

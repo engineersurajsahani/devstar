@@ -126,6 +126,78 @@
   },
 },
 {
+  id: 10,
+  name: "Daily Caloric Needs",
+  description: "Estimates your daily caloric needs based on your Basal Metabolic Rate (BMR) and activity level. Activity levels can be Sedentary, Lightly active, Moderately active, Very active, Super active",
+  tooltip: "Estimates your daily caloric needs based on your Basal Metabolic Rate (BMR) and activity level.",
+  icon_class: "fas fa-utensils",
+  additional_details: 
+    "Activity Level Multipliers:\n\n" +
+    "Sedentary (little or no exercise): BMR x 1.2\n" +
+    "Lightly active (light exercise/sports 1-3 days/week): BMR x 1.375\n" +
+    "Moderately active (moderate exercise/sports 3-5 days/week): BMR x 1.55\n" +
+    "Very active (hard exercise/sports 6-7 days a week): BMR x 1.725\n" +
+    "Super active (very hard exercise/sports & a physical job): BMR x 1.9\n\n" +
+    "Your BMR is calculated using the Harris-Benedict equation:\n" +
+    "For males: BMR = 88.362 + (13.397 x weight in kg) + (4.799 x height in cm) - (5.677 x age in years)\n" +
+    "For females: BMR = 447.593 + (9.247 x weight in kg) + (3.098 x height in cm) - (4.330 x age in years)",
+  inputs: [
+    { name: "age", label: "Age (years)", type: "number" },
+    { name: "gender", label: "Gender (M/F)", type: "select", options: ["Male", "Female"] },
+    { name: "weight", label: "Weight (kg)", type: "number" },
+    { name: "height", label: "Height (cm)", type: "number" },
+    { 
+      name: "activity_level", 
+      label: "Activity Level", 
+      type: "select", 
+      options: ["Sedentary", "Lightly active", "Moderately active", "Very active", "Super active"] 
+    },
+  ],
+  calculate: function (inputs) {
+    const age = inputs.age;
+    const weight = inputs.weight;
+    const height = inputs.height;
+    const gender = inputs.gender.toUpperCase();
+    const activityLevel = inputs.activity_level;
+
+    let bmr;
+
+    if (gender === "M") {
+      bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+    } else if (gender === "F") {
+      bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+    } else {
+      return "Invalid gender";
+    }
+
+    let caloricNeeds;
+    switch (activityLevel) {
+      case "Sedentary":
+        caloricNeeds = bmr * 1.2;
+        break;
+      case "Lightly active":
+        caloricNeeds = bmr * 1.375;
+        break;
+      case "Moderately active":
+        caloricNeeds = bmr * 1.55;
+        break;
+      case "Very active":
+        caloricNeeds = bmr * 1.725;
+        break;
+      case "Super active":
+        caloricNeeds = bmr * 1.9;
+        break;
+      default:
+        return "Invalid activity level";
+    }
+
+    return caloricNeeds.toFixed(2);
+  },
+  result: function (value) {
+    return `Your daily caloric needs are ${value} calories`;
+  },
+},
+{
   id: 12,
   name: "Vitamin Calculator",
   description: "Estimates daily vitamin intake requirements based on age and gender.",

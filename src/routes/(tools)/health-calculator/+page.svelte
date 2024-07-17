@@ -123,9 +123,74 @@
   result: function (value) {
     return `Your daily caloric deficit should be ${value} calories to meet your goal`;
   },
+},
+{
+	id: 16,
+	name: "Water Intake",
+	description: "Estimates the daily water intake based on weight.",
+	tooltip: "Estimates the daily water intake based on weight.",
+	icon_class: "fas fa-tint",
+	additional_details: "It is recommended to drink 35 ml of water per kg of body weight daily.",
+	inputs: [{ name: "weight", label: "Weight (kg)", type: "number" }],
+	calculate: function (inputs) {
+		const weight = inputs.weight;
+		const intakeInMl = weight * 35;
+		const intakeInLiters = (intakeInMl / 1000).toFixed(2);
+		return intakeInLiters;
+	},
+	result: function (value) {
+		return `Your recommended daily water intake is ${value} liters`;
+	},
 }
-
+,
+		{
+			id: 17,
+			name: "Protein Intake",
+			description:
+				"Estimates the daily protein intake based on weight and activity level.",
+			tooltip:
+				"Estimates the daily protein intake based on weight and activity level.",
+			icon_class: "fas fa-dumbbell",
+			additional_details:
+				"Protein intake recommendations:\n\n- Sedentary: 0.8 g per kg of body weight\n- Light Activity: 1.0 g per kg of body weight\n- Moderate Activity: 1.2 g per kg of body weight\n- High Activity: 1.5 g per kg of body weight",
+			inputs: [
+				{ name: "weight", label: "Weight (kg)", type: "number" },
+				{
+					name: "activity_level",
+					label: "Activity Level",
+					type: "select",
+					options: ["Sedentary", "Light Activity", "Moderate Activity", "High Activity"],
+				},
+			],
+			calculate: function (inputs) {
+				const weight = inputs.weight;
+				let multiplier;
+				switch (inputs.activity_level) {
+					case "Sedentary":
+						multiplier = 0.8;
+						break;
+					case "Light Activity":
+						multiplier = 1.0;
+						break;
+					case "Moderate Activity":
+						multiplier = 1.2;
+						break;
+					case "High Activity":
+						multiplier = 1.5;
+						break;
+					default:
+						multiplier = 1.0;
+				}
+				return (weight * multiplier).toFixed(2);
+			},
+			result: function (value) {
+				return `Your recommended daily protein intake is ${value} g`;
+			},
+		},
+		
 	];
+
+	
   
 	let selectedMeasurement = null;
 	let result = "";

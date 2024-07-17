@@ -123,7 +123,72 @@
   result: function (value) {
     return `Your daily caloric deficit should be ${value} calories to meet your goal`;
   },
+},
+{
+  id: 12,
+  name: "Vitamin Calculator",
+  description: "Estimates daily vitamin intake requirements based on age and gender.",
+  tooltip: "Estimates daily vitamin intake requirements based on age and gender.",
+  icon_class: "fas fa-pills",
+  additional_details: 
+    "Daily Recommended Intake for Vitamins:\n\n" +
+    "For Males:\n" +
+    "Age 1-3: Vitamin A: 300 mcg/day, Vitamin C: 15 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 6 mg/day, Vitamin K: 30 mcg/day\n" +
+    "Age 4-8: Vitamin A: 400 mcg/day, Vitamin C: 25 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 7 mg/day, Vitamin K: 55 mcg/day\n" +
+    "Age 9-13: Vitamin A: 600 mcg/day, Vitamin C: 45 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 11 mg/day, Vitamin K: 60 mcg/day\n" +
+    "Age 14-18: Vitamin A: 900 mcg/day, Vitamin C: 75 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 75 mcg/day\n" +
+    "Age 19+: Vitamin A: 900 mcg/day, Vitamin C: 90 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 120 mcg/day\n\n" +
+    "For Females:\n" +
+    "Age 1-3: Vitamin A: 300 mcg/day, Vitamin C: 15 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 6 mg/day, Vitamin K: 30 mcg/day\n" +
+    "Age 4-8: Vitamin A: 400 mcg/day, Vitamin C: 25 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 7 mg/day, Vitamin K: 55 mcg/day\n" +
+    "Age 9-13: Vitamin A: 600 mcg/day, Vitamin C: 45 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 11 mg/day, Vitamin K: 60 mcg/day\n" +
+    "Age 14-18: Vitamin A: 700 mcg/day, Vitamin C: 65 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 75 mcg/day\n" +
+    "Age 19+: Vitamin A: 700 mcg/day, Vitamin C: 75 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 90 mcg/day",
+  inputs: [
+    { name: "age", label: "Age (years)", type: "number" },
+    { name: "gender", label: "Gender (M/F)", type: "select", options: ["Male", "Female"] },
+  ],
+  calculate: function (inputs) {
+    const age = inputs.age;
+    const gender = inputs.gender.toUpperCase();
+    
+    let vitaminA, vitaminC, vitaminD, vitaminE, vitaminK;
+
+    if (gender === "M") {
+      if (age <= 3) {
+        vitaminA = 300; vitaminC = 15; vitaminD = 15; vitaminE = 6; vitaminK = 30;
+      } else if (age <= 8) {
+        vitaminA = 400; vitaminC = 25; vitaminD = 15; vitaminE = 7; vitaminK = 55;
+      } else if (age <= 13) {
+        vitaminA = 600; vitaminC = 45; vitaminD = 15; vitaminE = 11; vitaminK = 60;
+      } else if (age <= 18) {
+        vitaminA = 900; vitaminC = 75; vitaminD = 15; vitaminE = 15; vitaminK = 75;
+      } else {
+        vitaminA = 900; vitaminC = 90; vitaminD = 15; vitaminE = 15; vitaminK = 120;
+      }
+    } else if (gender === "F") {
+      if (age <= 3) {
+        vitaminA = 300; vitaminC = 15; vitaminD = 15; vitaminE = 6; vitaminK = 30;
+      } else if (age <= 8) {
+        vitaminA = 400; vitaminC = 25; vitaminD = 15; vitaminE = 7; vitaminK = 55;
+      } else if (age <= 13) {
+        vitaminA = 600; vitaminC = 45; vitaminD = 15; vitaminE = 11; vitaminK = 60;
+      } else if (age <= 18) {
+        vitaminA = 700; vitaminC = 65; vitaminD = 15; vitaminE = 15; vitaminK = 75;
+      } else {
+        vitaminA = 700; vitaminC = 75; vitaminD = 15; vitaminE = 15; vitaminK = 90;
+      }
+    } else {
+      return "Invalid gender";
+    }
+
+    return `Vitamin A: ${vitaminA} mcg/day, Vitamin C: ${vitaminC} mg/day, Vitamin D: ${vitaminD} mcg/day, Vitamin E: ${vitaminE} mg/day, Vitamin K: ${vitaminK} mcg/day`;
+  },
+  result: function (value) {
+    return `Your daily vitamin requirements are: ${value}`;
+  },
 }
+
 
 	];
   

@@ -127,6 +127,45 @@
 },
 
 {
+	id: 9,
+	name: "Body Fat Percentage",
+	description: "A body fat percentage calculator estimates the proportion of fat in relation to total body weight based on measurements like height, weight, and circumference of specific body parts.",
+	tooltip: "The U.S. Navy method estimates body fat percentage using measurements of waist, neck, weight, height, age, and gender, with hip circumference optionally included for women.",
+	icon_class: "fas fa-percent",
+	additional_details: "The normal range for body fat percentage varies based on factors like age, gender, and fitness level, but generally, it's around 18-24% for women and 10-17% for men",
+	inputs: [
+		{ name: "weight", label: "Weight (kg)", type: "number" },
+		{ name: "height", label: "Height (cm)", type: "number" },
+		{ name: "waist", label: "Waist (cm)", type: "number" },
+		{ name: "neck", label: "Neck (cm)", type: "number" },
+		{ name: "hip", label: "Hip (cm)", type: "number" },
+		{ name: "age", label: "Age (years)", type: "number" },
+		{ name: "gender", label: "Gender (M/F)", type: "text" },
+	],
+	calculate: function (inputs) {
+		const weight = inputs.weight;
+		const height = inputs.height;
+		const waist = inputs.waist;
+  		const neck = inputs.neck;
+      	const hip = inputs.hip;
+		const age = inputs.age;
+		const gender = inputs.gender.toUpperCase();
+		let bodyFatPercentage;
+		  if (gender === "M") {
+			bodyFatPercentage = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
+		  } else if (gender === "F") {
+			bodyFatPercentage = 163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(height) - 78.387;
+		  } else {
+			bodyFatPercentage = "Invalid gender";
+		  }
+		  return bodyFatPercentage.toFixed(2);
+		},
+		result: function (value) {
+		  return `Your Body Fat Percentage is ${value}`;
+		},
+	},
+  
+{
   id: 10,
   name: "Daily Caloric Needs",
   description: "Estimates your daily caloric needs based on your Basal Metabolic Rate (BMR) and activity level. Activity levels can be Sedentary, Lightly active, Moderately active, Very active, Super active",

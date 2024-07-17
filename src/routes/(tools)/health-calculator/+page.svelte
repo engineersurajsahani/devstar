@@ -341,6 +341,67 @@
     return `Your next period is expected to start on ${value}`;
   }
 },
+
+{
+  id: 15,
+  name: "Heart Rate Zone",
+  description:
+    "Heart Rate Zone is a percentage of your maximum heart rate, which is used to determine the intensity of exercise.",
+  tooltip: "The Karvonen formula is used to calculate Heart Rate Zone.",
+  icon_class: "fas fa-heartbeat" ,
+  additional_details:
+    "",
+  inputs: [
+    { name: "age", label: "Age (years)", type: "number" },
+    { name: "gender", label: "Gender (male/female)", type: "select", options: ["male", "female"] },
+    { name: "resting_hr", label: "Resting Heart Rate (bpm)", type: "number" },
+  ],
+  calculate: function (inputs) {
+    const age = inputs.age;
+    const gender = inputs.gender;
+    const resting_hr = inputs.resting_hr;
+
+    // Calculate maximum heart rate using Karvonen formula
+    let max_hr;
+    if (gender === "male") {
+      max_hr = 220 - age;
+    } else {
+      max_hr = 226 - age;
+    }
+
+    // Calculate heart rate reserve
+    let heart_rate_reserve = max_hr - resting_hr;
+
+    // Calculate targeted heart zone rates
+    let warm_up_zone = (max_hr - heart_rate_reserve) * 0.5 + resting_hr;
+    let fat_burn_zone = (max_hr - heart_rate_reserve) * 0.6 + resting_hr;
+    let aerobic_zone = (max_hr - heart_rate_reserve) * 0.7 + resting_hr;
+    let anaerobic_zone = (max_hr - heart_rate_reserve) * 0.8 + resting_hr;
+    let vo2_max_zone = (max_hr - heart_rate_reserve) * 0.9 + resting_hr;
+
+    return {
+      max_hr: max_hr.toFixed(2),
+      warm_up_zone: warm_up_zone.toFixed(2),
+      fat_burn_zone: fat_burn_zone.toFixed(2),
+      aerobic_zone: aerobic_zone.toFixed(2),
+      anaerobic_zone: anaerobic_zone.toFixed(2),
+      vo2_max_zone: vo2_max_zone.toFixed(2),
+    };
+  },
+  result: function (values) {
+    return `
+      Heart Rate Zones:
+
+      •Maximum Heart Rate:${values.max_hr} bpm 
+      •Warm-up Zone:${values.warm_up_zone} bpm
+      •Fat Burn Zone:${values.fat_burn_zone} bpm
+      •Aerobic Zone:${values.aerobic_zone} bpm
+      •Anaerobic Zone: ${values.anaerobic_zone} bpm
+      •VO2 Max Zone: ${values.vo2_max_zone} bpm
+    `;
+  },
+}
+
 	];
 
 	let selectedMeasurement = null;

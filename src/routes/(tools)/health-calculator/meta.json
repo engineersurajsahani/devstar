@@ -1,20 +1,28 @@
 {
     "name": "Health Calculator",
-    "description":"",
+    "description":"This tool is used to calculate the various parameters to check the health of a person based on the inputs provided by the user.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Yash Mehetre",
+        "githubId": "YashMehetre"
     }, {
-        "name": "",
-        "githubId": ""
+        "name": "Prajwal Ganar",
+        "githubId": "Prajwal435"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Omkar Karlekar",
+        "githubId": "Omkar-K01"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Rohit Jagtap",
+        "githubId": "RohitJagtap123"
+    },
+    {
+        "name": "Akanksha Kumbhar",
+        "githubId": "Akanksha0830"
+    },
+    {
+        "name": "Om Borle",
+        "githubId": "omborle"
     },
     {
         "name": "",

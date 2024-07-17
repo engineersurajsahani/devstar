@@ -57,8 +57,267 @@
 		  return `Your BMR is ${value}`;
 		},
 	  },
-	];
+	  {
+  id: 3,
+  name: "Harris-Benedict",
+  description: "The Harris-Benedict equation estimates your basal metabolic rate (BMR) and daily caloric needs.",
+  tooltip: "The Harris-Benedict equation estimates your basal metabolic rate (BMR) and daily caloric needs.",
+  icon_class: "fas fa-calculator",
+  additional_details: "Range:\n\nVery-Low: BMR is less than 1200\nLow: BMR is 1200 to 1500\nModerate: BMR is 1500 to 1800\nHigh: BMR is 1800 to 2200\nVery-High: BMR is 2200 or more",
+  inputs: [
+    { name: "age", label: "Age (years)", type: "number" },
+    { name: "gender", label: "Gender(M/F)", type: "select", options: ["Male", "Female","male","female"] },
+    { name: "weight", label: "Weight (kg)", type: "number" },
+    { name: "height", label: "Height (cm)", type: "number" },
+  ],
+  calculate: function (inputs) {
+    const age = inputs.age;
+    const weight = inputs.weight;
+    const height = inputs.height;
+    if (inputs.gender === "Male" ||inputs.gender === "male" ) {
+      return (88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)).toFixed(2);
+    } else {
+      return (447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)).toFixed(2);
+    }
+  },
+  result: function (value) {
+    return `Your Harris-Benedict BMR is ${value} calories/day`;
+  },
+},
+{
+  id: 4,
+  name: "Pregnancy Due Date",
+  description: "The Pregnancy Due Date Calculator estimates the due date based on the last menstrual period.",
+  tooltip: "The Pregnancy Due Date Calculator estimates the due date based on the last menstrual period.",
+  icon_class: "fas fa-baby",
+  additional_details: "Due date is calculated as 280 days (40 weeks) from the first day of the last menstrual period.",
+  inputs: [
+    { name: "lmp", label: "Last Menstrual Period", type: "date" },
+  ],
+  calculate: function (inputs) {
+    const lmp = new Date(inputs.lmp);
+    const dueDate = new Date(lmp.getTime() + 280 * 24 * 60 * 60 * 1000);
+    return dueDate.toDateString();
+  },
+  result: function (value) {
+    return `Your estimated due date is ${value}`;
+  },
   
+},
+{
+  id: 5,
+  name: "Caloric Deficit",
+  description: "Estimates the caloric deficit needed to lose weight.",
+  tooltip: "Estimates the caloric deficit needed to lose weight.",
+  icon_class: "fas fa-weight",
+  additional_details: "A caloric deficit of 500 calories per day typically results in a weight loss of about 0.5 kg (1 lb) per week.",
+  inputs: [
+    { name: "weight_loss_goal", label: "Weight loss goal (kg)", type: "number" },
+    { name: "time_frame", label: "Time frame (weeks)", type: "number" },
+  ],
+  calculate: function (inputs) {
+    const weightLossGoal = inputs.weight_loss_goal;
+    const timeFrame = inputs.time_frame;
+    return (weightLossGoal * 7700 / timeFrame).toFixed(2);
+  },
+  result: function (value) {
+    return `Your daily caloric deficit should be ${value} calories to meet your goal`;
+  },
+},
+{
+		id: 7,
+		name: "Ideal Body Weight (IBW)",
+		description:
+		  "IBW is the optimal weight associated with maximum life expectancy for a given height",
+		tooltip:
+		  "IBW is the optimal weight associated with maximum life expectancy for a given height",
+		icon_class: "fas fa-user-check",
+		additional_details:
+		  "Here are some useful tips you can follow to maintain your ideal weight - 1.Stick To a Healthy Diet 2.Exercise 3.Reduce Stress",
+		inputs: [
+		  { name: "height", label: "Height (cm)", type: "number" },
+		  { name: "gender", label: "Gender (M/F)", type: "text" },
+		  { name: "weight", label: "Actual Weight (kg)", type: "number" }
+		],
+		calculate: function (inputs) {
+		  
+		  const height = (inputs.height) / 2.54; // convert cm to inches
+          const gender = inputs.gender.toUpperCase();
+		  let IBW;
+		  if (gender === "M") {
+			IBW = 50+(2.3*(height-60)); }
+			else if (gender === "F") {
+				IBW = 45.5+(2.3*(height-60));
+			} else {
+				IBW = "Invalid Gender";
+			}
+			return (IBW).toFixed(2);
+		  },
+		  result: function (value) {
+		  return `Your IBW is ${value} kg`;
+		},
+		},
+		{
+		id: 8,
+		name: "Lean Body Mass",
+		description:
+		  "Lean body mass (LBM) refers to the weight of everything in your body except for fat",
+		tooltip:
+		  "Lean body mass (LBM) refers to the weight of everything in your body except for fat",
+		icon_class: "fas fa-dumbbell",
+		additional_details:
+		  "Increasing LBM often implies gaining muscle mass or losing fat, which is a common goal in fitness and bodybuilding!",
+		inputs: [
+		  { name: "height", label: "Height (cm)", type: "number" },
+		  { name: "weight", label: "Actual Weight (kg)", type: "number" },
+		  { name: "gender", label: "Gender (M/F)", type: "text" }
+		  
+		],
+		calculate: function (inputs) {
+		  
+		  const height = inputs.height; 
+          const gender = inputs.gender.toUpperCase();
+		  const weight = inputs.weight;
+
+		  let LBM;
+		  if (gender === "M") {
+			LBM = 0.407*weight+0.267*height-19.2; }
+			else if (gender === "F") {
+				LBM = 0.252*weight+0.473*height-48.3;
+			} else {
+				LBM = "Invalid Gender";
+			}
+			return (LBM).toFixed(2);
+		  },
+		  result: function (value) {
+		  return `Your Lean Body Mass is ${value} kg`;
+		},
+		},
+
+
+{
+  id: 12,
+  name: "Vitamin Calculator",
+  description: "Estimates daily vitamin intake requirements based on age and gender.",
+  tooltip: "Estimates daily vitamin intake requirements based on age and gender.",
+  icon_class: "fas fa-pills",
+  additional_details: 
+    "Daily Recommended Intake for Vitamins:\n\n" +
+    "For Males:\n" +
+    "Age 1-3: Vitamin A: 300 mcg/day, Vitamin C: 15 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 6 mg/day, Vitamin K: 30 mcg/day\n" +
+    "Age 4-8: Vitamin A: 400 mcg/day, Vitamin C: 25 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 7 mg/day, Vitamin K: 55 mcg/day\n" +
+    "Age 9-13: Vitamin A: 600 mcg/day, Vitamin C: 45 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 11 mg/day, Vitamin K: 60 mcg/day\n" +
+    "Age 14-18: Vitamin A: 900 mcg/day, Vitamin C: 75 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 75 mcg/day\n" +
+    "Age 19+: Vitamin A: 900 mcg/day, Vitamin C: 90 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 120 mcg/day\n\n" +
+    "For Females:\n" +
+    "Age 1-3: Vitamin A: 300 mcg/day, Vitamin C: 15 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 6 mg/day, Vitamin K: 30 mcg/day\n" +
+    "Age 4-8: Vitamin A: 400 mcg/day, Vitamin C: 25 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 7 mg/day, Vitamin K: 55 mcg/day\n" +
+    "Age 9-13: Vitamin A: 600 mcg/day, Vitamin C: 45 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 11 mg/day, Vitamin K: 60 mcg/day\n" +
+    "Age 14-18: Vitamin A: 700 mcg/day, Vitamin C: 65 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 75 mcg/day\n" +
+    "Age 19+: Vitamin A: 700 mcg/day, Vitamin C: 75 mg/day, Vitamin D: 15 mcg/day, Vitamin E: 15 mg/day, Vitamin K: 90 mcg/day",
+  inputs: [
+    { name: "age", label: "Age (years)", type: "number" },
+    { name: "gender", label: "Gender (M/F)", type: "select", options: ["Male", "Female"] },
+  ],
+  calculate: function (inputs) {
+    const age = inputs.age;
+    const gender = inputs.gender.toUpperCase();
+    
+    let vitaminA, vitaminC, vitaminD, vitaminE, vitaminK;
+
+    if (gender === "M") {
+      if (age <= 3) {
+        vitaminA = 300; vitaminC = 15; vitaminD = 15; vitaminE = 6; vitaminK = 30;
+      } else if (age <= 8) {
+        vitaminA = 400; vitaminC = 25; vitaminD = 15; vitaminE = 7; vitaminK = 55;
+      } else if (age <= 13) {
+        vitaminA = 600; vitaminC = 45; vitaminD = 15; vitaminE = 11; vitaminK = 60;
+      } else if (age <= 18) {
+        vitaminA = 900; vitaminC = 75; vitaminD = 15; vitaminE = 15; vitaminK = 75;
+      } else {
+        vitaminA = 900; vitaminC = 90; vitaminD = 15; vitaminE = 15; vitaminK = 120;
+      }
+    } else if (gender === "F") {
+      if (age <= 3) {
+        vitaminA = 300; vitaminC = 15; vitaminD = 15; vitaminE = 6; vitaminK = 30;
+      } else if (age <= 8) {
+        vitaminA = 400; vitaminC = 25; vitaminD = 15; vitaminE = 7; vitaminK = 55;
+      } else if (age <= 13) {
+        vitaminA = 600; vitaminC = 45; vitaminD = 15; vitaminE = 11; vitaminK = 60;
+      } else if (age <= 18) {
+        vitaminA = 700; vitaminC = 65; vitaminD = 15; vitaminE = 15; vitaminK = 75;
+      } else {
+        vitaminA = 700; vitaminC = 75; vitaminD = 15; vitaminE = 15; vitaminK = 90;
+      }
+    } else {
+      return "Invalid gender";
+    }
+
+    return `Vitamin A: ${vitaminA} mcg/day, Vitamin C: ${vitaminC} mg/day, Vitamin D: ${vitaminD} mcg/day, Vitamin E: ${vitaminE} mg/day, Vitamin K: ${vitaminK} mcg/day`;
+  },
+  result: function (value) {
+    return `Your daily vitamin requirements are: ${value}`;
+  },
+},
+	{
+		id: 13,
+		name: "Waist to Hip Ratio (WHR)",
+		description:
+		  "The waist-to-hip ratio (WHR) is the ratio of the circumference of the waist to that of the hips (a quick measure of fat distribution).",
+		tooltip:
+		  "The waist-hip ratio is generally a measure of health and the risk of developing serious health conditions, such as diabetes, asthma or cardiovascular disease.",
+		icon_class: "fas fa-ruler",
+		additional_details:
+		  "A Waist-Hip Ratio of 0.9 or less in men and 0.85 or less in women is considered low risk. A WHR above 1.0 in men and 0.85 in women indicates high risk.",
+		inputs: [
+		  { name: "waist", label: "Waist Circumference (cm)", type: "number" },
+		  { name: "hip", label: "Hip Circumference (cm)", type: "number" },
+		],
+		calculate: function (inputs) {
+		  const waist = inputs.waist;
+		  const hip = inputs.hip;
+		  return (waist / hip).toFixed(2);
+		},
+		result: function (value) {
+		  return `Your Waist-Hip Ratio is ${value}`;
+		},
+	  },
+	  {
+		id: 14,
+		name: "Resting Metabolic Rate (RMR)",
+		description:
+		  "Resting Metabolic Rate (RMR) is the rate at which your body burns energy when it is at complete rest.",
+		tooltip: "RMR is similar to BMR but can be slightly higher as it accounts for the calories burned by activities such as eating and small movements.",
+		icon_class: "fas fa-heartbeat",
+		additional_details:
+		  "RMR is the abbreviation of resting metabolic rate. This parameter tells how many calories your body requires to perform the most basic functions (to keep itself alive) while resting.",
+		inputs: [
+		  { name: "weight", label: "Weight (kg)", type: "number" },
+		  { name: "height", label: "Height (cm)", type: "number" },
+		  { name: "age", label: "Age (years)", type: "number" },
+		  { name: "gender", label: "Gender (M/F)", type: "text" },
+		],
+		calculate: function (inputs) {
+		  const weight = inputs.weight;
+		  const height = inputs.height;
+		  const age = inputs.age;
+		  const gender = inputs.gender.toUpperCase();
+		  let rmr;
+		  if (gender === "M") {
+			rmr = 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age;
+		  } else if (gender === "F") {
+			rmr = 447.593 + 9.247 * weight + 3.098 * height - 4.33 * age;
+		  } else {
+			rmr = "Invalid gender";
+		  }
+		  return (rmr * 1.1).toFixed(2); // Slightly higher than BMR to account for calories utilized for food digestion. 
+		},
+		result: function (value) {
+		  return `Your RMR is ${value} calories/day`;
+		},
+	  },
+	];
+
 	let selectedMeasurement = null;
 	let result = "";
   

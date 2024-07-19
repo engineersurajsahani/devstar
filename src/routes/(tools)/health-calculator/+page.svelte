@@ -527,7 +527,6 @@
 			result: function (value) {
 				return `Your recommended daily water intake is ${value} ml`;
 			},
-		},{
 			id: 17,
 			name: "Protein Intake",
 			description:
@@ -571,6 +570,30 @@
 				return `Your recommended daily protein intake is ${value} g`;
 			},
 		},
+		{
+			id : 18,
+			name: "Ideal Weight Gain",
+			description: "Estimates the ideal weight gain based on the target date and weight gain rate.",
+			tooltip: "Estimates the ideal weight gain based on the target date and weight gain rate.",
+			icon_class: "fas fa-weight",
+			additional_details: "The ideal weight gain is calculated based on the target date and weight gain rate.",
+			inputs: [
+				{ name: "current_weight", label: "Current Weight (kg)", type: "number" },
+				{ name: "target_date", label: "Target Date", type: "date" },
+				{ name: "weight_gain_rate", label: "Weight Gain Rate (kg/week)", type: "number" },
+			],
+			calculate: function (inputs) {
+				const currentWeight = inputs.current_weight;
+				const targetDate = new Date(inputs.target_date);
+				const weightGainRate = inputs.weight_gain_rate;
+				const daysToTarget = (targetDate - new Date()) / (1000 * 60 * 60 * 24);
+				const weeksToTarget = daysToTarget / 7;
+				return (currentWeight + weightGainRate * weeksToTarget).toFixed(2);
+			},
+			result: function (value) {
+				return `Your ideal weight on the target date is ${value} kg`;
+			},
+		}
 
 	];
 

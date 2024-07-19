@@ -36,13 +36,9 @@
         "name": "Prerana Patil",
         "githubId": "Prerana-Patil1"
     },
-    {e
-        "name": "Sanjana Mutkiri",
-        "githubId": "sanjanamutkiri"
-    },
     {
-        "name": "Nikhil Sripathi",
-        "githubId": "NikhilsaiSripathi"
+        "name":"Sanjana Mutkiri",
+        "githubId":"sanjanamutkiri"
     }
 ]
 }

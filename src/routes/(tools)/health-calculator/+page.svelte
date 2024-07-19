@@ -527,8 +527,6 @@
 			result: function (value) {
 				return `Your recommended daily water intake is ${value} ml`;
 			},
-		},
-		{
 			id: 17,
 			name: "Protein Intake",
 			description:

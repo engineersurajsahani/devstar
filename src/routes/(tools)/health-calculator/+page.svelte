@@ -528,49 +528,91 @@
 				return `Your recommended daily water intake is ${value} ml`;
 			},
 		},{
-			id: 17,
-			name: "Protein Intake",
-			description:
-				"Estimates the daily protein intake based on weight and activity level.",
-			tooltip:
-				"Estimates the daily protein intake based on weight and activity level.",
-			icon_class: "fas fa-dumbbell",
-			additional_details:
-				"Protein intake recommendations:\n\n- Sedentary: 0.8 g per kg of body weight\n- Light Activity: 1.0 g per kg of body weight\n- Moderate Activity: 1.2 g per kg of body weight\n- High Activity: 1.5 g per kg of body weight",
-			inputs: [
-				{ name: "weight", label: "Weight (kg)", type: "number" },
-				{
-					name: "activity_level",
-					label: "Activity Level",
-					type: "select",
-					options: ["Sedentary", "Light Activity", "Moderate Activity", "High Activity"],
-				},
-			],
-			calculate: function (inputs) {
-				const weight = inputs.weight;
-				let multiplier;
-				switch (inputs.activity_level) {
-					case "Sedentary":
-						multiplier = 0.8;
-						break;
-					case "Light Activity":
-						multiplier = 1.0;
-						break;
-					case "Moderate Activity":
-						multiplier = 1.2;
-						break;
-					case "High Activity":
-						multiplier = 1.5;
-						break;
-					default:
-						multiplier = 1.0;
-				}
-				return (weight * multiplier).toFixed(2);
-			},
-			result: function (value) {
-				return `Your recommended daily protein intake is ${value} g`;
-			},
+	id: 17,
+	name: "Protein Intake",
+	description: "Estimates the daily protein intake based on weight and activity level.",
+	tooltip: "Estimates the daily protein intake based on weight and activity level.",
+	icon_class: "fas fa-dumbbell",
+	additional_details:
+		"Protein intake recommendations:\n\n- Sedentary: 0.8 g per kg of body weight\n- Light Activity: 1.0 g per kg of body weight\n- Moderate Activity: 1.2 g per kg of body weight\n- High Activity: 1.5 g per kg of body weight",
+	inputs: [
+		{ name: "weight", label: "Weight (kg)", type: "number" },
+		{
+			name: "activity_level",
+			label: "Activity Level",
+			type: "select",
+			options: ["Sedentary", "Light Activity", "Moderate Activity", "High Activity"],
 		},
+	],
+	calculate: function (inputs) {
+		const weight = inputs.weight;
+		let multiplier;
+		switch (inputs.activity_level) {
+			case "Sedentary":
+				multiplier = 0.8;
+				break;
+			case "Light Activity":
+				multiplier = 1.0;
+				break;
+			case "Moderate Activity":
+				multiplier = 1.2;
+				break;
+			case "High Activity":
+				multiplier = 1.5;
+				break;
+			default:
+				multiplier = 1.0;
+		}
+		return (weight * multiplier).toFixed(2);
+	},
+	result: function (value) {
+		return `Your recommended daily protein intake is ${value} g`;
+	},
+},
+{
+	id: 20,
+	name: "Sleep Duration Recommendation",
+	description: "Estimates the recommended sleep duration based on age and lifestyle.",
+	tooltip: "Estimates the recommended sleep duration based on age and lifestyle.",
+	icon_class: "fas fa-bed",
+	additional_details:
+		"Recommended sleep duration varies based on age and lifestyle:\n\n- Children (6-12 years): 9-12 hours\n- Teenagers (13-18 years): 8-10 hours\n- Adults (18-64 years): 7-9 hours\n- Older Adults (65+ years): 7-8 hours\n- Physically active individuals may require more sleep for recovery.",
+	inputs: [
+		{ name: "age", label: "Age", type: "number" },
+		{
+			name: "lifestyle",
+			label: "Lifestyle (Sedentary, Moderately Active, Highly Active)",
+			type: "select",
+			options: ["Sedentary", "Moderately Active", "Highly Active"],
+		},
+	],
+	calculate: function (inputs) {
+		const age = inputs.age;
+		let sleepDuration;
+
+		if (age >= 6 && age <= 12) {
+			sleepDuration = 10.5; // Average of 9-12 hours
+		} else if (age >= 13 && age <= 18) {
+			sleepDuration = 9; // Average of 8-10 hours
+		} else if (age >= 18 && age <= 64) {
+			sleepDuration = 8; // Average of 7-9 hours
+		} else if (age >= 65) {
+			sleepDuration = 7.5; // Average of 7-8 hours
+		} else {
+			sleepDuration = 8; // Default for unknown age range
+		}
+
+		if (inputs.lifestyle === "Highly Active") {
+			sleepDuration += 1; // Additional hour for recovery
+		}
+
+		return sleepDuration.toFixed(1);
+	},
+	result: function (value) {
+		return `Your recommended daily sleep duration is ${value} hours`;
+	},
+}
+
 
 	];
 

@@ -4,6 +4,8 @@
   let color = '#FF0066';
   let svgShape = 'M150 0 L75 200 L225 200 Z'; 
   const shapes = writable([]);
+  let selectedShapeIndex = null;
+  let size = 100; // Default size
 
   let dragState = {
     isDragging: false,
@@ -16,7 +18,7 @@
   function addShape() {
     shapes.update(items => [
       ...items,
-      { id: items.length, path: svgShape, color, x: 0, y: 0, width: 100, height: 100 }
+      { id: items.length, path: svgShape, color, x: 0, y: 0, width: size, height: size }
     ]);
   }
 
@@ -24,30 +26,17 @@
     shapes.update(items => items.slice(0, -1));
   }
 
-  function increaseSize() {
-    shapes.update(items => {
-      if (items.length > 0) {
+  function onSizeChange(event) {
+    const newSize = Number(event.target.value);
+    if (selectedShapeIndex !== null) {
+      shapes.update(items => {
         const updatedItems = [...items];
-        const shape = updatedItems[updatedItems.length - 1];
-        shape.width += 10;
-        shape.height += 10;
+        const shape = updatedItems[selectedShapeIndex];
+        shape.width = newSize;
+        shape.height = newSize;
         return updatedItems;
-      }
-      return items;
-    });
-  }
-
-  function decreaseSize() {
-    shapes.update(items => {
-      if (items.length > 0) {
-        const updatedItems = [...items];
-        const shape = updatedItems[updatedItems.length - 1];
-        shape.width = Math.max(10, shape.width - 10);
-        shape.height = Math.max(10, shape.height - 10);
-        return updatedItems;
-      }
-      return items;
-    });
+      });
+    }
   }
 
   function downloadSVG() {
@@ -72,6 +61,8 @@
     dragState.startX = event.clientX;
     dragState.startY = event.clientY;
     dragState.shapeIndex = index;
+    selectedShapeIndex = index;
+    size = $shapes[index].width; // Set initial size for the selected shape
   }
 
   function startResize(event, index) {
@@ -144,7 +135,7 @@
   }
   .resize-toolbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 10px;
   }
   .resize-title {
@@ -184,6 +175,9 @@
     flex: 1;
     padding: 10px;
   }
+  .range-input {
+    width: 100%;
+  }
 </style>
 
 <div class="container">
@@ -209,8 +203,7 @@
       <button class="btn" on:click={downloadSVG}>Download</button>
       <div class="resize-title">Resize Shape</div>
       <div class="resize-toolbar">
-        <button class="btn resize" on:click={increaseSize}>+</button>
-        <button class="btn resize" on:click={decreaseSize}>-</button>
+        <input type="range" min="10" max="500" bind:value={size} class="range-input" on:input={onSizeChange} />
       </div>
     </div>
   </div>

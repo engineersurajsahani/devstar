@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     let imageSrc = "";
-    let colorBlindnessType = "deutan";
+    let colorBlindnessType = "Deuteranomaly";
     let imageCache = {};
     let urlCache = {};
     let currentImage = null;
@@ -11,7 +11,9 @@
     const ColorMatrixMatrixes = {
         Normal: { R: [100, 0, 0], G: [0, 100, 0], B: [0, 0, 100] },
         Deuteranopia: { R: [62.5, 37.5, 0], G: [70, 30, 0], B: [0, 30, 70] },
-        Deuteranomaly: { R: [80, 20, 0], G: [25.833, 74.167, 0], B: [0, 14.167, 85.833] }
+        Deuteranomaly: { R: [80, 20, 0], G: [25.833, 74.167, 0], B: [0, 14.167, 85.833] },
+        Protanopia: { R: [56.667, 43.333, 0], G: [55.833, 44.167, 0], B: [0, 24.167, 75.833] },
+        Protanomaly: { R: [81.667, 18.333, 0], G: [33.333, 66.667, 0], B: [0, 12.5, 87.5] }
     };
 
     const colorMatrixFilterFunctions = {};
@@ -125,13 +127,18 @@
         {#if downloadUrl}
             <a href={downloadUrl} download="filtered_image.png">Download Image</a>
         {/if}
-    </div>	
+    </div>
 
     <div class="simulation-options">
         <div id="section1" class="option-category">
             <h3>DEUTAN</h3>
             <button on:click="{() => {colorBlindnessType = 'Deuteranomaly'; filterOrImageChanged();}}">Green-Weak/Deuteranomaly</button>
             <button on:click="{() => {colorBlindnessType = 'Deuteranopia'; filterOrImageChanged();}}">Green-Blind/Deuteranopia</button>
+        </div>
+        <div id="section2" class="option-category">
+            <h3>PROTAN</h3>
+            <button on:click="{() => {colorBlindnessType = 'Protanomaly'; filterOrImageChanged();}}">Red-Weak/Protanomaly</button>
+            <button on:click="{() => {colorBlindnessType = 'Protanopia'; filterOrImageChanged();}}">Red-Blind/Protanopia</button>
         </div>
     </div>
 

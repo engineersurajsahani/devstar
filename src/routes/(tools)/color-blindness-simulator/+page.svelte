@@ -13,7 +13,9 @@
         Deuteranopia: { R: [62.5, 37.5, 0], G: [70, 30, 0], B: [0, 30, 70] },
         Deuteranomaly: { R: [80, 20, 0], G: [25.833, 74.167, 0], B: [0, 14.167, 85.833] },
         Protanopia: { R: [56.667, 43.333, 0], G: [55.833, 44.167, 0], B: [0, 24.167, 75.833] },
-        Protanomaly: { R: [81.667, 18.333, 0], G: [33.333, 66.667, 0], B: [0, 12.5, 87.5] }
+        Protanomaly: { R: [81.667, 18.333, 0], G: [33.333, 66.667, 0], B: [0, 12.5, 87.5] },
+        Tritanopia: { R: [95, 5, 0], G: [0, 43.333, 56.667], B: [0, 47.5, 52.5] },
+        Tritanomaly: { R: [96.667, 3.333, 0], G: [0, 73.333, 26.667], B: [0, 18.333, 81.667] }
     };
 
     const colorMatrixFilterFunctions = {};
@@ -140,6 +142,11 @@
             <button on:click="{() => {colorBlindnessType = 'Protanomaly'; filterOrImageChanged();}}">Red-Weak/Protanomaly</button>
             <button on:click="{() => {colorBlindnessType = 'Protanopia'; filterOrImageChanged();}}">Red-Blind/Protanopia</button>
         </div>
+        <div id="section3" class="option-category">
+            <h3>TRITAN</h3>
+            <button on:click="{() => {colorBlindnessType = 'Tritanomaly'; filterOrImageChanged();}}">Blue-Weak/Tritanomaly</button>
+            <button on:click="{() => {colorBlindnessType = 'Tritanopia'; filterOrImageChanged();}}">Blue-Blind/Tritanopia</button>
+        </div>
     </div>
 
     <div class="output">
@@ -214,24 +221,24 @@
         margin-bottom: 10px;
         font-size: 16px;
         color: #333;
-        background-color: #f0f0f0;
-        border: 1px solid #ddd;
+        background-color: #f90;
+        border: none;
         border-radius: 5px;
         cursor: pointer;
     }
 
     .option-category button:hover {
-        background-color: #e0e0e0;
+        opacity: 0.8;
     }
 
     .output {
         text-align: center;
     }
 
-    .filtered-image {
+    .output img.filtered-image {
         max-width: 100%;
         height: auto;
-        border: 1px solid #ddd;
+        border: 1px solid #ccc;
         border-radius: 5px;
     }
 </style>

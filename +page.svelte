@@ -6,6 +6,7 @@
   const shapes = writable([]);
   let selectedShapeIndex = null;
   let size = 100; // Default size
+  let rotation = 0; // Default rotation angle
   let showDownloadOptions = false; // State for download options visibility
 
   let dragState = {
@@ -16,16 +17,6 @@
     shapeIndex: null
   };
 
-  function randomPoints(count, width, height) {
-    const points = [];
-    for (let i = 0; i < count; i++) {
-      const x = Math.random() * width;
-      const y = Math.random() * height;
-      points.push({ x, y });
-    }
-    return points;
-  }
-
   function generateRandomPath(points) {
     if (points.length < 2) return ''; // Not enough points to create a path
 
@@ -35,12 +26,6 @@
     }
     path += 'Z'; // Close the path
     return path;
-  }
-
-  function randomShape() {
-    const pointCount = Math.floor(Math.random() * 5) + 3; // Between 3 and 7 points
-    const points = randomPoints(pointCount, 500, 500); // Assuming a canvas size of 500x500
-    return generateRandomPath(points);
   }
 
   function generateBlobPath() {
@@ -95,16 +80,16 @@
     return path.join(' ');
   }
 
-  function addShape() {
-    const shapeToAdd = svgShape === 'Random' ? randomShape() :
-      svgShape === 'Blob' ? generateBlobPath() :
-      svgShape;
 
-    shapes.update(items => [
-      ...items,
-      { id: items.length, path: shapeToAdd, color, x: 0, y: 0, width: size, height: size }
-    ]);
+  function addShape() {
+  const shapeToAdd = svgShape === 'Blob' ? generateBlobPath() : svgShape;
+
+  shapes.update(items => [
+    ...items,
+    { id: items.length, path: shapeToAdd, color, x: 0, y: 0, width: size, height: size, rotation: 0 }
+  ]);
   }
+
 
   function deleteShape() {
     shapes.update(items => items.slice(0, -1));
@@ -201,6 +186,19 @@
     dragState.isResizing = false;
     dragState.shapeIndex = null;
   }
+
+  function onRotationChange(event) {
+  const newRotation = Number(event.target.value);
+  if (selectedShapeIndex !== null) {
+    shapes.update(items => {
+      const updatedItems = [...items];
+      const shape = updatedItems[selectedShapeIndex];
+      shape.rotation = newRotation;
+      return updatedItems;
+    });
+  }
+  }
+
 
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseup', onMouseUp);
@@ -392,8 +390,8 @@
 
   .download-options {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 5px;
+    margin-top: 5px;
   }
 </style>
 
@@ -410,14 +408,23 @@
       <label>
         Shape:
         <select bind:value={svgShape}>
-          <option value="Random">Random</option>
           <option value="M150 0 L75 200 L225 200 Z">Triangle</option>
           <option value="M100,100 C150,50 200,150 250,100 C300,50 350,150 400,100">Wave</option>
           <option value="M50,50 h150 v150 h-150 Z">Square</option>
-          <option value="M100,200 Q150,50 200,200 T300,200">Arc</option>
           <option value="M250 100 A150 150 0 1 0 250 400 A150 150 0 1 0 250 100">Circle</option>
           <option value="Blob">Blob</option>
-        </select>
+          <option value="M0,0 h100 v50 h-100 Z">Rectangle</option>
+          <option value="M100 30 L170 75 L170 145 L100 190 L30 145 L30 75 Z">Hexagon</option> <!-- Corrected Hexagon Option -->
+        </select>        
+      </label>
+      <label>
+        Rotation:
+        <input type="range" min="0" max="360" bind:value={rotation} class="range-input" on:input={onRotationChange} />
+        <span>{rotation}°</span>
+      </label>      
+      <label>
+        Resize Shape:
+        <input type="range" min="10" max="500" bind:value={size} class="range-input" on:input={onSizeChange} />
       </label>
       <button class="btn add" on:click={addShape}>Add Shape</button>
       <button class="btn delete" on:click={deleteShape}>Delete Shape</button>
@@ -429,20 +436,16 @@
           <button class="btn download" on:click={downloadSVG}>SVG</button>
         </div>
       {/if}
-      <div class="resize-title">Resize Shape</div>
-      <div class="resize-toolbar">
-        <input type="range" min="10" max="500" bind:value={size} class="range-input" on:input={onSizeChange} />
-      </div>
     </div>
   </div>
   <div class="main">
     <div class="shape-preview">
       <svg>
-        {#each $shapes as { id, path, color, x, y, width, height }, index}
-          <g transform="translate({x},{y})" class="shape" on:mousedown={(e) => startDrag(e, index)}>
-            <path d={path} fill={color} stroke="none" transform={`scale(${width / 100},${height / 100})`} />
-            <rect x={width - 10} y={height - 10} width="10" height="10" class="resize-handle" on:mousedown={(e) => startResize(e, index)} />
-          </g>
+        {#each $shapes as { id, path, color, x, y, width, height, rotation }, index}
+        <g transform="translate({x},{y}) rotate({rotation})" class="shape" on:mousedown={(e) => startDrag(e, index)}>
+        <path d={path} fill={color} stroke="none" transform={`scale(${width / 100},${height / 100})`} />
+        <rect x={width - 10} y={height - 10} width="10" height="10" class="resize-handle" on:mousedown={(e) => startResize(e, index)} />
+        </g>
         {/each}
       </svg>
     </div>

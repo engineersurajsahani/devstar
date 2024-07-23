@@ -1,9 +1,9 @@
 {
     "name": "Multi Timer With Alarm",
-    "description":"",
+    "description":"It is a web application that consists of a functional multiple timers, stopwatch, an alarm, etc.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Prachi Phunde",
+        "githubId": "PrachiPhunde"
     }, {
         "name": "",
         "githubId": ""

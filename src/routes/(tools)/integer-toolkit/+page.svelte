@@ -1,14 +1,18 @@
 <script>
+	// Import necessary components from flowbite-svelte
 	import { Label, Button, Card } from 'flowbite-svelte';
   
+	// Declare Svelte reactive variables
 	let num1 = 0;
 	let num2 = 0;
 	let result = 0;
+	let roundedResult = 0; // New variable for rounded result
 	let selectedFontStyle = 'normal';
 	let sortedDigitsNum1 = '';
 	let sortedDigitsNum2 = '';
 	let palindromeNum1 = '';
   
+	// Function to add integers
 	function addIntegers() {
 	  result = num1 + num2;
 	  roundResult();
@@ -16,6 +20,7 @@
 	  convertToPalindrome();
 	}
   
+	// Function to subtract integers
 	function subtractIntegers() {
 	  result = num1 - num2;
 	  roundResult();
@@ -23,6 +28,7 @@
 	  convertToPalindrome();
 	}
   
+	// Function to multiply integers
 	function multiplyIntegers() {
 	  result = num1 * num2;
 	  roundResult();
@@ -30,6 +36,7 @@
 	  convertToPalindrome();
 	}
   
+	// Function to divide integers
 	function divideIntegers() {
 	  if (num2 !== 0) {
 		result = num1 / num2;
@@ -41,6 +48,7 @@
 	  convertToPalindrome();
 	}
   
+	// Function to calculate factorial
 	function calculateFactorial() {
 	  if (num1 < 0) {
 		result = 'Factorial is not defined for negative numbers';
@@ -56,6 +64,7 @@
 	  convertToPalindrome();
 	}
   
+	// Function to calculate absolute value
 	function calculateAbsolute() {
 	  result = Math.abs(num1);
 	  roundResult();
@@ -63,16 +72,22 @@
 	  convertToPalindrome();
 	}
   
+	// Function to round the result to the nearest integer
 	function roundResult() {
-	  // Round result to two decimal places
-	  result = typeof result === 'number' ? result.toFixed(2) : result;
+	  if (Number.isInteger(result)) {
+		roundedResult = result; // If result is an integer, no need to round
+	  } else {
+		roundedResult = Math.round(result); // Round to the nearest integer
+	  }
 	}
   
+	// Function to sort digits of both integers
 	function sortDigits() {
 	  sortedDigitsNum1 = sortNumberDigits(num1);
 	  sortedDigitsNum2 = sortNumberDigits(num2);
 	}
   
+	// Function to sort digits of an integer
 	function sortNumberDigits(number) {
 	  const digits = String(Math.abs(number)).split('');
 	  const sortedDigits = digits.sort((a, b) => a - b);
@@ -80,12 +95,14 @@
 	  return sortedNumber;
 	}
   
+	// Function to convert result to palindrome
 	function convertToPalindrome() {
 	  const originalString = String(result); // Convert result to string
 	  const reversedString = originalString.split('').reverse().join(''); // Reverse the string
 	  palindromeNum1 = Number(originalString + reversedString); // Concatenate and convert back to number
 	}
   
+	// Function to apply fancy font styles
 	function applyFancyFontStyle(event) {
 	  selectedFontStyle = event.target.value;
 	}
@@ -109,7 +126,7 @@
   
 	<div class="mt-6">
 	  <Label for="fontStyle" class="mb-2">Select Fancy Font Style</Label>
-	  <select id="fontStyle" bind:value={selectedFontStyle} class="select">
+	  <select id="fontStyle" bind:value={selectedFontStyle} class="select" on:change={applyFancyFontStyle}>
 		<option value="normal">Normal</option>
 		<option value="bold">Bold</option>
 		<option value="italic">Italic</option>
@@ -121,8 +138,11 @@
 	<Card class="mt-8 px-5" size="" padding="none">
 	  <h2 class="text-lg font-semibold mb-3">Results</h2>
 	  <div>
-		<p style="font-family: 'Arial', sans-serif; font-size: 24px; font-weight: {selectedFontStyle === 'bold' ? 'bold' : 'normal'}; font-style: {selectedFontStyle === 'italic' ? 'italic' : 'normal'}; text-decoration: {selectedFontStyle === 'underline' ? 'underline' : 'none'};">
+		<p style="font-family: 'Arial', sans-serif; font-size: 24px; font-weight: {selectedFontStyle === 'bold' ? 'bold' : 'normal'}; font-style: {selectedFontStyle === 'italic' ? 'italic' : 'normal'};">
 		  Result: {result}
+		</p>
+		<p>
+		  Rounded Result: {roundedResult}
 		</p>
 		<p>
 		  Sorted Digits of Integer: {sortedDigitsNum1}

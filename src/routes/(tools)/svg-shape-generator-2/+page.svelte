@@ -43,6 +43,49 @@
   onMount(() => {
     path = generateBlobPath();
   });
+
+  function downloadSVG() {
+    const svgElement = document.querySelector('.dotted-border-container svg');
+    const serializer = new XMLSerializer();
+    const svgBlob = new Blob([serializer.serializeToString(svgElement)], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(svgBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'blob.svg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function downloadPNG() {
+    const svgElement = document.querySelector('.dotted-border-container svg');
+    const serializer = new XMLSerializer();
+    const svgBlob = new Blob([serializer.serializeToString(svgElement)], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(svgBlob);
+
+    const img = new Image();
+    img.src = url;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 600; // Match the SVG width
+      canvas.height = 600; // Match the SVG height
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob((blob) => {
+        const a = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = 'blob.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+      URL.revokeObjectURL(url);
+    };
+  }
+
 </script>
 
 <div class="card">
@@ -111,10 +154,10 @@
     </div>
 
     <div class="button-wrapper">
-      <button class="button">Randomize</button>
-      <a href="#" class="button">PNG</a>
-      <a href="#" class="button">SVG</a>
-    </div>
+        <button class="button" on:click={() => path = generateBlobPath()}>Randomize</button>
+        <button class="button" on:click={downloadPNG}>PNG</button>
+        <button class="button" on:click={downloadSVG}>SVG</button>
+      </div>
   </div>
 </div>
 </div>

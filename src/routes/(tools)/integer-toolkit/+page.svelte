@@ -167,6 +167,51 @@
       generateIntegerArray();
     }
   }
+
+  // Variables for Integer Adder
+  let intSeparator = ",";
+  let inputIntegers = "";
+  let integerSum = "";
+  let showPartialSums = false;
+  let showSumTerms = false;
+
+  function calculateSum() {
+    const numbers = inputIntegers
+      .trim()
+      .split(intSeparator)
+      .map((num) => num.trim())
+      .filter((num) => num !== ""); // Filter out empty strings
+
+    // Filter out any NaN values
+    const validNumbers = numbers.map(Number).filter((num) => !isNaN(num));
+
+    if (showPartialSums) {
+      // Calculate partial sums
+      let runningSum = 0;
+      integerSum = validNumbers
+        .map((num, index) => {
+          runningSum += num;
+          if (showSumTerms) {
+            const terms = validNumbers.slice(0, index + 1).join(" + ");
+            return `${runningSum} (${terms})`;
+          } else {
+            return runningSum.toString();
+          }
+        })
+        .join("\n");
+    } else {
+      // Calculate the sum of the numbers
+      const sum = validNumbers.reduce((acc, num) => acc + num, 0);
+      if (showSumTerms) {
+        const terms = validNumbers.join(" + ");
+        integerSum = `${sum} (${terms})`;
+      } else {
+        integerSum = sum.toString();
+      }
+    }
+  }
+
+  $: inputIntegers, intSeparator, showPartialSums, showSumTerms, calculateSum();
 </script>
 
 <div class="tools-container space-y-8">
@@ -188,10 +233,10 @@
               class="mr-2"
               bind:group={palindromeType}
             />
-            <span class="text-gray-900 text-sm dark:text-white"
+            <span class="text-gray-900 text-base dark:text-white"
               >Mirrored Palindrome</span
             >
-            <span class="text-xs text-gray-500 dark:text-gray-400"
+            <span class="text-sm text-gray-500 dark:text-gray-400"
               >Example: 1232 → 12322321.</span
             >
           </label>
@@ -203,10 +248,10 @@
               class="mr-2"
               bind:group={palindromeType}
             />
-            <span class="text-gray-900 text-sm dark:text-white"
+            <span class="text-gray-900 text-base dark:text-white"
               >Centered Palindrome</span
             >
-            <span class="text-xs text-gray-500 dark:text-gray-400"
+            <span class="text-sm text-gray-500 dark:text-gray-400"
               >Example: 1232 → 1232321.</span
             >
           </label>
@@ -218,10 +263,10 @@
               class="mr-2"
               bind:group={palindromeType}
             />
-            <span class="text-gray-900 text-sm dark:text-white"
+            <span class="text-gray-900 text-base dark:text-white"
               >Minimal Palindrome</span
             >
-            <span class="text-xs text-gray-500 dark:text-gray-400"
+            <span class="text-sm text-gray-500 dark:text-gray-400"
               >Example: 1232 → 12321.</span
             >
           </label>
@@ -233,13 +278,13 @@
           <div
             class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
           >
-            <h2 class="text-lg font-medium text-gray-700 dark:text-white mb-2">
+            <h2 class="text-xl font-medium text-gray-700 dark:text-white mb-2">
               Input Integers
             </h2>
             <textarea
               placeholder="Enter Integers"
               rows="8"
-              class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               bind:value={inputText}
             ></textarea>
           </div>
@@ -247,13 +292,13 @@
           <div
             class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
           >
-            <h2 class="text-lg font-medium text-gray-700 dark:text-white mb-2">
+            <h2 class="text-xl font-medium text-gray-700 dark:text-white mb-2">
               Palindromic Integers
             </h2>
             <textarea
               placeholder="Result"
               rows="8"
-              class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               bind:value={resultText}
               readonly
             ></textarea>
@@ -316,7 +361,7 @@
               <div class="flex flex-col items-center">
                 <label
                   for="startValue"
-                  class="text-xs text-gray-500 dark:text-gray-400"
+                  class="text-sm text-gray-500 dark:text-gray-400"
                   >Start value</label
                 >
                 <input
@@ -329,7 +374,7 @@
               <div class="flex flex-col items-center">
                 <label
                   for="stepValue"
-                  class="text-xs text-gray-500 dark:text-gray-400"
+                  class="text-sm text-gray-500 dark:text-gray-400"
                   >Step value</label
                 >
                 <input
@@ -343,7 +388,7 @@
             <div class="flex flex-col items-center mt-4 col-span-2">
               <label
                 for="lengthValue"
-                class="text-xs text-gray-500 dark:text-gray-400"
+                class="text-sm text-gray-500 dark:text-gray-400"
                 >Length of the linear Array</label
               >
               <input
@@ -370,7 +415,7 @@
               <div class="flex flex-col items-center">
                 <label
                   for="rangeStartValue"
-                  class="text-xs text-gray-500 dark:text-gray-400"
+                  class="text-sm text-gray-500 dark:text-gray-400"
                   >Range start</label
                 >
                 <input
@@ -383,7 +428,7 @@
               <div class="flex flex-col items-center">
                 <label
                   for="rangeEndValue"
-                  class="text-xs text-gray-500 dark:text-gray-400"
+                  class="text-sm text-gray-500 dark:text-gray-400"
                   >Range end</label
                 >
                 <input
@@ -412,13 +457,13 @@
           <div class="flex flex-col items-center mt-4 col-span-2">
             <label
               for="parenthesesType"
-              class="text-xs text-gray-500 dark:text-gray-400"
+              class="text-sm text-gray-500 dark:text-gray-400"
               >Select Parentheses Type</label
             >
             <select
               id="parenthesesType"
               bind:value={parenthesesType}
-              class="h-8 w-52 p-2 text-sm"
+              class="h-18 w-52 p-2 text-sm"
             >
               <option value="curly">&#123; &#125;</option>
               <option value="square" selected>&#91; &#93;</option>
@@ -433,13 +478,15 @@
           <div
             class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
           >
-            <h2 class="text-lg font-medium text-gray-700 dark:text-white mb-2">
+            <h2
+              class="text-base font-medium text-gray-700 dark:text-white mb-2"
+            >
               Integer Array
             </h2>
             <textarea
               placeholder="Generated Array"
-              rows="8"
-              class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              rows="5 "
+              class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               bind:value={integerArray}
               readonly
             ></textarea>
@@ -471,6 +518,118 @@
   >
   Download as pdf
 </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integer Adder -->
+  <div class="tool">
+    <h1 class="text-gray-900 text-2xl dark:text-white ml-12 font-medium">
+      3. Integer Adder
+    </h1>
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-12">
+      <div
+        class="card p-8 relative items-center mx-auto max-w-screen-xl overflow-hidden rounded-lg"
+      >
+        <div class="flex gap-8 mb-4">
+          <div class="flex flex-col items-center col-span-2">
+            <label
+              for="intSeparator"
+              class="text-lg text-gray-3 00 dark:text-gray-100"
+              >Separator for integer input:</label
+            >
+            <input
+              type="text"
+              id="intSeparator"
+              bind:value={intSeparator}
+              class="h-8 w-52 p-2 text-base"
+              maxlength="1"
+            />
+          </div>
+          <!-- 
+          <div
+            class="mt-4 gap-4 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 overflow-hidden"
+          > -->
+          <label
+            class="ml-20 text-base text-gray-500 dark:text-gray-100 flex items-center"
+          >
+            <input type="radio" bind:group={showPartialSums} value={true} />
+            Show Partial Sums
+          </label>
+          <label
+            class="text-base text-gray-500 dark:text-gray-100 flex items-center"
+          >
+            <input type="radio" bind:group={showPartialSums} value={false} />
+            Show Total Sum
+          </label>
+          <!-- </div> -->
+          <label
+            class="text-base text-gray-500 dark:text-gray-100 flex items-center"
+          >
+            <input type="checkbox" bind:checked={showSumTerms} />
+            Show Sum Terms
+          </label>
+        </div>
+
+        <div
+          class="mt-4 gap-4 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 overflow-hidden"
+        >
+          <div
+            class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
+          >
+            <h2 class="text-lg font-medium text-gray-700 dark:text-white mb-2">
+              Input Integers
+            </h2>
+            <textarea
+              placeholder="Enter Integers"
+              rows="8"
+              class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              bind:value={inputIntegers}
+            ></textarea>
+          </div>
+
+          <div
+            class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
+          >
+            <h2 class="text-lg font-medium text-gray-700 dark:text-white mb-2">
+              Sum
+            </h2>
+            <textarea
+              placeholder="Result"
+              rows="8"
+              class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              bind:value={integerSum}
+              readonly
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div
+          class="items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 overflow-hidden"
+        >
+          <div
+            class="mt-8 gap-4 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 overflow-hidden"
+          >
+            <button
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              on:click={() => copyText(integerSum)}
+            >
+              Copy
+            </button>
+            <button
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              on:click={() => downloadText(integerSum, "int_sum_output.txt")}
+            >
+              Download as txt
+            </button>
+            <!-- <button
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+              Download as pdf
+            </button> -->
           </div>
         </div>
       </div>

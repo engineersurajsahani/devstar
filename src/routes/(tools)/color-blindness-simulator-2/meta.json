@@ -1,23 +1,40 @@
 {
     "name": "Color Blindness Simulator",
-    "description":"",
+    "description":"The Simulator allows user to effortlessly visualize how images appear to individuals with various types of color blindness. Upload an image, apply different color blindness filters, and see the effects in real-time.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Omkar Shinde",
+        "githubId": "omkarshinde1711"
     }, {
-        "name": "",
-        "githubId": ""
+        "name": "Namita Dewang",
+        "githubId": "Namita-Dewang"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Sanika Jadhav",
+        "githubId": "Stressed-desserts"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Priya Srivastava",
+        "githubId": "priyasri05"
     },
     {
-        "name": "",
-        "githubId": ""
-    }]
+        "name": "Shravan Bobade",
+        "githubId": "SHRAVAN104"
+    },
+    {
+        "name": "Angela Mugwe",
+        "githubId": "Ang254"
+    },
+    {
+        "name": "Mansi Karki",
+        "githubId": "MansiKarki"
+    },
+    {
+        "name": "Ghanshyam Kumavat",
+        "githubId": "ghanshyam1011"
+    },
+    {
+        "name": "Pratik Gole",
+        "githubId": "pratikgole2004"
+    }
+]
 }

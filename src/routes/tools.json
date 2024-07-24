@@ -741,27 +741,47 @@
     "multi-timer-with-alarm": {
         "name": "Multi Timer With Alarm",
         "link": "/multi-timer-with-alarm",
-        "description": "It is a web application that consists of a functional multiple timers, stopwatch, an alarm, etc.",
+        "description": "This Svelte web application provides a multifunctional time management interface featuring a stopwatch, multiple timers, an alarm clock, and world and local clocks. Users can start, stop, and reset a stopwatch while keeping track of laps. The timer functionality allows for setting, starting, stopping, and deleting multiple timers, each with its own countdown. An integrated alarm clock enables users to set alarms and receive notifications at specific times. The world and local clocks display the current time in different time zones, including New York, London, and Tokyo, alongside the local time. Additionally, a calendar section allows users to add and view notes associated with specific dates, enhancing personal organization and planning.",
         "contributors": [
             {
                 "name": "Prachi Phunde",
                 "githubId": "PrachiPhunde"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Hariharan Devendra",
+                "githubId": "hariharan2504"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Omkar Shinde",
+                "githubId": "omkarshinde1711"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Varunkumar Chinta",
+                "githubId": "vkchinta23"
             },
             {
-                "name": "",
-                "githubId": ""
+                "name": "Jai Singh",
+                "githubId": "JaiNaik45"
+            },
+            {
+                "name": "Rishabh Soni",
+                "githubId": "rishu358"
+            },
+            {
+                "name": "Nandita Singh",
+                "githubId": "madebynanditaaa"
+            },
+            {
+                "name": "Khushi Upadhyay",
+                "githubId": "Khushi-2005"
+            },
+            {
+                "name": "Saylee Mangalmurti",
+                "githubId": "saylee206"
+            },
+            {
+                "name": "Sanket Patil",
+                "githubId": "Patilsanket844"
             }
         ]
     },

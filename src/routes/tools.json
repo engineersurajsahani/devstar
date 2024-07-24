@@ -215,6 +215,60 @@
             }
         ]
     },
+    "color-blindness-simulator-2": {
+        "name": "Color Blindness Simulator",
+        "link": "/color-blindness-simulator-2",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "color-tools": {
+        "name": "Color Tools",
+        "link": "/color-tools",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "css-animator": {
         "name": "CSS Animator",
         "link": "/css-animator",
@@ -684,6 +738,33 @@
             }
         ]
     },
+    "multi-timer-with-alarm": {
+        "name": "Multi Timer With Alarm",
+        "link": "/multi-timer-with-alarm",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
     "neumorphism-generator": {
         "name": "Neumorphism Generator",
         "link": "/neumorphism-generator",
@@ -866,6 +947,33 @@
             {
                 "name": "Sanskar Srivastava",
                 "githubId": "https://github.com/dhawalcoder42"
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            },
+            {
+                "name": "",
+                "githubId": ""
+            }
+        ]
+    },
+    "svg-shape-generator-2": {
+        "name": "SVG Shape Generator ",
+        "link": "/svg-shape-generator-2",
+        "description": "",
+        "contributors": [
+            {
+                "name": "",
+                "githubId": ""
             },
             {
                 "name": "",

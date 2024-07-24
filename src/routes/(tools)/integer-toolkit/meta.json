@@ -1,15 +1,15 @@
 {
     "name": "Integer Toolkit",
-    "description":"",
+    "description":"The Integer Toolkit will include functions for basic arithmetic operations (addition, subtraction, multiplication, division), and display the results for the user",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Priyanka Kadam",
+        "githubId": "https://github.com/Priyanka-Kadam427"
     }, {
-        "name": "",
+        "name": "Yathang Tupe",
         "githubId": ""
     },
     {
-        "name": "",
+        "name": "Tasnim Rafee",
         "githubId": ""
     },
     {

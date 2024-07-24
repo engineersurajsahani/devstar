@@ -157,7 +157,7 @@
         <button class="button" on:click={() => path = generateBlobPath()}>Randomize</button>
         <button class="button" on:click={downloadPNG}>PNG</button>
         <button class="button" on:click={downloadSVG}>SVG</button>
-      </div>
+    </div>
   </div>
 </div>
 </div>

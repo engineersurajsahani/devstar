@@ -4,6 +4,7 @@
   let numPoints = 8;
   let randomness = 1.0;
   let path = '';
+  let blobColor = '#e75480';
 
   function generateBlobPath() {
     const radius = 220;
@@ -86,11 +87,46 @@
     };
   }
 
+  function changeBlobColor(color) {
+    blobColor = color;
+    path = generateBlobPath();
+  }
 </script>
 
 <div class="card">
 <div class="container-wrapper">
-  <div class="dotted-border-container">
+  <div class="dotted-border-container" style="position: relative;">
+    <div class="color-palette top-right">
+      <div class="color-group">
+        <button class="color-button" style="background-color: #e75480;" on:click={() => changeBlobColor('#e75480')}></button>
+        <button class="color-button" style="background-color: #4caf50;" on:click={() => changeBlobColor('#4caf50')}></button>
+        <button class="color-button" style="background-color: #2196f3;" on:click={() => changeBlobColor('#2196f3')}></button>
+        <button class="color-button" style="background-color: #ff9800;" on:click={() => changeBlobColor('#ff9800')}></button>
+      </div>
+      <div class="color-group">
+        <button class="color-button" style="background-color: #9c27b0;" on:click={() => changeBlobColor('#9c27b0')}></button>
+        <button class="color-button" style="background-color: #00bcd4;" on:click={() => changeBlobColor('#00bcd4')}></button>
+        <button class="color-button" style="background-color: #ff5722;" on:click={() => changeBlobColor('#ff5722')}></button>
+        <button class="color-button" style="background-color: #607d8b;" on:click={() => changeBlobColor('#607d8b')}></button>
+      </div>
+      <div class="color-group">
+        <button class="color-button" style="background-color: #f44336;" on:click={() => changeBlobColor('#f44336')}></button>
+        <button class="color-button" style="background-color: #673ab7;" on:click={() => changeBlobColor('#673ab7')}></button>
+        <button class="color-button" style="background-color: #ffc107;" on:click={() => changeBlobColor('#ffc107')}></button>
+        <button class="color-button" style="background-color: #3f51b5;" on:click={() => changeBlobColor('#3f51b5')}></button>
+      </div>
+      <div class="color-group">
+        <button class="color-button" style="background-color: #795548;" on:click={() => changeBlobColor('#795548')}></button>
+        <button class="color-button" style="background-color: #8bc34a;" on:click={() => changeBlobColor('#8bc34a')}></button>
+        <button class="color-button" style="background-color: #ffeb3b;" on:click={() => changeBlobColor('#ffeb3b')}></button>
+        <button class="color-button" style="background-color: #9e9e9e;" on:click={() => changeBlobColor('#9e9e9e')}></button>
+      </div>
+      <div class="color-group">
+        <button class="color-button" style="background-color: #00e676;" on:click={() => changeBlobColor('#00e676')}></button>
+        <button class="color-button" style="background-color: #ffcdd2;" on:click={() => changeBlobColor('#ffcdd2')}></button>
+        <button class="color-button" style="background-color: #03a9f4;" on:click={() => changeBlobColor('#03a9f4')}></button>
+      </div>
+    </div>
     <svg width="600" height="600" viewBox="0 0 500 500">
       <defs>
         <filter id="dropShadow">
@@ -104,7 +140,7 @@
           </feMerge>
         </filter>
       </defs>
-      <path d={path} fill="#e75480" filter="url(#dropShadow)" />
+      <path d={path} fill={blobColor} filter="url(#dropShadow)" />
     </svg>
   </div>
 
@@ -208,6 +244,29 @@ body {
   justify-content: center;
   padding: 80px;
   overflow: auto;
+}
+
+.color-palette {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1;
+}
+
+.color-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .slider-container {

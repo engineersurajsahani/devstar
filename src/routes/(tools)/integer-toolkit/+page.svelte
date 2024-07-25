@@ -212,6 +212,80 @@
   }
 
   $: inputIntegers, intSeparator, showPartialSums, showSumTerms, calculateSum();
+
+  // Variables for Integer / Integer Array Sorter
+  let intInputType = "integers";
+  let inputIntegersNew = "";
+  let sortedIntegers = "";
+  let intSeparatorNew = ",";
+  let sortingOrderNew = "ascending";
+
+  $: {
+    if (intInputType && inputIntegersNew !== "") {
+      let parsedArray = [];
+      let inputBrackets = { start: "", end: "" };
+
+      // Define the separator for integers
+      const separator = intSeparatorNew.trim() || /,|\n/.source; // Use comma or newline if no separator is specified
+
+      if (intInputType === "integers") {
+        // For integers
+        parsedArray = inputIntegersNew
+          .split(new RegExp(separator))
+          .map((str) => str.trim()) // Trim whitespace from each part
+          .filter((str) => str !== "") // Remove empty strings
+          .map(Number)
+          .filter((n) => !isNaN(n));
+
+        sortedIntegers = parsedArray
+          .sort((a, b) => {
+            if (sortingOrderNew === "ascending") return a - b;
+            if (sortingOrderNew === "descending") return b - a;
+            return Math.random() - 0.5; // Random sorting
+          })
+          .join(intSeparatorNew.trim() || ",");
+      } else if (intInputType === "array") {
+        // Detect the type of brackets used in the input
+        const bracketMatch = inputIntegersNew.match(/[\[\]\{\}\(\)]/g) || [];
+        if (bracketMatch.length > 0) {
+          inputBrackets.start = bracketMatch[0];
+          inputBrackets.end = bracketMatch[bracketMatch.length - 1];
+        }
+
+        // Remove possible brackets and split by common delimiters (comma, space, newline)
+        const cleanedInput = inputIntegersNew
+          .replace(/[\[\]\{\}\(\)]/g, "")
+          .split(new RegExp(separator))
+          .map((str) => str.trim()) // Trim whitespace from each part
+          .filter((str) => str !== "") // Remove empty strings
+          .map(Number)
+          .filter((n) => !isNaN(n));
+
+        let sortedArray;
+        switch (sortingOrderNew) {
+          case "ascending":
+            sortedArray = cleanedInput.sort((a, b) => a - b);
+            break;
+          case "descending":
+            sortedArray = cleanedInput.sort((a, b) => b - a);
+            break;
+          case "random":
+            sortedArray = cleanedInput.sort(() => Math.random() - 0.5);
+            break;
+        }
+
+        if (!inputBrackets.start) {
+          // Default is square brackets
+          sortedIntegers = `[${sortedArray.join(", ")}]`;
+        } else {
+          sortedIntegers = `${inputBrackets.start}${sortedArray.join(intSeparatorNew + " ")}${inputBrackets.end}`;
+        }
+      }
+    } else {
+      // when no input is provided
+      sortedIntegers = "";
+    }
+  }
 </script>
 
 <div class="tools-container space-y-8">
@@ -631,6 +705,144 @@
               Download as pdf
             </button> -->
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Integer / Integer Array Sorter -->
+<div class="tool">
+  <h1 class="text-gray-900 text-2xl dark:text-white ml-12 font-medium">
+    4. Integer / Integer Array Sorter
+  </h1>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-12">
+    <div
+      class="card p-8 relative items-center mx-auto max-w-screen-xl overflow-hidden rounded-lg"
+    >
+      <div class="flex gap-8 mb-4">
+        <div class="flex flex-col items-center col-span-2">
+          <label
+            for="intSeparatorNew"
+            class="text-lg text-black-100 dark:text-gray-100"
+            >Separator for integer input:</label
+          >
+          <input
+            type="text"
+            id="intSeparatorNew"
+            class="h-8 w-52 p-2 text-base"
+            maxlength="1"
+            bind:value={intSeparatorNew}
+          />
+        </div>
+
+        <div class="flex flex-col items-center col-span-2">
+          <label
+            for="inputTypeNew"
+            class="text-lg text-black-300 dark:text-gray-100">Input Type:</label
+          >
+          <div class="flex gap-4">
+            <label
+              class="text-base text-gray-500 dark:text-gray-100 flex items-center"
+            >
+              <input
+                type="radio"
+                value="integers"
+                bind:group={intInputType}
+                checked={intInputType === "integers"}
+              />
+              Integers
+            </label>
+            <label
+              class="text-base text-gray-500 dark:text-gray-100 flex items-center"
+            >
+              <input
+                type="radio"
+                value="array"
+                bind:group={intInputType}
+                checked={intInputType === "array"}
+              />
+              Integer Array
+            </label>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center col-span-2">
+          <label
+            for="sortingOrderNew"
+            class="text-base text-black-300 dark:text-gray-100"
+            >Sorting Order:</label
+          >
+          <select
+            id="sortingOrderNew"
+            class="h-18 w-52 p-2 text-base"
+            bind:value={sortingOrderNew}
+          >
+            <option value="ascending" selected>Ascending</option>
+            <option value="descending">Descending</option>
+            <option value="random">Random</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        class="mt-4 gap-4 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 overflow-hidden"
+      >
+        <div
+          class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
+        >
+          <h2 class="text-xl font-medium text-gray-700 dark:text-white mb-2">
+            Input Integers
+          </h2>
+          <textarea
+            placeholder="Enter Integers"
+            rows="8"
+            class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            bind:value={inputIntegersNew}
+          ></textarea>
+        </div>
+
+        <div
+          class="rounded-lg overflow-hidden bg-gray-50 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 p-4"
+        >
+          <h2 class="text-xl font-medium text-gray-700 dark:text-white mb-2">
+            Sorted Integers
+          </h2>
+          <textarea
+            placeholder="Result"
+            rows="8"
+            class="resize-none block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            bind:value={sortedIntegers}
+            readonly
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div
+        class="items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 overflow-hidden"
+      >
+        <div
+          class="mt-8 gap-4 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 overflow-hidden"
+        >
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            on:click={() => copyText(sortedIntegers)}
+          >
+            Copy
+          </button>
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            on:click={() =>
+              downloadText(sortedIntegers, "sorted_int_output.txt")}
+          >
+            Download as txt
+          </button>
+          <!-- <button
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+              Download as pdf
+            </button> -->
         </div>
       </div>
     </div>

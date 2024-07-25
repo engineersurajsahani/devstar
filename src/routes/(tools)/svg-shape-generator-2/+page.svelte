@@ -369,7 +369,9 @@ body {
 }
 
 .code-output {
-  margin-top: auto;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   width: 100%;
   max-width: 750px;
 }

@@ -969,7 +969,7 @@
     "svg-shape-generator-2": {
         "name": "SVG Shape Generator ",
         "link": "/svg-shape-generator-2",
-        "description": "",
+        "description": "SVG shape generator is a tool for creating customizable blob shapes using SVG, allowing users to adjust point count, randomness, and color dynamically.",
         "contributors": [
             {
                 "name": "Siddharth Mondal",

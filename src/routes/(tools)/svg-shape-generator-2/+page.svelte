@@ -20,30 +20,44 @@
       points.push({ x, y });
     }
 
-    let path = `M ${points[0].x} ${points[0].y}`;
+    let pathdata = `M ${points[0].x} ${points[0].y}`;
 
     for (let i = 1; i < points.length; i++) {
       const prevPoint = points[i - 1];
       const currentPoint = points[i];
       const midX = (prevPoint.x + currentPoint.x) / 2;
       const midY = (prevPoint.y + currentPoint.y) / 2;
-      path += ` Q ${prevPoint.x} ${prevPoint.y} ${midX} ${midY}`;
+      pathdata += ` Q ${prevPoint.x} ${prevPoint.y} ${midX} ${midY}`;
     }
 
     const lastPoint = points[points.length - 1];
     const firstPoint = points[0];
     const midX = (lastPoint.x + firstPoint.x) / 2;
     const midY = (lastPoint.y + firstPoint.y) / 2;
-    path += ` Q ${lastPoint.x} ${lastPoint.y} ${midX} ${midY} Z`;
+    pathdata += ` Q ${lastPoint.x} ${lastPoint.y} ${midX} ${midY} Z`;
 
-    return path;
+    return pathdata;
   }
 
-  $: path = generateBlobPath();
+  function updatePath() {
+    path = generateBlobPath();
+  }
 
   onMount(() => {
-    path = generateBlobPath();
+    updatePath();
   });
+
+  function copyToClipboard() {
+    const textarea = document.createElement('textarea');
+    textarea.value = `<svg width="500" height="500" viewBox="0 0 500 500">
+    <path d="${path}" fill="#e75480" filter="url(#dropShadow)" />
+    </svg>`;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    alert('SVG Code Copied');
+  }
 
   function downloadSVG() {
     const svgElement = document.querySelector('.dotted-border-container svg');
@@ -142,6 +156,12 @@
       </defs>
       <path d={path} fill={blobColor} filter="url(#dropShadow)" />
     </svg>
+
+    <div class="code-output">
+      <textarea id="outputCode" readonly wrap ="off"><svg width="500" height="500" viewBox="0 0 500 500">
+      <path d="{path}" fill="#e75480" filter="url(#dropShadow)" />
+      </svg></textarea>
+    </div>
   </div>
 
   <div class="slider-container" style="max-width: 800px;">
@@ -158,7 +178,7 @@
         min="3"
         max="12"
         step="1"
-        on:input={() => path = generateBlobPath()}
+        on:input={updatePath}
       />
       <img
         src="https://softr-assets-eu-shared.s3.eu-central-1.amazonaws.com/softr-tools/blob/assets/icons/angles.svg"
@@ -180,7 +200,7 @@
         min="0.1"
         max="2.0"
         step="0.1"
-        on:input={() => path = generateBlobPath()}
+        on:input={updatePath}
       />
       <img
         src="https://softr-assets-eu-shared.s3.eu-central-1.amazonaws.com/softr-tools/blob/assets/icons/circle-end.svg"
@@ -347,4 +367,24 @@ body {
 .button:hover {
   background-color: #45a049;
 }
+
+.code-output {
+    margin-top: auto;
+    width: 100%;
+    max-width: 750px;
+  }
+
+  #outputCode {
+    width: 100%;
+    height: 50px;
+    resize: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
 </style>

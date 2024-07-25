@@ -10,7 +10,7 @@
 	let audioDevices = [];
 	let selectedVideoDeviceId = null;
 	let selectedAudioDeviceId = null;
-	let canvas = null
+	let canvas = null;
   
 	async function getDeviceList() {
 	  const devices = await navigator.mediaDevices.enumerateDevices();
@@ -27,8 +27,8 @@
   
 	async function startVideo() {
 	  try {
-		//constraints.video = { deviceId: selectedVideoDeviceId ? { exact: selectedVideoDeviceId } : undefined };
-		//constraints.audio = { deviceId: selectedAudioDeviceId ? { exact: selectedAudioDeviceId } : undefined };
+		constraints.video = { deviceId: selectedVideoDeviceId ? { exact: selectedVideoDeviceId } : undefined };
+		constraints.audio = { deviceId: selectedAudioDeviceId ? { exact: selectedAudioDeviceId } : undefined };
 		
 		const stream = await navigator.mediaDevices.getUserMedia(constraints);
 		video.srcObject = stream;
@@ -40,26 +40,23 @@
 	  }
 	}
   
-	function capture(){
-		const context = canvas.getContext("2d")
-		
-		canvas.width = video.videoWidth;
-		canvas.height = video.videoHeight;
-		
-		context.drawImage(video, 0, 0, canvas.width, canvas.height);
-		
-		//const data = canvas.toDataURL("image/png");
-		//Photo.setAttribute("src", data)
-
-		const dataURL = canvas.toDataURL("image/png");
-
-		// Create a link element to download the image
-		const link = document.createElement("a");
-  		link.href = dataURL;
-  		link.download = "snapshot.png";
-	  	link.click();
+	function capture() {
+	  const context = canvas.getContext("2d");
+	  
+	  canvas.width = video.videoWidth;
+	  canvas.height = video.videoHeight;
+	  
+	  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+	  
+	  const dataURL = canvas.toDataURL("image/png");
+  
+	  // Create a link element to download the image
+	  const link = document.createElement("a");
+	  link.href = dataURL;
+	  link.download = "snapshot.png";
+	  link.click();
 	}
-
+  
 	onMount(async () => {
 	  await getDeviceList();
 	  await startVideo();
@@ -74,55 +71,120 @@
 	  selectedAudioDeviceId = event.target.value;
 	  startVideo();
 	}
-  </script>
+</script>
   
-  <div class="border h-[443px] border-white grid grid-cols-2">
-	<div class="border-r border-red-500">
+<div class="container">
+	<div class="video-container">
 	  <video bind:this={video} width="600" height="480">
 		<track kind="captions">
 	  </video>
 	  <canvas bind:this={canvas} class="hidden"></canvas>
 	</div>
-	<div>
+	<div class="controls">
 	  {#if permission == 'denied'}
-		<div class="text-white text-center">
+		<div class="error-message">
 		  {errorMessage}
 		</div>
 	  {:else if permission == "pending"}
-		<div class="text-white text-center">
+		<div class="request-message">
 		  {requestMessage}
 		</div>
 	  {:else}
-		<div>
-		  <div class="place-content-center border-b grid grid-rows-3">
-			<button class="border text-white block m-2">Start Recording</button>
-			<button class="border text-white block m-2">Stop Recording</button>
-			<button class="border text-white block m-2" on:click={capture}>Snap</button>
-		  </div>
-		  <div class="">
-			<div class="overflow-auto mt-10">
-				<label for="video-select" class="text-white">Select Camera:</label>
-				<select id="video-select" on:change={handleVideoDeviceChange}>
-					{#each videoDevices as device}
-					<option value={device.deviceId}>{device.label || 'Camera'}</option>
-					{/each}
-				</select>
-			</div>
-			<div class="overflow-auto mt-10">	
-				<label for="audio-select" class="text-white">Select Microphone:</label>
-				<select id="audio-select" on:change={handleAudioDeviceChange}>
-					{#each audioDevices as device}
-					<option value={device.deviceId}>{device.label || 'Microphone'}</option>
-					{/each}
-				</select>
-			</div>
-		  </div>
+		<div class="button-container">
+		  <button class="button" on:click={startVideo}>Start Recording</button>
+		  <button class="button" on:click={() => video.pause()}>Stop Recording</button>
+		  <button class="button" on:click={capture}>Snap</button>
+		</div>
+		<div class="device-selection">
+		  <label for="video-select">Select Camera:</label>
+		  <select id="video-select" on:change={handleVideoDeviceChange}>
+			{#each videoDevices as device}
+			<option value={device.deviceId}>{device.label || 'Camera'}</option>
+			{/each}
+		  </select>
+		  <label for="audio-select">Select Microphone:</label>
+		  <select id="audio-select" on:change={handleAudioDeviceChange}>
+			{#each audioDevices as device}
+			<option value={device.deviceId}>{device.label || 'Microphone'}</option>
+			{/each}
+		  </select>
 		</div>
 	  {/if}
 	</div>
-  </div>
+</div>
   
-  <style>
-	/* Add your styling here */
-  </style>
-  
+<style>
+	.container {
+	  display: flex;
+	  flex-direction: row;
+	  border: 1px solid white;
+	  height: 443px;
+	  background-color: #333; /* Set background color */
+	  color: white;
+	  padding: 10px;
+	}
+	
+	.video-container {
+	  flex: 1;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  border-right: 1px solid #ef4444;
+	  background-color: #222; /* Set background color for video container */
+	}
+	
+	.controls {
+	  flex: 1;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  background-color: #444; /* Set background color for controls container */
+	}
+	
+	.button-container {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  border-bottom: 1px solid #fff;
+	  margin-bottom: 20px;
+	  width: 40%; /* Ensure button container takes full width */
+	}
+	
+	.button {
+	  background-color: #ef4444;
+	  color: white;
+	  border: none;
+	  padding: 10px 20px;
+	  margin: 10px;
+	  cursor: pointer;
+	  transition: background-color 0.3s;
+	  width: 100%; /* Ensure all buttons take full width */
+	  box-sizing: border-box; /* Include padding in the width calculation */
+	  text-align: center; /* Center the text inside the button */
+	}
+	
+	.button:hover {
+	  background-color: #d43f3f;
+	}
+	
+	.device-selection {
+	  margin-top: 20px;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+	
+	.device-selection label {
+	  margin: 10px 0;
+	}
+	
+	.error-message, .request-message {
+	  text-align: center;
+	}
+	
+	.hidden {
+	  display: none;
+	}
+</style>

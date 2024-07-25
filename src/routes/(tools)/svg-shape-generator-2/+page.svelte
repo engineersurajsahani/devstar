@@ -369,22 +369,22 @@ body {
 }
 
 .code-output {
-    margin-top: auto;
-    width: 100%;
-    max-width: 750px;
-  }
+  margin-top: auto;
+  width: 100%;
+  max-width: 750px;
+}
 
-  #outputCode {
-    width: 100%;
-    height: 50px;
-    resize: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: monospace;
-  }
+#outputCode {
+  width: 100%;
+  height: 50px;
+  resize: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: monospace;
+}
 
 </style>

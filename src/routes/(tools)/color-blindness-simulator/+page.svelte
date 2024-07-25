@@ -15,7 +15,9 @@
         Protanopia: { R: [56.667, 43.333, 0], G: [55.833, 44.167, 0], B: [0, 24.167, 75.833] },
         Protanomaly: { R: [81.667, 18.333, 0], G: [33.333, 66.667, 0], B: [0, 12.5, 87.5] },
         Tritanopia: { R: [95, 5, 0], G: [0, 43.333, 56.667], B: [0, 47.5, 52.5] },
-        Tritanomaly: { R: [96.667, 3.333, 0], G: [0, 73.333, 26.667], B: [0, 18.333, 81.667] }
+        Tritanomaly: { R: [96.667, 3.333, 0], G: [0, 73.333, 26.667], B: [0, 18.333, 81.667] },
+        Achromatomaly: { R: [29.9, 58.7, 11.4], G: [29.9, 58.7, 11.4], B: [29.9, 58.7, 11.4] },
+        Achromatopsia: { R: [0, 0, 100], G: [0, 0, 100], B: [0, 0, 100] }
     };
 
     const colorMatrixFilterFunctions = {};
@@ -145,7 +147,12 @@
         <div id="section3" class="option-category">
             <h3>TRITAN</h3>
             <button on:click="{() => {colorBlindnessType = 'Tritanomaly'; filterOrImageChanged();}}">Blue-Weak/Tritanomaly</button>
-            <button on:click="{() => {colorBlindnessType = 'Tritanopia'; filterOrImageChanged();}}">Blue-Blind/Tritanopia</button>
+            <button on:click="{() => {colorBlindnessType = 'Tritanopia'; filterOrImageChanged();}}">Blue- Blind/Tritanopia</button>
+        </div>
+        <div id="section4" class="option-category">
+            <h3>BLACK/WHITE</h3>
+            <button on:click="{() => {colorBlindnessType = 'Achromatomaly'; filterOrImageChanged();}}">Monochromacy/ Achromatopsia</button>
+            <button on:click="{() => {colorBlindnessType = 'Achromatopsia'; filterOrImageChanged();}}">Blue Cone Monochromacy</button>
         </div>
     </div>
 
@@ -210,7 +217,7 @@
 
     .option-category h3 {
         margin-bottom: 10px;
-        font-size: 18px;
+        font-size: 20px;
         color: #f90;
     }
 
@@ -221,7 +228,7 @@
         margin-bottom: 10px;
         font-size: 16px;
         color: #333;
-        background-color: #f90;
+        background-color:  whitesmoke;
         border: none;
         border-radius: 5px;
         cursor: pointer;

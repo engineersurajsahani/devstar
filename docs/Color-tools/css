@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.color-picker {
+    margin-bottom: 20px;
+}
+
+.color-info p {
+    margin: 5px 0;
+}
+
+.palette-generator {
+    margin-top: 20px;
+}
+
+.palette {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.palette .color-box {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+}

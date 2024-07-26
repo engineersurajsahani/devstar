@@ -1,0 +1,65 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const colorInput = document.getElementById('colorInput');
+    const hexValue = document.getElementById('hexValue');
+    const rgbValue = document.getElementById('rgbValue');
+    const generatePaletteButton = document.getElementById('generatePalette');
+    const palette = document.getElementById('palette');
+
+    colorInput.addEventListener('input', updateColorValues);
+    generatePaletteButton.addEventListener('click', generatePalette);
+
+    function updateColorValues() {
+        const color = colorInput.value;
+        hexValue.textContent = color;
+        rgbValue.textContent = hexToRgb(color);
+    }
+
+    function hexToRgb(hex) {
+        const bigint = parseInt(hex.slice(1), 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function generatePalette() {
+        const baseColor = colorInput.value;
+        const colors = generateAnalogousPalette(baseColor);
+        palette.innerHTML = '';
+        colors.forEach(color => {
+            const colorBox = document.createElement('div');
+            colorBox.className = 'color-box';
+            colorBox.style.backgroundColor = color;
+            palette.appendChild(colorBox);
+        });
+    }
+
+    function generateAnalogousPalette(baseColor) {
+        const baseRgb = hexToRgbArray(baseColor);
+        return [
+            rgbToHex(baseRgb[0] + 30, baseRgb[1], baseRgb[2]),
+            rgbToHex(baseRgb[0], baseRgb[1] + 30, baseRgb[2]),
+            rgbToHex(baseRgb[0], baseRgb[1], baseRgb[2] + 30)
+        ];
+    }
+
+    function hexToRgbArray(hex) {
+        const bigint = parseInt(hex.slice(1), 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return [r, g, b];
+    }
+
+    function rgbToHex(r, g, b) {
+        return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+    }
+
+    function componentToHex(c) {
+        const hex = c.toString(16);
+        return hex.length === 1 ? `0${hex}` : hex;
+    }
+
+    // Initialize with default color
+    updateColorValues();
+});

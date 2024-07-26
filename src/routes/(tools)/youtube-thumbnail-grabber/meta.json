@@ -1,23 +1,25 @@
 {
     "name": "YouTube Thumbnail Grabber",
-    "description":"",
+
+    "description":"Yotube Thumbnail Grabber lets you get the thumbnail iamges of Youtube Videos. You can also save the images for fututre use.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Shreeja Roy",
+        "githubId": "https://github.com/shreejaroy2003"
     }, {
-        "name": "",
-        "githubId": ""
+        "name": "Abdul Karim Mirza",
+        "githubId": "https://github.com/karimmirzaabdul"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Aditya Mahale",
+        "githubId": "https://github.com/AdityaM24"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Harsh Vardhan Joshi",
+        "githubId": "https://github.com/hvjoshi9"
     },
     {
-        "name": "",
-        "githubId": ""
-    }]
-}
+        "name": "Maryam Mohamed Yahya",
+        "githubId": "https://github.com/MaryamMohamedYahya"
+        }]
+    }
+   

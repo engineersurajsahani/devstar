@@ -1,4 +1,4 @@
-import { tools } from './tools.js';
+import tools from './tools.json';
 
 // @ts-ignore
 export async function load({route, url}) {
@@ -15,7 +15,8 @@ function getMeta(route, url) {
         let tool = tools[url.pathname.replace("/","")];
         return {
             title: tool.name,
-            description: tool.description
+            description: tool.description,
+            contributors: tool.contributors
         }
     }
     return 0;

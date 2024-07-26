@@ -10,15 +10,13 @@ Our mission is to lead the way in providing developer tools that empower softwar
 
 Join us on this journey to maximize your efficiency and productivity as a developer. Experience the power of our developer toolkit today!
 
-*This Project is Contributed Further By AraeneaCLI*
-
 ## Powered by
 
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=Svelte&logoColor=white) ![SvelteKit](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## Run Locally
 
- Clone the project
+Clone the project
 
 ```bash
 
@@ -44,7 +42,6 @@ npm  install
 
 Start the server
 
-  
 ```bash
 
 npm  run  dev
@@ -52,11 +49,16 @@ npm  run  dev
 ```
 
 ## Contributing
+
 Contributions are always welcome!
 
 See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [Code of Conduct](docs/CODE_OF_CONDUCT.md).
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hannansatopay/devstar&type=Date)](https://star-history.com/#hannansatopay/devstar&Date)
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

@@ -15,3 +15,6 @@ functions/*
 ui-debug.log
 yarn.lock
 static/samples/*
+.vercel
+.pnpm-lock.yaml
+/.vscode

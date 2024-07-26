@@ -1,4 +1,5 @@
 <script>
+
     let url = '';
     let thumbnail = '';
 
@@ -58,4 +59,3 @@
         height: auto;
         margin-top: 1em;
     }
-</style>

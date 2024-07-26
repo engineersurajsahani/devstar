@@ -1,64 +1,50 @@
-[![Screenshot of the plaform](platform-screenshot.png)](https://developerstar.com)
+# hue.tools
 
-# Developerstar
+hue.tools is web app that helps you to work with colors.
 
-Welcome to the ultimate solution for developers seeking to enhance their productivity and streamline their workflows. Our free online developer toolkit empowers you to unlock your full potential with a comprehensive collection of top-notch tools. Say goodbye to the struggles of searching for the right tools and embrace the convenience of our user-friendly platform.
+Try it out: [hue.tools](https://hue.tools)
 
-As fellow developers, we understand the daily challenges of finding the perfect tools to solve programming problems. That's why we have curated a high-quality selection of developer tools, all in one place. Our platform is available to developers worldwide, and it will remain free forever.
+## Features
 
-Our mission is to lead the way in providing developer tools that empower software developers to overcome obstacles and work more efficiently. We are dedicated to streamlining workflows and increasing productivity, envisioning a future where software development is faster, more accessible, and more innovative than ever before.
+- Mix
+  - Mix multiple colors and generate as many shades/steps between those colors as you want
+  - Switch the interpolation mode to change the way the colors are mixed
+- Blend
+  - Mix two colors using one of the 16 blend modes (multiply, color burn, soft light, exclusion, etc.)
+  - Change the alpha channel to make tiny adjustments
+- Info
+  - Convert a color to many different color spaces and formats
+  - Links to resources/stock images using the same color on platforms like Dribble, Behance and Pexels
+  - Color combinations/harmonies like Triad, Analogous, Polyad
+  - Complementary color
+  - Name of the color using a [curated list of color names](https://www.npmjs.com/package/color-name-list)
+- Modify
+  - Adjust a color by combining 8 different modifiers
+  - Available modifiers: Brighten, Darken, Tint, Shade, Desaturate, Saturate, Lighten and Spin
 
-Join us on this journey to maximize your efficiency and productivity as a developer. Experience the power of our developer toolkit today!
+Tip: Change to output format on the top right to get exactly the color format/space you need when copying colors.
 
-## Powered by
+## Tech
 
-![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=Svelte&logoColor=white) ![SvelteKit](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- [Typescript](https://www.typescriptlang.org/)
+- [Svelte](https://svelte.dev)
+- [SvelteKit](https://kit.svelte.dev)
+- [Tailwind.css](https://tailwindcss.com/)
 
-## Run Locally
+Most of the color realted features in hue.tools are powered by [chroma.js](https://gka.github.io/chroma.js/) and [tinycolor](https://www.npmjs.com/package/@ctrl/tinycolor).
 
-Clone the project
-
-```bash
-
-git  clone  https://github.com/AraeneaCLI/devstar.git
-
-```
-
-Go to the project directory
-
-```bash
-
-cd  devstar
-
-```
-
-Install dependencies
-
-```bash
-
-npm  install
-
-```
-
-Start the server
-
-```bash
-
-npm  run  dev
-
-```
+[![Powered by Vercel](static/powered-by-vercel.svg)](https://vercel.com/?utm_source=pabueco&utm_campaign=oss)
 
 ## Contributing
 
 Contributions are always welcome!
 
-See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for ways to get started.
+## Development
 
-Please adhere to this project's [Code of Conduct](docs/CODE_OF_CONDUCT.md).
+```bash
+# Install dependencies.
+yarn
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=hannansatopay/devstar&type=Date)](https://star-history.com/#hannansatopay/devstar&Date)
-
-## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Start the dev server and open the app in a new browser tab.
+yarn dev --open
+```

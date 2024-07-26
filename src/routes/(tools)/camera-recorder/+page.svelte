@@ -115,7 +115,7 @@
 		  {errorMessage}
 		</div>
 	  {:else if permission == "pending"}
-		<div class="request-message">
+		<div class="dark:text-white">
 		  {requestMessage}
 		</div>
 	  {:else}

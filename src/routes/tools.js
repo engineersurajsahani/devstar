@@ -101,4 +101,10 @@ export let tools = {
         link: '/Gradient-generator',
         description: "The Gradient Generator is a tool for Developers which allows you to create Gradient between 2 Colors and Copy its CSS Output"
     },
+    'youtube-thumbnail-grabber': {
+        name: 'Youtube Thumbnail Grabber',
+        icon: 'key',
+        link: '/youtube-thumbnail-grabber',
+        description: "Yotube Thumbnail Grabber lets you get the thumbnail iamges of Youtube Videos. You can also save the images for fututre use."
+    },
 };

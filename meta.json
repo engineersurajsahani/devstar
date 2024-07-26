@@ -1,0 +1,23 @@
+{
+    "name": "SVG Shape Generator ",
+    "description":"The SVG Shape Generator is a user-friendly web application designed to create and customize SVG shapes. Users can select from various predefined shapes, adjust their colors, and manipulate them through dragging and resizing. The tool supports adding multiple shapes, allowing for complex designs. Once satisfied, users can download the final SVG file, making it an ideal solution for graphic designers and web developers looking to create scalable vector graphics efficiently. ",
+    "contributors": [{
+        "name": "Sanskar Srivastava",
+        "githubId": "dhawalcoder42"
+    }, {
+        "name": "Ayush Fating",
+        "githubId": "Ayush202201070127"
+    },
+    {
+        "name": "Sayali Jadhav",
+        "githubId": "sayali-jadhav21"
+    },
+    {
+        "name": "Chintaluri Sai Srinivas",
+        "githubId": "SaiSrinivas13"
+    },
+    {
+        "name": "Yash Borkar",
+        "githubId": "yash-borkar"
+    }]
+}

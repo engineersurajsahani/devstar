@@ -1,16 +1,16 @@
 {
     "name": "Color Blindness Simulator",
-    "description":"",
+    "description":"This Color Blind Simulator help you understand how color blind people see the world and how your world is affected without colors.",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Rohit Jagtap",
+        "githubId": "RohitJagtap123"
     }, {
-        "name": "",
-        "githubId": ""
+        "name": "Om Borle",
+        "githubId": "omborle"
     },
     {
-        "name": "",
-        "githubId": ""
+        "name": "Tejaswini Kolapkar",
+        "githubId": "tejaswini26k"
     },
     {
         "name": "",

@@ -105,6 +105,6 @@ export let tools = {
         name: 'Youtube Thumbnail Grabber',
         icon: 'key',
         link: '/youtube-thumbnail-grabber',
-        description: "Yotube Thumbnail Grabber lets you get the thumbnail iamges of Youtube Videos. You can also save the images for fututre use."
+        description: "Youtube Thumbnail Grabber lets you get the thumbnail iamges of Youtube Videos. You can also save the images for fututre use."
     },
 };

@@ -110,7 +110,7 @@
     "camera-recorder": {
         "name": "Camera Recorder",
         "link": "/camera-recorder",
-        "description": "Record a video or take a photo using PC camera",
+        "description": "Record a video or take a photo using any camera and mic connected to your device",
         "contributors": [
             {
                 "name": "Arhant Nitnaware",
@@ -123,14 +123,6 @@
             {
                 "name": "Sadia Ridita",
                 "githubId": "SadiaRidita"
-            },
-            {
-                "name": "",
-                "githubId": ""
-            },
-            {
-                "name": "",
-                "githubId": ""
             }
         ]
     },

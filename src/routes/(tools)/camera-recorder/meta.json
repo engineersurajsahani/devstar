@@ -1,23 +1,11 @@
 {
     "name": "Camera Recorder",
-    "description":"",
+    "description":"Record a video or take a photo using any camera and mic connected to your device",
     "contributors": [{
-        "name": "",
-        "githubId": ""
+        "name": "Arhant Nitnaware",
+        "githubId": "arhant-nitnaware"
     }, {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
-    },
-    {
-        "name": "",
-        "githubId": ""
+        "name": "Nikita Hakande",
+        "githubId": "Nikita-Hakande"
     }]
 }

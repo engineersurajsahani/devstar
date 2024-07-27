@@ -1,0 +1,87 @@
+<script lang="ts">
+  import type { Color } from '$src/models/Color'
+  import { outputFormat } from '$src/store'
+  import { nearest } from '$src/utils/colors'
+  import { throttle } from 'lodash-es'
+
+  import { copyToClipboard } from '../utils/clipboard'
+
+  export let color: Color
+  export let expands: boolean = false
+  export let animatesOnHover: boolean = false
+  export let animatesOnClick: boolean = false
+  export let alwaysShowColor: boolean = false
+  export let className: string = ''
+  export let size: string = 'default'
+  export let showName: boolean = false
+  export let showNameOnHover: boolean = false
+  export let compact: boolean = false
+
+  let textColor = undefined
+
+  $: if (alwaysShowColor || showName) {
+    textColor = color.textColor()
+  }
+
+  let colorName
+
+  const findColorNameThrottled = throttle(() => {
+    colorName = nearest(color.toString('hex')).name
+  }, 400)
+
+  $: if (showName && color) {
+    findColorNameThrottled()
+  }
+
+  const onMouseEnter = () => {
+    // Lazily compute text color on hover to prevent performance issues.
+    if (!alwaysShowColor) {
+      textColor = color.textColor()
+    }
+
+    if (!showName && showNameOnHover) {
+      findColorNameThrottled()
+    }
+  }
+</script>
+
+<div
+  style="background: {color.hex()}; color: {textColor}"
+  class="group relative min-h-[2.5rem] cursor-pointer flex items-center justify-center select-none whitespace-nowrap 
+    {expands ? 'w-full flex-1' : 'w-10'} 
+    {animatesOnHover ? 'transform hover:scale-110' : ''} 
+    {animatesOnClick ? 'active:scale-90' : ''} 
+    {className} 
+    {size === 'sm' ? 'text-sm' : ''} 
+    {size === 'lg' ? 'text-lg' : ''}
+    {compact ? 'flex-col' : ''}
+  "
+  on:click|self={(e) => copyToClipboard(e, color.toString($outputFormat))}
+  on:mouseenter={onMouseEnter}
+>
+  {#if (showName && colorName) || showNameOnHover}
+    <div
+      class="
+        {size === 'sm' ? 'text-sm' : ''} 
+        {size === 'lg' ? 'text-lg' : ''}
+        font-medium opacity-80 transition-opacity hover:opacity-100 transform text-center
+        {compact ? 'mb-1' : 'absolute top-4 left-1/2 -translate-x-1/2'}
+        {showNameOnHover ? '!opacity-0 group-hover:!opacity-100' : ''}
+      "
+      style="color: {textColor};"
+      on:click={(e) => copyToClipboard(e, colorName, 'Name copied!')}
+    >
+      {colorName}
+    </div>
+  {/if}
+
+  <span
+    class="{!alwaysShowColor
+      ? 'opacity-0 scale-75'
+      : ''} transform group-hover:opacity-100 group-hover:scale-100 font-medium pointer-events-none"
+    style="transition: opacity 150ms, transform 150ms;"
+    >{color.toString($outputFormat)}</span
+  >
+
+  <slot />
+</div>
